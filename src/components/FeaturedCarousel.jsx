@@ -47,12 +47,14 @@ const FeaturedCarousel = () => {
                 {/* Navigation Buttons (Small & Minimal) */}
                 <button
                     onClick={handlePrev}
+                    aria-label="Previous slide"
                     className="absolute left-4 md:left-20 z-20 bg-white/10 backdrop-blur-md p-2 rounded-full shadow-lg hover:bg-white/90 transition-all w-10 h-10 flex items-center justify-center text-white hover:text-gray-900 border border-white/20"
                 >
                     <ChevronLeft size={20} />
                 </button>
                 <button
                     onClick={handleNext}
+                    aria-label="Next slide"
                     className="absolute right-4 md:right-20 z-20 bg-white/10 backdrop-blur-md p-2 rounded-full shadow-lg hover:bg-white/90 transition-all w-10 h-10 flex items-center justify-center text-white hover:text-gray-900 border border-white/20"
                 >
                     <ChevronRight size={20} />
@@ -69,6 +71,7 @@ const FeaturedCarousel = () => {
                             loop
                             muted
                             playsInline
+                            preload="none"
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-black/10"></div>
@@ -82,6 +85,7 @@ const FeaturedCarousel = () => {
                             loop
                             muted
                             playsInline
+                            preload="none"
                             className="w-full h-full object-cover"
                         />
                         {/* High Contrast Overlay - Refined Gradient */}
@@ -109,6 +113,7 @@ const FeaturedCarousel = () => {
                             loop
                             muted
                             playsInline
+                            preload="none"
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-black/10"></div>

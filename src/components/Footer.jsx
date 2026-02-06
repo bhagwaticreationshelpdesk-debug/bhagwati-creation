@@ -80,7 +80,7 @@ const Footer = ({ onAboutClick }) => {
 
                 <div className="border-t border-gray-200 pt-8 text-center">
                     <p className="text-gray-400 text-xs">
-                        © {new Date().getFullYear()} MyStyle. All Rights Reserved.
+                        © {new Date().getFullYear()} Bhagwati Creations. All Rights Reserved.
                     </p>
                 </div>
             </div>

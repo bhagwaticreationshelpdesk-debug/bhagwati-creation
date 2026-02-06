@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Play, Volume2, VolumeX, ArrowRight, ArrowLeft, Instagram } from 'lucide-react';
 
-import review1 from '../assets/carousel-video-1.mp4';
-import review2 from '../assets/carousel-video-2.mp4';
-import review3 from '../assets/carousel-video-3.mp4';
-import review4 from '../assets/carousel-video-4.mp4';
-import review5 from '../assets/carousel-video-5.mp4';
+import review1 from '../assets/review1.mp4';
+import review2 from '../assets/review2.mp4';
+import review3 from '../assets/review3.mp4';
+import review4 from '../assets/review4.mp4';
+import review5 from '../assets/review5.mp4';
 
 const reviewsData = [
     {
@@ -72,6 +72,7 @@ const ReviewCard = ({ data }) => {
                     muted={isMuted}
                     autoPlay
                     playsInline
+                    preload="none"
                 />
 
                 {/* Gradient Overlay */}
@@ -80,6 +81,7 @@ const ReviewCard = ({ data }) => {
                 {/* Mute Button (Top Right) */}
                 <button
                     onClick={toggleMute}
+                    aria-label={isMuted ? "Unmute video" : "Mute video"}
                     className="absolute top-3 right-3 p-2 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-pink-600 z-20"
                 >
                     {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}

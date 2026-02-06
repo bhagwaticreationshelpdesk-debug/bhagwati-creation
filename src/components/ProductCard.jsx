@@ -41,7 +41,7 @@ const ProductCard = ({ product, onQuickView }) => {
         >
             <div className="relative aspect-[3/4] overflow-hidden bg-gray-200 mb-2">
                 {product.image ? (
-                    <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src={product.image} alt={product.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 bg-gray-100 group-hover:bg-gray-200 transition-colors">
                         <span className="text-4xl mb-2 font-thin">{product.id}</span>
