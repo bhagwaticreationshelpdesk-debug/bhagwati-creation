@@ -37,23 +37,13 @@ const reviewsData = [
 
 const ReviewCard = ({ data }) => {
     const videoRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
 
-    const handleMouseEnter = () => {
+    useEffect(() => {
         if (videoRef.current) {
-            videoRef.current.play().catch(e => console.error("Autoplay fail:", e));
-            setIsPlaying(true);
+            videoRef.current.play().catch(e => console.log("Autoplay blocked/failed", e));
         }
-    };
-
-    const handleMouseLeave = () => {
-        if (videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-            setIsPlaying(false);
-        }
-    };
+    }, []);
 
     const toggleMute = (e) => {
         e.stopPropagation();
@@ -69,9 +59,7 @@ const ReviewCard = ({ data }) => {
 
     return (
         <div
-            className="relative flex flex-col group cursor-pointer"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            className="relative flex flex-col group cursor-pointer h-full"
             onClick={handleCardClick}
         >
             {/* Card Container - Fixed Aspect Ratio */}
@@ -81,9 +69,9 @@ const ReviewCard = ({ data }) => {
                     src={data.video}
                     className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                     loop
-                    muted
+                    muted={isMuted}
+                    autoPlay
                     playsInline
-                    preload="auto"
                 />
 
                 {/* Gradient Overlay */}
@@ -92,14 +80,14 @@ const ReviewCard = ({ data }) => {
                 {/* Mute Button (Top Right) */}
                 <button
                     onClick={toggleMute}
-                    className="absolute top-3 right-3 p-2 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-pink-600"
+                    className="absolute top-3 right-3 p-2 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-pink-600 z-20"
                 >
                     {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                 </button>
 
                 {/* Instagram Icon Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-pink-600/90 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div className="bg-pink-600/90 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform shadow-lg">
                         <Instagram size={18} />
                         <span>View on Instagram</span>
                     </div>
@@ -135,42 +123,13 @@ const InstagramReels = () => {
                     </p>
                 </div>
 
-                {/* Reels Slider Container */}
-                <div className="relative group/slider max-w-6xl mx-auto">
-                    {/* Left Arrow */}
-                    <button
-                        onClick={() => {
-                            const container = document.getElementById('reviews-container');
-                            if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
-                        }}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-20 bg-white p-3 rounded-full shadow-xl text-gray-800 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-pink-50 hover:text-pink-600 disabled:opacity-0 hidden md:block border border-gray-100"
-                    >
-                        <ArrowLeft size={24} />
-                    </button>
-
-                    {/* Right Arrow */}
-                    <button
-                        onClick={() => {
-                            const container = document.getElementById('reviews-container');
-                            if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
-                        }}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-20 bg-white p-3 rounded-full shadow-xl text-gray-800 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-pink-50 hover:text-pink-600 hidden md:block border border-gray-100"
-                    >
-                        <ArrowRight size={24} />
-                    </button>
-
-                    {/* Scrollable Row */}
-                    <div
-                        id="reviews-container"
-                        className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
-                        {reviewsData.map((review) => (
-                            <div key={review.id} className="min-w-[260px] md:min-w-[280px] snap-center">
-                                <ReviewCard data={review} />
-                            </div>
-                        ))}
-                    </div>
+                {/* Grid Container for Videos */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
+                    {reviewsData.map((review) => (
+                        <div key={review.id} className="w-full">
+                            <ReviewCard data={review} />
+                        </div>
+                    ))}
                 </div>
 
                 <div className="mt-8 text-center">
