@@ -137,10 +137,10 @@ const InstagramReels = () => {
                         href="https://www.instagram.com/bhagwati_creations01/"
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-3 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-800 hover:bg-pink-50 hover:text-pink-600 hover:border-pink-200 transition-colors shadow-sm"
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] rounded-full text-white font-bold tracking-wide shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-pink-500/50"
                     >
-                        <Instagram size={20} />
-                        Follow on Instagram for Giveaways, Steals & Amazing Deals!
+                        <Instagram size={24} className="group-hover:rotate-12 transition-transform" />
+                        <span className="text-base">Follow for Exclusive Giveaways & Crazy Steals! ✨</span>
                     </a>
                 </div>
 
