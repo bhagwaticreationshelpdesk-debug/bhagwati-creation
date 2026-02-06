@@ -17,6 +17,20 @@ export default {
         serif: ['"Playfair Display"', 'serif'],
         sans: ['"Inter"', 'sans-serif'],
       },
+      animation: {
+        marquee: 'marquee 30s linear infinite',
+        'spin-slow': 'spin-slow 12s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        'spin-slow': {
+          'from': { transform: 'rotate(0deg)' },
+          'to': { transform: 'rotate(360deg)' },
+        }
+      }
     },
   },
   plugins: [],
