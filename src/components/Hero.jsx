@@ -1,31 +1,34 @@
-import React from 'react';
-import { ChevronDown } from 'lucide-react';
-import heroImage from '../assets/hero_ultra_wide_final.png';
+import React, { useState, useEffect } from 'react';
+import heroSlide1 from '../assets/hero_final_wide.png';
+
+const slides = [
+    {
+        id: 1,
+        image: heroSlide1,
+        link: '/category/fabric-collection',
+        buttonText: "Explore Fabrics"
+    }
+];
 
 const Hero = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const slide = slides[currentSlide];
+
     return (
-        <section className="relative w-full bg-gray-50 flex items-center justify-center overflow-hidden">
+        <section className="relative w-full bg-gray-50 flex items-center justify-center">
             {/* Image Container - Natural Height */}
-            <div className="relative w-full opacity-0 animate-[fadeIn_1.2s_ease-out_forwards]">
+            <div className="relative w-full">
                 <img
-                    src={heroImage}
+                    src={slide.image}
                     alt="Hero Banner"
                     className="w-full h-auto object-contain max-h-screen mx-auto"
                 />
 
-                {/* Scroll Indicator */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:flex flex-col items-center cursor-pointer text-gray-400 hover:text-gray-600 transition-colors">
-                    <span className="text-xs uppercase tracking-widest mb-1 font-light">Explore</span>
-                    <ChevronDown size={24} />
-                </div>
+                {/* Content Overlay */}
+
             </div>
 
-            <style jsx>{`
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(10px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-            `}</style>
         </section>
     );
 };
