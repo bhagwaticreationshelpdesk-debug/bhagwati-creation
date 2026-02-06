@@ -22,7 +22,7 @@ const Home = () => {
             <Hero />
 
             <div className="space-y-12 pb-12">
-                <ShopByCategories />
+                <InstagramReels />
 
                 <section className="bg-gradient-to-r from-pink-50 to-white py-4 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-pink-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
@@ -73,7 +73,7 @@ const Home = () => {
                     />
                 </div>
 
-                <InstagramReels />
+                <ShopByCategories />
                 <VideoShopping />
             </div>
         </div>
