@@ -1,120 +1,128 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ownerImage from '../assets/hero_face_final.png';
-import bgPattern from '../assets/fabric_collection_hero.png';
-import { Star, Sparkles } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
     const navigate = useNavigate();
 
     return (
-        <section className="relative w-full min-h-[750px] flex items-center overflow-hidden bg-[#0a0a0a]">
+        <section className="relative w-full min-h-[700px] flex items-center overflow-hidden bg-[#FAF9F6]">
 
-            {/* 1. Dynamic Background Layers */}
-            <div className="absolute inset-0 z-0">
-                {/* Image Texture */}
-                <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay">
-                    <img src={bgPattern} alt="Texture" className="w-full h-full object-cover grayscale" />
+            {/* 1. Background Decor */}
+            <div className="absolute inset-0 pointer-events-none">
+                {/* Soft Gradients */}
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-b from-[#FFF5E1] to-[#FFE4E1] rounded-full blur-[100px] opacity-70 translate-x-1/3 -translate-y-1/3"></div>
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-t from-[#FFE4E6] to-transparent rounded-full blur-[80px] opacity-60 -translate-x-1/4 translate-y-1/4"></div>
+
+                {/* Fine Grid/Pattern Overlay */}
+                <div className="absolute inset-0 opacity-[0.03]"
+                    style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
                 </div>
-                {/* Radial Gradient Glows */}
-                <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-purple-900/30 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-pink-900/20 rounded-full blur-[100px]"></div>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
+            <div className="container mx-auto px-6 relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 h-full py-12 lg:py-0">
 
-                    {/* Left: Content */}
-                    <div className="w-full lg:w-1/2 text-center lg:text-left space-y-8 animate-fade-in-up">
+                {/* Left: Text Content */}
+                <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
 
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-500/30 bg-pink-500/10 backdrop-blur-md mx-auto lg:mx-0">
-                            <Sparkles size={16} className="text-pink-400" />
-                            <span className="text-pink-200 text-xs font-semibold tracking-[0.2em] uppercase">The Royal Collection</span>
-                        </div>
-
-                        {/* Title */}
-                        <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight font-serif tracking-tight">
-                            Where <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-pink-300 to-amber-200 italic pr-2">Tradition</span>
-                            <br /> Meets <span className="italic font-light text-gray-400">Luxury.</span>
-                        </h1>
-
-                        <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
-                            Bhagwati Creations brings you an exclusive curation of India's finest fabrics.
-                            <span className="text-white font-medium"> handcrafted for the modern soul.</span>
-                        </p>
-
-                        {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-5 pt-4 justify-center lg:justify-start">
-                            <button
-                                onClick={() => navigate('/category/fabric-collection')}
-                                className="px-10 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-                            >
-                                Shop Collections
-                            </button>
-                            <button
-                                onClick={() => navigate('/new-arrivals')}
-                                className="px-10 py-4 bg-transparent border border-gray-600 text-white font-medium rounded-full hover:border-pink-500 hover:text-pink-400 transition-all"
-                            >
-                                New Arrivals
-                            </button>
-                        </div>
-
-                        {/* Stats / Trust */}
-                        <div className="pt-10 flex items-center justify-center lg:justify-start gap-8 border-t border-white/10 mt-8">
-                            <div>
-                                <h4 className="text-3xl font-serif text-white">5k+</h4>
-                                <p className="text-xs text-gray-400 uppercase tracking-wider">Happy Clients</p>
-                            </div>
-                            <div className="h-10 w-[1px] bg-white/10"></div>
-                            <div>
-                                <h4 className="text-3xl font-serif text-white">100%</h4>
-                                <p className="text-xs text-gray-400 uppercase tracking-wider">Authentic</p>
-                            </div>
-                        </div>
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white border border-[#E5E7EB] shadow-sm animate-fade-in">
+                        <span className="flex h-2 w-2 relative">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-pink-500"></span>
+                        </span>
+                        <span className="text-[#1F2937] text-xs md:text-sm font-bold tracking-widest uppercase">The Founder's Edit</span>
                     </div>
 
-                    {/* Right: Featured Image */}
-                    <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end">
-                        <div className="relative z-10 w-[320px] md:w-[420px] lg:w-[480px]">
-                            {/* Glass Card Backdrop */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-[3rem] backdrop-blur-sm border border-white/10 transform rotate-6 translate-x-4 translate-y-4"></div>
+                    {/* Headline */}
+                    <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.1] font-serif font-medium text-[#111827]">
+                        Crafting <br />
+                        <span className="italic text-[#db2777] relative inline-block">
+                            Elegance
+                            <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#db2777] opacity-40" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                <path d="M0 5 Q 50 10 100 5 L 100 8 Q 50 13 0 8 Z" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <br /> with Soul.
+                    </h1>
 
-                            {/* Main Image Container */}
-                            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-gray-900 border border-gray-800">
-                                <div className="absolute top-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-black/90 z-10"></div>
-                                <img
-                                    src={ownerImage}
-                                    alt="Founder"
-                                    className="w-full h-[550px] object-cover object-top"
-                                />
+                    <p className="text-lg md:text-xl text-[#4B5563] max-w-lg font-light leading-relaxed">
+                        Discover the finest handpicked ethnic wear, curated personally to bring out your
+                        <span className="font-semibold text-[#111827]"> royal essence.</span>
+                    </p>
 
-                                {/* Image Overlay Info */}
-                                <div className="absolute bottom-8 left-8 z-20">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <div className="flex">
-                                            {[1, 2, 3, 4, 5].map(i => (
-                                                <Star key={i} size={14} className="text-amber-400 fill-amber-400" />
-                                            ))}
-                                        </div>
-                                        <span className="text-xs text-white/80 font-medium">Top Rated Store</span>
+                    {/* CTA */}
+                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <button
+                            onClick={() => navigate('/category/fabric-collection')}
+                            className="group flex items-center justify-center gap-3 px-8 py-4 bg-[#111827] text-white rounded-full text-lg font-medium transition-all hover:bg-black hover:scale-105 shadow-lg shadow-gray-200"
+                        >
+                            Shop Now
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                    </div>
+
+                    {/* Trust Indicators */}
+                    <div className="pt-8 flex items-center gap-6 text-[#6B7280]">
+                        <div className="flex -space-x-3">
+                            {[1, 2, 3, 4].map((i) => (
+                                <div key={i} className={`w-10 h-10 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs font-bold overflow-hidden`}>
+                                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}`} alt="Avatar" className="w-full h-full" />
+                                </div>
+                            ))}
+                            <div className="w-10 h-10 rounded-full border-2 border-white bg-pink-50 text-pink-600 flex items-center justify-center text-xs font-bold">
+                                +2k
+                            </div>
+                        </div>
+                        <div className="text-sm">
+                            <p className="font-bold text-[#111827]">Trusted by 2,000+</p>
+                            <p>Happy Customers</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right: Hero Image Composition */}
+                <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end mt-10 lg:mt-0">
+                    <div className="relative z-10 w-[300px] md:w-[450px]">
+
+                        {/* Abstract Shapes behind */}
+                        <div className="absolute top-10 right-10 w-full h-full bg-[#fce7f3] rounded-tl-[100px] rounded-br-[40px] -z-10 transform translate-x-4 translate-y-4"></div>
+                        <div className="absolute top-0 right-0 w-full h-full border-2 border-[#111827] rounded-tl-[100px] rounded-br-[40px] -z-10"></div>
+
+                        {/* Main Image */}
+                        <div className="relative rounded-tl-[100px] rounded-br-[40px] overflow-hidden shadow-2xl">
+                            <img
+                                src={ownerImage}
+                                alt="Bhagwati Creations Founder"
+                                className="w-full h-auto object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                            />
+
+                            {/* Floating Card */}
+                            <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-white/50">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <p className="text-xs font-bold text-pink-600 uppercase tracking-wider">The Visionary</p>
+                                        <h3 className="text-lg font-serif font-bold text-[#111827]">Anmol Gupta</h3>
                                     </div>
-                                    <p className="text-2xl font-serif text-white italic">"Fashion that speaks."</p>
+                                    <div className="bg-[#111827] text-white p-2 rounded-full">
+                                        <Sparkles size={16} />
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            {/* Floating decorative elements */}
-                            <div className="absolute -top-10 -right-10 w-24 h-24 bg-pink-500 rounded-full blur-[40px] opacity-60"></div>
-                            <div className="absolute -bottom-5 -left-5 w-20 h-20 bg-purple-500 rounded-full blur-[30px] opacity-60"></div>
+                        {/* Top Right Decoration */}
+                        <div className="absolute -top-6 -right-6 bg-yellow-400 text-[#111827] font-bold py-4 px-4 rounded-full shadow-lg transform rotate-12 animate-bounce-slow text-center text-xs md:text-sm">
+                            <span className="block text-lg">100%</span>
+                            Premium
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </section>
     );
 };
 
 export default Hero;
-
