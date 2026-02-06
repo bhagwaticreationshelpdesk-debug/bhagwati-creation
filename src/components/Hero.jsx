@@ -1,41 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import heroSlide0 from '../assets/hero_fixed_text.png';
-import heroSlide1 from '../assets/hero_ultra_wide_final.png';
-
-const slides = [
-    {
-        id: 0,
-        image: heroSlide0,
-        link: '/category/new-arrivals',
-        buttonText: "Shop New Arrivals"
-    },
-    {
-        id: 1,
-        image: heroSlide1,
-        link: '/category/fabric-collection',
-        buttonText: "Explore Fabrics"
-    }
-];
+import React from 'react';
+import heroImage from '../assets/hero_fixed_text.png';
 
 const Hero = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const slide = slides[currentSlide];
-
     return (
         <section className="relative w-full bg-gray-50 flex items-center justify-center">
             {/* Image Container - Natural Height */}
             <div className="relative w-full">
                 <img
-                    src={slide.image}
+                    src={heroImage}
                     alt="Hero Banner"
                     className="w-full h-auto object-contain max-h-screen mx-auto"
                 />
-
-                {/* Content Overlay */}
-
             </div>
-
         </section>
     );
 };
