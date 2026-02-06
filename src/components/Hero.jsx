@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import heroSlide1 from '../assets/hero_final_wide.png';
+import heroSlide1 from '../assets/hero_ultra_wide_final.png';
 
 const slides = [
     {
@@ -21,7 +21,7 @@ const Hero = () => {
             <div className="relative w-full">
                 <img
                     src={slide.image}
-                    alt="Hero Banner"
+                    alt="Luxury Indian Fabric Collection"
                     className="w-full h-auto object-contain max-h-screen mx-auto"
                 />
 
