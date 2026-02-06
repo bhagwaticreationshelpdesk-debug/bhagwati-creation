@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-import heroImage from '../assets/hero_fixed_text.png';
+import heroImage from '../assets/hero_ultra_wide_final.png';
 
 const Hero = () => {
     return (
