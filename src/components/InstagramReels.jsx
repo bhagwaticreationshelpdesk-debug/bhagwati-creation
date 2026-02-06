@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Play, Volume2, VolumeX, ArrowRight, ArrowLeft, Instagram } from 'lucide-react';
 
-import review1 from '../assets/review1.mp4';
-import review2 from '../assets/review2.mp4';
-import review3 from '../assets/review3.mp4';
-import review4 from '../assets/review4.mp4';
-import review5 from '../assets/review5.mp4';
+import review1 from '../assets/carousel-video-1.mp4';
+import review2 from '../assets/carousel-video-2.mp4';
+import review3 from '../assets/carousel-video-3.mp4';
+import review4 from '../assets/carousel-video-4.mp4';
+import review5 from '../assets/carousel-video-5.mp4';
 
 const reviewsData = [
     {
