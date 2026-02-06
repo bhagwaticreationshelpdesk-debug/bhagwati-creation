@@ -1,67 +1,67 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-// Import images (using placeholders from existing assets)
-import imgCotton from '../assets/product1.png';
-import imgMuslin from '../assets/product2.jpg';
-import imgVelvet from '../assets/product3.jpg';
-import imgSilk from '../assets/product4.png';
-import imgOrganza from '../assets/product5.png';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import cottonSuits from '../assets/product1.png';
+import muslinSuits from '../assets/product3.jpg';
+import velvetCollection from '../assets/product7.png';
+import silkCollection from '../assets/product6.png';
+import organzaSuits from '../assets/product8.png';
 
 const categories = [
-    { id: 1, name: 'Cotton Suits', image: imgCotton, link: '/category/cotton-suits' },
-    { id: 2, name: 'Muslin Suits', image: imgMuslin, link: '/category/muslin-suits' },
-    { id: 3, name: 'Velvet Collection', image: imgVelvet, link: '/category/velvet-collection' },
-    { id: 4, name: 'Silk Collection', image: imgSilk, link: '/category/silk-collection' },
-    { id: 5, name: 'Organza Suits', image: imgOrganza, link: '/category/organza-suits' },
+    { id: 1, name: "Cotton Suits", image: cottonSuits, link: '/category/cotton-suits', color: 'bg-blue-50' },
+    { id: 2, name: "Muslin Suits", image: muslinSuits, link: '/category/muslin-suits', color: 'bg-pink-50' },
+    { id: 3, name: "Velvet Collection", image: velvetCollection, link: '/category/velvet-collection', color: 'bg-purple-50' },
+    { id: 4, name: "Silk Collection", image: silkCollection, link: '/category/silk-collection', color: 'bg-amber-50' },
+    { id: 5, name: "Organza Suits", image: organzaSuits, link: '/category/organza-suits', color: 'bg-rose-50' }
 ];
 
 const ShopByCategories = () => {
     return (
-        <section className="py-20 bg-white">
+        <section className="py-16 md:py-24 bg-white relative">
             <div className="container mx-auto px-4">
-                {/* Header Section */}
-                {/* Header Section */}
-                <div className="mb-12 text-center">
-                    <div className="flex justify-center w-full mb-3">
-                        <p className="text-rose-500 font-semibold tracking-[0.2em] text-xs md:text-sm uppercase">
-                            Browse by style & need
-                        </p>
-                    </div>
-
-                    <div className="text-center">
-                        <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-3">
-                            Shop By Categories
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+                    <div>
+                        <span className="text-pink-600 font-medium tracking-wider text-sm uppercase block mb-2">Curated Collections</span>
+                        <h2 className="text-3xl md:text-5xl font-serif text-gray-900 leading-tight">
+                            Shop By <i className="font-light">Category</i>
                         </h2>
-                        <p className="text-gray-500 text-sm md:text-base font-light">
-                            Easily find what you're looking for – all neatly sorted by category.
-                        </p>
                     </div>
+                    <Link to="/all-collections" className="group flex items-center gap-2 text-gray-600 hover:text-pink-600 transition-colors mt-4 md:mt-0 font-medium border-b border-transparent hover:border-pink-600 pb-1">
+                        View All Categories
+                        <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+                    </Link>
                 </div>
 
-                {/* Categories Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                     {categories.map((category) => (
                         <Link
-                            to={category.link}
                             key={category.id}
-                            className="group flex flex-col items-center cursor-pointer"
+                            to={category.link}
+                            className="group block relative"
                         >
-                            {/* Circular Image Container */}
-                            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-transparent group-hover:border-gray-200 shadow-lg transition-all duration-300 relative">
+                            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl mb-4">
+                                <div className={`absolute inset-0 ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                                 <img
                                     src={category.image}
                                     alt={category.name}
-                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                                 />
-                                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+
+                                <div className="absolute bottom-4 left-4 right-4">
+                                    <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 ml-auto">
+                                        <ArrowRight size={14} />
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* Category Name */}
-                            <h3 className="mt-6 text-lg md:text-xl font-medium text-gray-800 uppercase tracking-wide group-hover:text-amber-700 transition-colors duration-300 text-center">
-                                {category.name}
-                            </h3>
+                            <div className="text-center md:text-left">
+                                <h3 className="text-lg font-serif text-gray-900 group-hover:text-pink-600 transition-colors relative inline-block">
+                                    {category.name}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-pink-600 group-hover:w-full transition-all duration-300"></span>
+                                </h3>
+                            </div>
                         </Link>
                     ))}
                 </div>
