@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import heroSlide0 from '../assets/hero_fixed_text.png';
 import heroSlide1 from '../assets/hero_ultra_wide_final.png';
 
 const slides = [
+    {
+        id: 0,
+        image: heroSlide0,
+        link: '/category/new-arrivals',
+        buttonText: "Shop New Arrivals"
+    },
     {
         id: 1,
         image: heroSlide1,
