@@ -6,7 +6,7 @@ import { EmailService } from '../services/email';
 
 const Checkout = () => {
     const { cart, clearCart } = useShop();
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const [formData, setFormData] = useState({
         name: '',
         email: '',

@@ -8,7 +8,7 @@ const Contact = () => {
         lastName: '',
         email: '',
         phone: '',
-        message: ''
+        message: ''  
     });
 
     const handleChange = (e) => {
