@@ -6,6 +6,7 @@ import product5 from '../assets/product5.png';
 import product6 from '../assets/product6.png';
 import product7 from '../assets/product7.png';
 import product8 from '../assets/product8.png';
+import orangeFloralSuit from '../assets/orange_floral_suit.png';
 
 export const products = [
     {
@@ -140,5 +141,17 @@ export const products = [
         description: "Beautiful oxidized silver earrings to match your traditional outfits.",
         stock: 30,
         sizes: ["Free Size"]
+    },
+    {
+        id: 13,
+        name: "Orange Floral Designer Suit",
+        category: "Suit Set",
+        price: "₹3,299",
+        originalPrice: "₹4,999",
+        tag: "New Arrival",
+        image: orangeFloralSuit,
+        description: "Vibrant orange floral print designer suit featuring intricate mirror work embellishments on the neckline. The set includes a stylized kurta with bell sleeves and matching printed pants, crafted from premium fabric for a luxurious feel. Perfect for festive celebrations and special occasions.",
+        stock: 10,
+        sizes: ["S", "M", "L", "XL", "XXL"]
     }
 ];
