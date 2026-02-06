@@ -1,47 +1,41 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Play, Volume2, VolumeX, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Play, Volume2, VolumeX, ArrowRight, ArrowLeft, Instagram } from 'lucide-react';
 
-import vid1 from '../assets/carousel-video-1.mp4';
-import vid2 from '../assets/carousel-video-2.mp4';
-import vid3 from '../assets/carousel-video-3.mp4';
-import vid4 from '../assets/carousel-video-4.mp4';
-import vid5 from '../assets/carousel-video-5.mp4';
-import vid6 from '../assets/carousel-video-6.mp4';
+import review1 from '../assets/review1.mp4';
+import review2 from '../assets/review2.mp4';
+import review3 from '../assets/review3.mp4';
+import review4 from '../assets/review4.mp4';
+import review5 from '../assets/review5.mp4';
 
-const reelsData = [
+const reviewsData = [
     {
         id: 1,
-        video: vid1,
-        views: "115K"
+        video: review1,
+        user: "@happy_customer_1"
     },
     {
         id: 2,
-        video: vid2,
-        views: "89K"
+        video: review2,
+        user: "@fashion_diva"
     },
     {
         id: 3,
-        video: vid3,
-        views: "238K"
+        video: review3,
+        user: "@ethnic_lover"
     },
     {
         id: 4,
-        video: vid4,
-        views: "397K"
+        video: review4,
+        user: "@style_icon"
     },
     {
         id: 5,
-        video: vid5,
-        views: "93.9K"
-    },
-    {
-        id: 6,
-        video: vid6,
-        views: "105K"
+        video: review5,
+        user: "@wedding_ready"
     }
 ];
 
-const ReelCard = ({ data }) => {
+const ReviewCard = ({ data }) => {
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
@@ -69,18 +63,23 @@ const ReelCard = ({ data }) => {
         }
     };
 
+    const handleCardClick = () => {
+        window.open('https://www.instagram.com/bhagwati_creations01/', '_blank');
+    };
+
     return (
         <div
             className="relative flex flex-col group cursor-pointer"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={handleCardClick}
         >
             {/* Card Container - Fixed Aspect Ratio */}
-            <div className="relative w-full aspect-[9/16] rounded-xl overflow-hidden shadow-md bg-gray-200">
+            <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border-2 border-transparent group-hover:border-pink-500 transition-all duration-300 bg-gray-900">
                 <video
                     ref={videoRef}
                     src={data.video}
-                    className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                     loop
                     muted
                     playsInline
@@ -88,112 +87,103 @@ const ReelCard = ({ data }) => {
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
 
                 {/* Mute Button (Top Right) */}
                 <button
                     onClick={toggleMute}
-                    className="absolute top-3 right-3 p-2 bg-black/30 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50"
+                    className="absolute top-3 right-3 p-2 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-pink-600"
                 >
-                    {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                    {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                 </button>
 
-                {/* Play Icon (Center - hidden when playing) */}
-                <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
-                    {/* Optional: Central play button if desired, or keep clean as per user image seemingly just showing content. Use small indicator if needed. */}
+                {/* Instagram Icon Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-pink-600/90 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <Instagram size={18} />
+                        <span>View on Instagram</span>
+                    </div>
                 </div>
 
-                {/* Views Count (Bottom Left) */}
-                <div className="absolute bottom-3 left-3 flex items-center gap-1 text-white/90">
-                    <Play size={14} fill="currentColor" strokeWidth={0} />
-                    <span className="text-sm font-medium">{data.views}</span>
+                {/* User Info (Bottom Left) */}
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white/90">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-[2px]">
+                        <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
+                            <Instagram size={14} />
+                        </div>
+                    </div>
+                    <span className="text-sm font-medium tracking-wide">Bhagwati Creations</span>
                 </div>
             </div>
         </div>
     );
 };
 
-const ACCESS_TOKEN = ""; // TODO: Paste your Instagram Basic Display Access Token here. Generate one at developers.facebook.com
-
 const InstagramReels = () => {
-    const [reels, setReels] = useState(reelsData);
-
-    useEffect(() => {
-        const fetchReels = async () => {
-            if (!ACCESS_TOKEN) return;
-            try {
-                const response = await fetch(`https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&access_token=${ACCESS_TOKEN}`);
-                const data = await response.json();
-
-                if (data && data.data) {
-                    const videoReels = data.data.filter(item => item.media_type === 'VIDEO' || item.media_type === 'CAROUSEL_ALBUM').slice(0, 6).map(item => ({
-                        id: item.id,
-                        video: item.media_url,
-                        views: "New" // The Basic Display API does not provide view counts. Consider Graph API for insights if needed.
-                    }));
-                    if (videoReels.length > 0) setReels(videoReels);
-                }
-            } catch (error) {
-                console.error("Error fetching Instagram reels:", error);
-            }
-        };
-
-        fetchReels();
-    }, []);
-
     return (
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-slate-50">
             <div className="container mx-auto px-4">
 
                 {/* Header Section */}
-                <div className="text-center mb-10">
-                    <h2 className="text-xl md:text-2xl font-medium text-gray-900 mb-2">
-                        Follow us on Instagram for exciting content
+                <div className="text-center mb-12 space-y-3">
+                    <span className="text-pink-600 font-semibold tracking-wider text-sm uppercase">Real Stories, Real Style</span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                        Customer <span className="text-pink-600">Love</span>
                     </h2>
-                    <p className="text-rose-500 font-medium text-sm">
-                        @bhagwati_creations01
+                    <p className="text-gray-500 max-w-2xl mx-auto">
+                        See how our customers are styling their favorite Bhagwati Creations outfits. Join our community on Instagram!
                     </p>
                 </div>
 
                 {/* Reels Slider Container */}
-                <div className="relative group/slider">
+                <div className="relative group/slider max-w-6xl mx-auto">
                     {/* Left Arrow */}
                     <button
                         onClick={() => {
-                            const container = document.getElementById('reels-container');
+                            const container = document.getElementById('reviews-container');
                             if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
                         }}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white/90 p-2 rounded-full shadow-lg text-gray-800 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110 disabled:opacity-0 hidden md:block"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-20 bg-white p-3 rounded-full shadow-xl text-gray-800 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-pink-50 hover:text-pink-600 disabled:opacity-0 hidden md:block border border-gray-100"
                     >
-                        <ArrowLeft size={20} />
+                        <ArrowLeft size={24} />
                     </button>
 
                     {/* Right Arrow */}
                     <button
                         onClick={() => {
-                            const container = document.getElementById('reels-container');
+                            const container = document.getElementById('reviews-container');
                             if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
                         }}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white/90 p-2 rounded-full shadow-lg text-gray-800 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110 hidden md:block"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-20 bg-white p-3 rounded-full shadow-xl text-gray-800 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-pink-50 hover:text-pink-600 hidden md:block border border-gray-100"
                     >
-                        <ArrowRight size={20} />
+                        <ArrowRight size={24} />
                     </button>
 
                     {/* Scrollable Row */}
                     <div
-                        id="reels-container"
-                        className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
+                        id="reviews-container"
+                        className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
-                        {reels.map((reel) => (
-                            <div key={reel.id} className="min-w-[200px] md:min-w-[240px] snap-center">
-                                <ReelCard data={reel} />
+                        {reviewsData.map((review) => (
+                            <div key={review.id} className="min-w-[260px] md:min-w-[280px] snap-center">
+                                <ReviewCard data={review} />
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <div className="mt-8 text-center"></div>
+                <div className="mt-8 text-center">
+                    <a
+                        href="https://www.instagram.com/bhagwati_creations01/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:bg-pink-50 hover:text-pink-600 hover:border-pink-200 transition-colors shadow-sm"
+                    >
+                        <Instagram size={18} />
+                        Follow @bhagwati_creations01
+                    </a>
+                </div>
 
             </div>
         </section>
