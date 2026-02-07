@@ -15,6 +15,45 @@ const Header = () => {
     const { cart, isLoggedIn, logout } = useShop();
     const navigate = useNavigate();
 
+    const navigation = [
+        {
+            name: 'Unstitched',
+            path: '/category/unstitched',
+            subItems: [
+                { name: 'Sarees', path: '/category/sarees' },
+                { name: 'Fabrics', path: '/category/fabrics' },
+                { name: 'Lehengas', path: '/category/lehengas' }
+            ]
+        },
+        {
+            name: 'Stitched Catalog',
+            path: '/category/stitched-catalog',
+            subItems: [
+                { name: 'Suit Sets', path: '/category/suit-sets' },
+                { name: 'Kurtas', path: '/category/kurtas' },
+                { name: 'Dresses', path: '/category/dresses' },
+                { name: 'Co-ords', path: '/category/co-ords' }
+            ]
+        },
+        { name: 'New Arrivals', path: '/category/new-arrivals' },
+        { name: 'All Collections', path: '/category/all-collections' }
+    ];
+
+    const prefetchPage = (path) => {
+        if (path === '/cart') import('../pages/Cart');
+        if (path === '/wishlist') import('../pages/Wishlist');
+        if (path.startsWith('/category/')) import('../pages/CategoryPage');
+        if (path === '/contact') import('../pages/Contact');
+    };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/category/${searchQuery.trim()}`);
+            setIsSearchOpen(false);
+        }
+    };
+
     return (
         <div className="sticky top-0 left-0 w-full z-50 py-4 px-4 transition-all duration-500 pointer-events-none">
             <header className="w-full max-w-[1600px] mx-auto rounded-full bg-black/95 backdrop-blur-xl shadow-2xl border border-white/10 pointer-events-auto">
