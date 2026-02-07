@@ -12,9 +12,9 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
     const [selectedProduct, setSelectedProduct] = React.useState(null);
 
     return (
-        <section className="py-16 transition-colors duration-500">
+        <section className="py-8 transition-colors duration-500">
             <div className="container mx-auto px-4 md:px-8 relative group">
-                <div className="flex flex-col items-center mb-16">
+                <div className="flex flex-col items-center mb-8">
                     <span className="text-[var(--accent-gold)] text-[10px] tracking-[0.5em] uppercase font-bold mb-4">Discover Couture</span>
                     <h2 className="text-4xl md:text-6xl font-serif text-[var(--text-primary)] text-center">{title}</h2>
                     <div className="mt-6 flex items-center gap-4">
@@ -68,7 +68,7 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
                     </button>
                 </div>
 
-                <div className="flex justify-center mt-12">
+                <div className="flex justify-center mt-8">
                     <Link
                         to={viewAllLink}
                         className="btn-gold uppercase tracking-widest text-sm font-bold inline-block text-center"

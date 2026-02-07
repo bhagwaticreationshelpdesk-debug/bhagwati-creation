@@ -53,7 +53,7 @@ const FeaturedCarousel = () => {
     };
 
     return (
-        <section ref={containerRef} className="py-12 bg-white overflow-hidden w-full relative">
+        <section ref={containerRef} className="py-6 bg-white overflow-hidden w-full relative">
             <div className="container mx-auto px-4 relative h-[300px] md:h-[400px] flex items-center justify-center">
 
                 {/* Navigation Buttons (Small & Minimal) */}
