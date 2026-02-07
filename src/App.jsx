@@ -6,6 +6,7 @@ import AboutModal from './components/AboutModal';
 import Chatbot from './components/Chatbot';
 
 import ScrollToTop from './components/ScrollToTop';
+import { LogoIcon } from './components/Branding';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
