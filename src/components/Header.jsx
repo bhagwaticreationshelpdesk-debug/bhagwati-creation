@@ -16,7 +16,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     const [isVisible, setIsVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
+    const lastScrollY = React.useRef(0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,19 +28,19 @@ const Header = () => {
                 setIsVisible(true);
             } else {
                 // Determine visibility based on scroll direction
-                if (currentScrollY > lastScrollY) {
+                if (currentScrollY > lastScrollY.current) {
                     setIsVisible(false); // Scrolling down -> Hide
                 } else {
                     setIsVisible(true); // Scrolling up -> Show
                 }
             }
-            setLastScrollY(currentScrollY);
+            lastScrollY.current = currentScrollY;
             setIsScrolled(currentScrollY > 20);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [lastScrollY]);
+    }, []);
 
     return (
         <>
