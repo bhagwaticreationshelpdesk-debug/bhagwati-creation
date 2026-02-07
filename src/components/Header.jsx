@@ -85,12 +85,12 @@ const Header = () => {
                                 {/* Dropdown Menu */}
                                 {item.subItems && (
                                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                        <div className="bg-white shadow-2xl border border-gray-100 p-4 rounded-2xl overflow-hidden min-w-[200px] flex flex-col gap-2">
+                                        <div className="bg-black/95 backdrop-blur-xl shadow-2xl border border-white/10 p-4 rounded-2xl overflow-hidden min-w-[200px] flex flex-col gap-2">
                                             {item.subItems.map((subItem) => (
                                                 <Link
                                                     key={subItem.name}
                                                     to={subItem.path}
-                                                    className="text-xs uppercase tracking-widest text-gray-500 hover:text-[var(--accent-gold)] hover:bg-gray-50 px-4 py-3 rounded-lg transition-colors text-left"
+                                                    className="text-xs uppercase tracking-widest text-gray-300 hover:text-[var(--accent-gold)] hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-left"
                                                     onMouseEnter={() => prefetchPage(subItem.path)}
                                                 >
                                                     {subItem.name}
