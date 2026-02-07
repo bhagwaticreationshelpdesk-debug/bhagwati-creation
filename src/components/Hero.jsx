@@ -57,7 +57,7 @@ const Hero = () => {
     };
 
     return (
-        <section className="relative w-full h-[100vh] overflow-hidden bg-black group">
+        <section className="relative w-full h-[calc(100vh-100px)] md:h-[calc(100vh-120px)] overflow-hidden bg-black group">
 
             {/* Image Slider - Full Screen Wide Rectangular */}
             <div className="absolute inset-0 z-0">
