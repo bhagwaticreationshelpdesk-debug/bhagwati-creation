@@ -20,17 +20,16 @@ const ShopByCategories = () => {
     return (
         <section className="py-16 md:py-24 bg-white relative">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-                    <div>
-                        <span className="text-[var(--accent-gold)] font-medium tracking-wider text-sm uppercase block mb-2">Curated Collections</span>
-                        <h2 className="text-3xl md:text-5xl font-serif text-gray-900 leading-tight">
-                            Shop By <i className="font-light">Category</i>
-                        </h2>
+                <div className="flex flex-col items-center mb-16">
+                    <span className="text-[var(--accent-gold)] text-[10px] tracking-[0.5em] uppercase font-bold mb-4">Discover Couture</span>
+                    <h2 className="text-4xl md:text-6xl font-serif text-[var(--text-primary)] text-center">
+                        Shop By <i className="font-light">Category</i>
+                    </h2>
+                    <div className="mt-8 flex items-center gap-4">
+                        <div className="w-16 h-px bg-gray-200"></div>
+                        <div className="w-2.5 h-2.5 rounded-full border border-[var(--accent-gold)]"></div>
+                        <div className="w-16 h-px bg-gray-200"></div>
                     </div>
-                    <Link to="/all-collections" className="group flex items-center gap-2 text-gray-600 hover:text-[var(--accent-gold)] transition-colors mt-4 md:mt-0 font-medium border-b border-transparent hover:border-[var(--accent-gold)] pb-1">
-                        View All Categories
-                        <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
-                    </Link>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
