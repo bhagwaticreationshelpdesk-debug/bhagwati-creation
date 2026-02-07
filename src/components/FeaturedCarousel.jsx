@@ -98,7 +98,7 @@ const FeaturedCarousel = () => {
                             <div className="w-16 h-[2px] bg-white/80 mb-6 rounded-full shadow-lg"></div>
 
                             <div className="flex justify-center transform hover:scale-105 transition-transform duration-300">
-                                <button className="text-xs md:text-sm text-white border border-white/50 bg-black/20 backdrop-blur-sm px-8 py-3 uppercase tracking-[0.25em] font-semibold hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                                <button className="text-xs md:text-sm text-[var(--accent-gold)] border border-[var(--accent-gold)] bg-black/40 backdrop-blur-sm px-10 py-4 uppercase tracking-[0.25em] font-bold hover:bg-[var(--accent-gold)] hover:text-white transition-all duration-500 shadow-2xl">
                                     {slides[currentIndex].subtitle}
                                 </button>
                             </div>

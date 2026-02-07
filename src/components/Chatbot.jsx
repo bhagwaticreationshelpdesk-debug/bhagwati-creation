@@ -151,12 +151,12 @@ const Chatbot = () => {
     };
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
+        <div className="fixed bottom-6 right-6 z-[1000] flex flex-col items-end pointer-events-none">
             {/* Chat Window */}
             {(isOpen && !isMinimized) && (
                 <div className="pointer-events-auto bg-white w-[350px] h-[500px] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-100 mb-4 animate-in slide-in-from-bottom-5 duration-300">
                     {/* Header */}
-                    <div className="bg-primary p-4 flex justify-between items-center text-white">
+                    <div className="bg-[var(--accent-gold)] p-4 flex justify-between items-center text-white">
                         <div className="flex items-center gap-2">
                             <div className="bg-white/20 p-1 rounded-full w-8 h-8 flex items-center justify-center overflow-hidden">
                                 <LogoIcon scale={0.5} />

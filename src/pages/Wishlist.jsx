@@ -10,15 +10,15 @@ const Wishlist = () => {
 
     return (
         <div className="container mx-auto px-4 py-8 min-h-screen">
-            <button onClick={() => navigate(-1)} className="flex items-center text-gray-600 mb-6 hover:text-[#ed2585]">
-                <ArrowLeft size={20} className="mr-2" /> Back
+            <button onClick={() => navigate(-1)} className="flex items-center text-gray-600 mb-6 hover:text-[var(--accent-gold)] transition-colors uppercase tracking-widest text-xs font-bold">
+                <ArrowLeft size={16} className="mr-2" /> Back
             </button>
-            <h1 className="text-3xl font-serif font-medium mb-8">My Wishlist ({wishlist.length})</h1>
+            <h1 className="text-3xl font-serif font-medium mb-8 uppercase tracking-widest">My Wishlist ({wishlist.length})</h1>
 
             {wishlist.length === 0 ? (
-                <div className="text-center py-20 bg-gray-50 rounded-lg">
-                    <p className="text-gray-500 text-lg mb-4">Your wishlist is empty.</p>
-                    <button onClick={() => navigate('/')} className="bg-[#ed2585] text-white px-8 py-3 rounded-full font-semibold uppercase tracking-wider hover:bg-[#c9186b]">
+                <div className="text-center py-20 bg-gray-50 rounded-2xl border border-gray-100">
+                    <p className="text-gray-500 text-lg mb-8 font-light">Your wishlist is empty.</p>
+                    <button onClick={() => navigate('/')} className="bg-[var(--accent-gold)] text-white px-12 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-black transition-all duration-500 shadow-xl shadow-gold/20">
                         Explore Products
                     </button>
                 </div>

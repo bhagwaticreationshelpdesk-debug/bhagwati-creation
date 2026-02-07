@@ -9,11 +9,11 @@ import silkCollection from '../assets/product6.png';
 import organzaSuits from '../assets/product8.png';
 
 const categories = [
-    { id: 1, name: "Cotton Suits", image: cottonSuits, link: '/category/cotton-suits', color: 'bg-blue-50' },
-    { id: 2, name: "Muslin Suits", image: muslinSuits, link: '/category/muslin-suits', color: 'bg-pink-50' },
-    { id: 3, name: "Velvet Collection", image: velvetCollection, link: '/category/velvet-collection', color: 'bg-purple-50' },
-    { id: 4, name: "Silk Collection", image: silkCollection, link: '/category/silk-collection', color: 'bg-amber-50' },
-    { id: 5, name: "Organza Suits", image: organzaSuits, link: '/category/organza-suits', color: 'bg-rose-50' }
+    { id: 1, name: "Cotton Suits", image: cottonSuits, link: '/category/cotton-suits', color: 'bg-stone-50' },
+    { id: 2, name: "Muslin Suits", image: muslinSuits, link: '/category/muslin-suits', color: 'bg-orange-50/30' },
+    { id: 3, name: "Velvet Collection", image: velvetCollection, link: '/category/velvet-collection', color: 'bg-stone-50' },
+    { id: 4, name: "Silk Collection", image: silkCollection, link: '/category/silk-collection', color: 'bg-amber-50/30' },
+    { id: 5, name: "Organza Suits", image: organzaSuits, link: '/category/organza-suits', color: 'bg-stone-50' }
 ];
 
 const ShopByCategories = () => {
@@ -22,12 +22,12 @@ const ShopByCategories = () => {
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12">
                     <div>
-                        <span className="text-pink-600 font-medium tracking-wider text-sm uppercase block mb-2">Curated Collections</span>
+                        <span className="text-[var(--accent-gold)] font-medium tracking-wider text-sm uppercase block mb-2">Curated Collections</span>
                         <h2 className="text-3xl md:text-5xl font-serif text-gray-900 leading-tight">
                             Shop By <i className="font-light">Category</i>
                         </h2>
                     </div>
-                    <Link to="/all-collections" className="group flex items-center gap-2 text-gray-600 hover:text-pink-600 transition-colors mt-4 md:mt-0 font-medium border-b border-transparent hover:border-pink-600 pb-1">
+                    <Link to="/all-collections" className="group flex items-center gap-2 text-gray-600 hover:text-[var(--accent-gold)] transition-colors mt-4 md:mt-0 font-medium border-b border-transparent hover:border-[var(--accent-gold)] pb-1">
                         View All Categories
                         <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -57,9 +57,9 @@ const ShopByCategories = () => {
                             </div>
 
                             <div className="text-center md:text-left">
-                                <h3 className="text-lg font-serif text-gray-900 group-hover:text-pink-600 transition-colors relative inline-block">
+                                <h3 className="text-lg font-serif text-gray-900 group-hover:text-[var(--accent-gold)] transition-colors relative inline-block">
                                     {category.name}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-pink-600 group-hover:w-full transition-all duration-300"></span>
+                                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] group-hover:w-full transition-all duration-300"></span>
                                 </h3>
                             </div>
                         </Link>

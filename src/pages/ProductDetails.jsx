@@ -44,9 +44,9 @@ const ProductDetails = () => {
                 {/* Breadcrumb / Back */}
                 <button
                     onClick={() => navigate(-1)}
-                    className="flex items-center text-gray-600 hover:text-primary mb-8 transition-colors"
+                    className="flex items-center text-gray-400 hover:text-[var(--accent-gold)] mb-8 transition-colors uppercase tracking-widest text-xs font-bold"
                 >
-                    <ArrowLeft size={20} className="mr-2" /> Back
+                    <ArrowLeft size={16} className="mr-2" /> Back
                 </button>
 
                 <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
@@ -64,7 +64,7 @@ const ProductDetails = () => {
                             </div>
                         )}
                         {product.tag && !isOutOfStock && (
-                            <span className="absolute top-4 left-4 bg-red-600 text-white text-xs uppercase font-bold px-3 py-1 rounded shadow-sm">
+                            <span className="absolute top-4 left-4 bg-[var(--accent-gold)] text-white text-xs uppercase font-bold px-3 py-1 rounded shadow-sm">
                                 {product.tag}
                             </span>
                         )}
@@ -90,7 +90,7 @@ const ProductDetails = () => {
                                 <span className="text-xl text-gray-400 line-through mb-1">{product.originalPrice}</span>
                             )}
                         </div>
-                        <div className={`text-sm mb-6 font-medium ${isOutOfStock ? 'text-red-500' : 'text-green-600'}`}>
+                        <div className={`text-sm mb-6 font-medium ${isOutOfStock ? 'text-gray-500' : 'text-[var(--accent-gold)]'}`}>
                             {isOutOfStock ? 'Currently Unavailable' : `In Stock: ${product.stock > 10 ? 'Available' : product.stock + ' left'}`}
                         </div>
 
@@ -104,8 +104,8 @@ const ProductDetails = () => {
                                             key={size}
                                             onClick={() => setSelectedSize(size)}
                                             className={`w-12 h-12 rounded-full flex items-center justify-center border transition-all ${selectedSize === size
-                                                    ? 'bg-black text-white border-black'
-                                                    : 'bg-white text-gray-700 border-gray-300 hover:border-black'
+                                                ? 'bg-black text-white border-black'
+                                                : 'bg-white text-gray-700 border-gray-300 hover:border-black'
                                                 }`}
                                         >
                                             {size}
@@ -126,14 +126,14 @@ const ProductDetails = () => {
                                 className={`flex-1 py-4 px-8 rounded-full font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg duration-200
                                     ${isOutOfStock
                                         ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                                        : 'bg-[#ed2585] text-white hover:bg-[#c9186b] hover:shadow-xl hover:-translate-y-0.5'
+                                        : 'bg-[var(--accent-gold)] text-white hover:bg-black hover:shadow-xl hover:-translate-y-0.5'
                                     }`}
                             >
                                 <ShoppingBag size={20} /> {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
                             </button>
                             <button
                                 onClick={() => addToWishlist(product)}
-                                className="flex-1 bg-white border-2 border-gray-200 text-gray-700 py-4 px-8 rounded-full font-semibold uppercase tracking-wider hover:border-[#ed2585] hover:text-[#ed2585] transition-colors flex items-center justify-center gap-2"
+                                className="flex-1 bg-white border-2 border-gray-200 text-gray-700 py-4 px-8 rounded-full font-semibold uppercase tracking-wider hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-colors flex items-center justify-center gap-2"
                             >
                                 <Heart size={20} /> Add to Wishlist
                             </button>

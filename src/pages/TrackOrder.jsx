@@ -20,19 +20,19 @@ const TrackOrder = () => {
     return (
         <div className="container mx-auto px-4 py-16 min-h-screen">
             <div className="max-w-2xl mx-auto text-center">
-                <h1 className="text-4xl font-serif text-[#ed2585] mb-8">Track Your Order</h1>
-                <p className="text-gray-600 mb-8">Enter your Order ID to see the current status of your shipment.</p>
+                <h1 className="text-4xl font-serif text-[var(--accent-gold)] mb-8 uppercase tracking-widest">Track Your Order</h1>
+                <p className="text-gray-500 mb-8 font-light">Enter your Order ID to see the current status of your shipment.</p>
 
                 <form onSubmit={handleTrack} className="flex gap-4 mb-12">
                     <input
                         type="text"
                         value={orderId}
                         onChange={(e) => setOrderId(e.target.value)}
-                        placeholder="Enter Order ID (e.g., ORD-123456)"
-                        className="flex-1 border p-4 rounded focus:outline-none focus:border-[#ed2585]"
+                        placeholder="e.g., ORD-123456"
+                        className="flex-1 border border-gray-200 p-4 rounded-xl focus:ring-2 focus:ring-[var(--accent-gold)] focus:border-transparent outline-none transition-all shadow-sm"
                         required
                     />
-                    <button type="submit" className="bg-black text-white px-8 py-4 rounded hover:bg-[#ed2585] transition-colors font-medium uppercase tracking-widest">
+                    <button type="submit" className="bg-[var(--accent-gold)] text-white px-10 py-4 rounded-xl hover:bg-black transition-all duration-300 font-bold uppercase tracking-widest shadow-xl shadow-gold/10">
                         Track
                     </button>
                 </form>

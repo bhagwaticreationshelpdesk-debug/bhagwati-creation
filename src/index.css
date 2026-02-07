@@ -5,18 +5,21 @@
 @tailwind utilities;
 
 :root {
-  /* Ethnic Luxury Palette */
+  /* Ethnic Luxury Palette - Design Tokens */
   --bg-primary: #FCFAFA;
-  /* Soft Ivory */
   --bg-dark: #121212;
-  /* Deep Charcoal */
   --accent-gold: #C5A021;
-  /* Regal Gold */
   --accent-wine: #630D16;
-  /* Deep Wine */
   --text-primary: #1A1A1A;
   --text-secondary: #666666;
   --header-height: 100px;
+
+  /* Tailwind Mappings */
+  --color-primary: #C5A021;
+  --color-primary-light: #DFC261;
+  --color-secondary: #121212;
+  --color-accent: #C5A021;
+  --color-text-main: #1A1A1A;
 }
 
 @layer base {

@@ -21,7 +21,7 @@ const Cart = () => {
 
     return (
         <div className="container mx-auto px-4 py-8 min-h-screen">
-            <button onClick={() => navigate(-1)} className="flex items-center text-gray-600 mb-6 hover:text-[#ed2585]">
+            <button onClick={() => navigate(-1)} className="flex items-center text-gray-600 mb-6 hover:text-[var(--accent-gold)]">
                 <ArrowLeft size={20} className="mr-2" /> Continue Shopping
             </button>
             <h1 className="text-3xl font-serif font-medium mb-8">Shopping Cart ({cart.length})</h1>
@@ -29,7 +29,7 @@ const Cart = () => {
             {cart.length === 0 ? (
                 <div className="text-center py-20 bg-gray-50 rounded-lg">
                     <p className="text-gray-500 text-lg mb-4">Your cart is empty.</p>
-                    <button onClick={() => navigate('/')} className="bg-[#ed2585] text-white px-8 py-3 rounded-full font-semibold uppercase tracking-wider hover:bg-[#c9186b]">
+                    <button onClick={() => navigate('/')} className="bg-[var(--accent-gold)] text-white px-8 py-3 rounded-full font-semibold uppercase tracking-wider hover:bg-black transition-colors">
                         Start Shopping
                     </button>
                 </div>
@@ -42,11 +42,11 @@ const Cart = () => {
                                 <div className="flex-1">
                                     <h3 className="font-medium text-lg">{item.name}</h3>
                                     <p className="text-gray-500 text-sm mb-2">{item.category}</p>
-                                    <p className="font-bold text-[#ed2585]">{item.price}</p>
+                                    <p className="font-bold text-[var(--accent-gold)]">{item.price}</p>
                                 </div>
                                 <button
                                     onClick={() => removeFromCart(item.id)}
-                                    className="text-gray-400 hover:text-red-500"
+                                    className="text-gray-400 hover:text-[var(--accent-gold)]"
                                 >
                                     <Trash2 size={20} />
                                 </button>
@@ -69,7 +69,7 @@ const Cart = () => {
                         </div>
                         <button
                             onClick={() => navigate('/checkout')}
-                            className="w-full bg-[#ed2585] text-white py-3 rounded font-semibold uppercase tracking-wider hover:bg-[#c9186b]"
+                            className="w-full bg-[var(--accent-gold)] text-white py-3 rounded font-semibold uppercase tracking-wider hover:bg-black transition-colors"
                         >
                             Checkout
                         </button>

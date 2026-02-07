@@ -22,7 +22,7 @@ const VideoShopping = () => {
                         Our Stylists On Call Can Speak: English, Hindi, Gujarati & Marathi
                     </p>
 
-                    <button className="bg-white text-black px-10 py-4 text-sm md:text-base font-semibold uppercase tracking-[0.15em] hover:bg-gray-100 transition-colors duration-300">
+                    <button className="bg-[var(--accent-gold)] text-white px-12 py-5 text-sm md:text-base font-bold uppercase tracking-[0.2em] hover:bg-black transition-all duration-500 shadow-2xl shadow-gold/20">
                         Start Call Now
                     </button>
                 </div>

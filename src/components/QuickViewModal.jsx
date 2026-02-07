@@ -120,9 +120,9 @@ const QuickViewModal = ({ product, isOpen, onClose }) => {
                             </button>
                             <button
                                 onClick={handleWishlist}
-                                className={`p-3.5 rounded-lg border transition-all flex items-center justify-center ${isWishlisted ? 'border-pink-200 bg-pink-50 text-[#ed2585]' : 'border-gray-200 hover:border-gray-300 text-gray-600 hover:bg-gray-50'}`}
+                                className={`p-3.5 rounded-lg border transition-all flex items-center justify-center ${isWishlisted ? 'border-[var(--accent-gold)]/30 bg-[var(--accent-gold)]/5 text-[var(--accent-gold)]' : 'border-gray-200 hover:border-gray-300 text-gray-600 hover:bg-gray-50'}`}
                             >
-                                <Heart size={20} fill={isWishlisted ? "#ed2585" : "none"} />
+                                <Heart size={20} fill={isWishlisted ? "var(--accent-gold)" : "none"} />
                             </button>
                         </div>
 

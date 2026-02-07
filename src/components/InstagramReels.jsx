@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Play, Volume2, VolumeX, ArrowRight, ArrowLeft, Instagram } from 'lucide-react';
+import { Volume2, VolumeX, Instagram } from 'lucide-react';
+import { LogoIcon } from './Branding';
 
 import review1 from '../assets/review1.mp4';
 import review2 from '../assets/review2.mp4';
@@ -8,31 +9,11 @@ import review4 from '../assets/review4.mp4';
 import review5 from '../assets/review5.mp4';
 
 const reviewsData = [
-    {
-        id: 1,
-        video: review1,
-        user: "@happy_customer_1"
-    },
-    {
-        id: 2,
-        video: review2,
-        user: "@fashion_diva"
-    },
-    {
-        id: 3,
-        video: review3,
-        user: "@ethnic_lover"
-    },
-    {
-        id: 4,
-        video: review4,
-        user: "@style_icon"
-    },
-    {
-        id: 5,
-        video: review5,
-        user: "@wedding_ready"
-    }
+    { id: 1, video: review1, user: "@happy_customer_1" },
+    { id: 2, video: review2, user: "@fashion_diva" },
+    { id: 3, video: review3, user: "@ethnic_lover" },
+    { id: 4, video: review4, user: "@style_icon" },
+    { id: 5, video: review5, user: "@wedding_ready" }
 ];
 
 const ReviewCard = ({ data }) => {
@@ -62,7 +43,6 @@ const ReviewCard = ({ data }) => {
             className="relative flex flex-col group cursor-pointer h-full"
             onClick={handleCardClick}
         >
-            {/* Card Container - Fixed Aspect Ratio */}
             <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border-2 border-transparent group-hover:border-[var(--accent-gold)] transition-all duration-300 bg-gray-900">
                 <video
                     ref={videoRef}
@@ -75,34 +55,30 @@ const ReviewCard = ({ data }) => {
                     preload="none"
                 />
 
-                {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
 
-                {/* Mute Button (Top Right) */}
                 <button
                     onClick={toggleMute}
                     aria-label={isMuted ? "Unmute video" : "Mute video"}
-                    className="absolute top-3 right-3 p-2 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-pink-600 z-20"
+                    className="absolute top-3 right-3 p-2 bg-black/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[var(--accent-gold)] z-20"
                 >
                     {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                 </button>
 
-                {/* Instagram Icon Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <div className="bg-pink-600/90 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform shadow-lg">
+                    <div className="bg-[var(--accent-gold)]/90 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform shadow-lg">
                         <Instagram size={18} />
                         <span>View on Instagram</span>
                     </div>
                 </div>
 
-                {/* User Info (Bottom Left) */}
                 <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white/90">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-[2px]">
-                        <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
-                            <Instagram size={14} />
+                    <div className="w-8 h-8 rounded-full bg-white p-[1px] shadow-sm">
+                        <div className="w-full h-full bg-white rounded-full flex items-center justify-center overflow-hidden">
+                            <LogoIcon scale={0.4} />
                         </div>
                     </div>
-                    <span className="text-sm font-medium tracking-wide">Bhagwati Creations</span>
+                    <span className="text-sm font-medium tracking-wide">Bhagwati Patron</span>
                 </div>
             </div>
         </div>
@@ -111,10 +87,8 @@ const ReviewCard = ({ data }) => {
 
 const InstagramReels = () => {
     return (
-        <section className="py-16 bg-slate-50">
+        <section className="py-20 bg-slate-50">
             <div className="container mx-auto px-4">
-
-                {/* Header Section */}
                 <div className="text-center mb-16 space-y-4">
                     <span className="text-[var(--accent-gold)] font-bold tracking-[0.4em] text-[10px] uppercase">Real Grace, Real Style</span>
                     <h2 className="text-4xl md:text-5xl font-serif text-[var(--text-primary)]">
@@ -126,7 +100,6 @@ const InstagramReels = () => {
                     </p>
                 </div>
 
-                {/* Grid Container for Videos */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
                     {reviewsData.map((review) => (
                         <div key={review.id} className="w-full">
@@ -146,7 +119,6 @@ const InstagramReels = () => {
                         <span>Join Our Royal Circle</span>
                     </a>
                 </div>
-
             </div>
         </section>
     );

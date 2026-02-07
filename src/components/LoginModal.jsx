@@ -55,7 +55,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                         {/* Form */}
                         <div className="w-full space-y-4 max-w-xs">
                             <label className="block text-sm font-semibold text-gray-700 mb-1">Phone</label>
-                            <div className="flex border border-gray-300 rounded overflow-hidden focus-within:border-[#ed2585] transition-colors">
+                            <div className="flex border border-gray-300 rounded overflow-hidden focus-within:border-[var(--accent-gold)] transition-colors">
                                 <div className="bg-gray-50 px-3 py-2 border-r border-gray-300 flex items-center gap-2">
                                     <span className="text-lg">🇮🇳</span>
                                     <span className="text-gray-600 text-sm">+91</span>
@@ -71,7 +71,7 @@ const LoginModal = ({ isOpen, onClose }) => {
 
                             <button
                                 onClick={handleLogin}
-                                className="w-full bg-black text-white py-3 rounded font-medium text-sm hover:bg-gray-800 transition-colors uppercase tracking-wide mt-6"
+                                className="w-full bg-[var(--accent-gold)] text-white py-3 rounded font-medium text-sm hover:after:bg-black transition-all hover:bg-black uppercase tracking-wide mt-6"
                             >
                                 Request OTP
                             </button>
@@ -81,9 +81,9 @@ const LoginModal = ({ isOpen, onClose }) => {
                         <div className="mt-8 text-center text-xs text-gray-400">
                             <p>I accept that I have read & understood</p>
                             <div className="flex justify-center gap-1 mt-1">
-                                <a href="#" className="underline hover:text-[#ed2585]">Privacy Policy</a>
+                                <a href="#" className="underline hover:text-[var(--accent-gold)]">Privacy Policy</a>
                                 <span>and</span>
-                                <a href="#" className="underline hover:text-[#ed2585]">T&Cs</a>.
+                                <a href="#" className="underline hover:text-[var(--accent-gold)]">T&Cs</a>.
                             </div>
                         </div>
                     </div>

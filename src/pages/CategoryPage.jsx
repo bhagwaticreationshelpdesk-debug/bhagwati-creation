@@ -36,7 +36,7 @@ const CategoryPage = () => {
                     <h2 className="text-4xl md:text-5xl font-serif font-medium text-gray-900 mb-6 tracking-[0.2em] uppercase">
                         {title}
                     </h2>
-                    <div className="w-24 h-1 bg-[#ed2585] mx-auto rounded-full"></div>
+                    <div className="w-24 h-1 bg-[var(--accent-gold)] mx-auto rounded-full"></div>
                 </div>
 
                 {filteredProducts.length > 0 ? (
