@@ -1,52 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
-
-// Use high-quality base images
-import hero1 from '../assets/hero1.png'; // Yellow dress model
-import hero2 from '../assets/hero2.png'; // Blue lengha model
-import hero3 from '../assets/hero3.png'; // Floral saree model
-import hero4 from '../assets/party_bg.png'; // Wedding background
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
 
 const Hero = () => {
     const navigate = useNavigate();
     const [currentSlide, setCurrentSlide] = useState(0);
 
+    // Using high-quality curated images from Unsplash for a fresh, premium look
     const slides = [
         {
-            image: hero1,
-            title: "Royal Haldi Collection",
-            subtitle: "Bright, auspicious yellows for your special moments.",
-            cta: "View Collection",
-            link: "/category/haldi-special",
+            image: "https://images.unsplash.com/photo-1596483548232-9c3f8dfa00de?q=80&w=2070&auto=format&fit=crop", // Elegant Red/Bridal
+            title: "The Royal Wedding Edit",
+            subtitle: "Handcrafted lehengas for your fairytale moment.",
+            cta: "View Bridal Collection",
+            link: "/category/bridal",
             align: "left",
-            textColor: "text-yellow-900"
+            textColor: "text-white"
         },
         {
-            image: hero2,
-            title: "Midnight Blue Elegance",
-            subtitle: "Sophisticated embroidery on premium velvet.",
-            cta: "Shop Now",
-            link: "/category/velvet-collection",
+            image: "https://images.unsplash.com/photo-1610123598195-26b2b64d0d3d?q=80&w=2072&auto=format&fit=crop", // Gold Silk Texture
+            title: "Silk & Zari Heritage",
+            subtitle: "Authentic Banarasi and Kanjivaram masterpieces.",
+            cta: "Explore Silk Sarees",
+            link: "/category/sarees",
             align: "center",
             textColor: "text-white"
         },
         {
-            image: hero3,
-            title: "Floral Fantasy",
-            subtitle: "Lightweight organza sarees for summer weddings.",
-            cta: "Explore Sarees",
-            link: "/category/sarees",
+            image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=2070&auto=format&fit=crop", // Festive Yellow/Gold
+            title: "Festive Radiance",
+            subtitle: "Shine bright with our exclusive Haldi & Mehendi range.",
+            cta: "Shop Festive Wear",
+            link: "/category/festive",
             align: "right",
-            textColor: "text-pink-900"
+            textColor: "text-yellow-50"
         },
         {
-            image: hero4,
-            title: "The Grand Wedding Edit",
-            subtitle: "Exclusive bridal wear for the modern bride.",
-            cta: "Visit Boutique",
-            link: "/category/bridal",
-            align: "center",
+            image: "https://images.unsplash.com/photo-1583391733958-d02442d77157?q=80&w=2070&auto=format&fit=crop", // Elegant Saree/Modern
+            title: "Modern Ethnic Chic",
+            subtitle: "Contemporary silhouettes for the new-age woman.",
+            cta: "See New Arrivals",
+            link: "/category/new-arrivals",
+            align: "left",
             textColor: "text-white"
         }
     ];
@@ -67,7 +62,7 @@ const Hero = () => {
     };
 
     return (
-        <section className="relative w-full h-[600px] md:h-[700px] lg:h-[85vh] overflow-hidden bg-gray-50 group">
+        <section className="relative w-full h-[600px] md:h-[700px] lg:h-[85vh] overflow-hidden bg-gray-900 group">
 
             {/* Main Slider */}
             {slides.map((slide, index) => (
@@ -81,11 +76,14 @@ const Hero = () => {
                         <img
                             src={slide.image}
                             alt={slide.title}
-                            className="w-full h-full object-cover object-top filter brightness-90 animate-subtle-zoom"
+                            className="w-full h-full object-cover object-center filter brightness-[0.85] animate-subtle-zoom"
                             style={{ animation: index === currentSlide ? 'subtleZoom 20s infinite alternate' : 'none' }}
                         />
-                        {/* Gradient Overlay for Text Readability */}
-                        <div className={`absolute inset-0 bg-gradient-to-t ${slide.align === 'center' ? 'from-black/60 via-transparent to-black/30' : 'from-black/40 via-transparent to-transparent'}`}></div>
+                        {/* Gradient Overlay for Text Readability - carefully tuned */}
+                        <div className={`absolute inset-0 bg-gradient-to-t ${slide.align === 'center'
+                                ? 'from-black/70 via-black/20 to-black/40'
+                                : 'from-black/60 via-transparent to-black/30'
+                            }`}></div>
                     </div>
 
                     {/* Content Layer */}
@@ -95,47 +93,55 @@ const Hero = () => {
                         }`}>
                         <div className={`max-w-xl space-y-6 transform transition-all duration-700 delay-300 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                             }`}>
-                            <h2 className={`text-4xl md:text-6xl font-serif font-bold leading-tight drop-shadow-lg ${slide.textColor === 'text-white' ? 'text-white' : slide.textColor}`}>
+                            <div className="flex items-center gap-2 mb-2 opacity-90">
+                                <Sparkles size={20} className="text-[#ed2585]" />
+                                <span className="text-sm md:text-base uppercase tracking-[0.2em] text-white font-medium">Bhagwati Creations</span>
+                            </div>
+
+                            <h2 className={`text-5xl md:text-7xl font-serif font-bold leading-[1.1] drop-shadow-2xl ${slide.textColor}`}>
                                 {slide.title}
                             </h2>
-                            <p className={`text-lg md:text-xl font-light tracking-wide drop-shadow-md ${slide.textColor === 'text-white' ? 'text-gray-100' : 'text-gray-800'}`}>
+                            <p className="text-lg md:text-2xl font-light text-gray-200 tracking-wide drop-shadow-lg max-w-lg">
                                 {slide.subtitle}
                             </p>
-                            <button
-                                onClick={() => navigate(slide.link)}
-                                className={`group/btn relative inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-full font-medium tracking-wider uppercase transition-all hover:bg-[#ed2585] hover:text-white hover:scale-105 shadow-xl`}
-                            >
-                                {slide.cta}
-                                <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                            </button>
+
+                            <div className={`pt-4 ${slide.align === 'right' ? 'flex justify-end' : slide.align === 'center' ? 'flex justify-center' : 'flex justify-start'}`}>
+                                <button
+                                    onClick={() => navigate(slide.link)}
+                                    className="group/btn relative inline-flex items-center gap-3 px-10 py-4 bg-white text-gray-900 rounded-none font-medium tracking-widest uppercase transition-all hover:bg-[#ed2585] hover:text-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_40px_rgba(237,37,133,0.4)]"
+                                >
+                                    {slide.cta}
+                                    <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             ))}
 
             {/* Navigation Controls (Visible on Hover) */}
-            <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-4 md:px-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-8 z-20 pointer-events-none">
                 <button
                     onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-                    className="pointer-events-auto p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md text-white border border-white/20 transition-all hover:scale-110 active:scale-95"
+                    className="pointer-events-auto p-4 rounded-full bg-black/20 hover:bg-white/10 backdrop-blur-md text-white border border-white/10 transition-all hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100"
                 >
-                    <ChevronLeft size={28} />
+                    <ChevronLeft size={32} />
                 </button>
                 <button
                     onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-                    className="pointer-events-auto p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md text-white border border-white/20 transition-all hover:scale-110 active:scale-95"
+                    className="pointer-events-auto p-4 rounded-full bg-black/20 hover:bg-white/10 backdrop-blur-md text-white border border-white/10 transition-all hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100"
                 >
-                    <ChevronRight size={28} />
+                    <ChevronRight size={32} />
                 </button>
             </div>
 
             {/* Modern Progress Bars */}
-            <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-20">
+            <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-3 z-20">
                 {slides.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`h-1 rounded-full transition-all duration-500 ease-out ${index === currentSlide ? 'w-12 bg-[#ed2585]' : 'w-4 bg-white/50 hover:bg-white'
+                        className={`h-1.5 rounded-full transition-all duration-500 ease-out shadow-sm ${index === currentSlide ? 'w-16 bg-[#ed2585]' : 'w-4 bg-white/40 hover:bg-white'
                             }`}
                     />
                 ))}
@@ -144,7 +150,7 @@ const Hero = () => {
             <style>{`
                 @keyframes subtleZoom {
                     from { transform: scale(1); }
-                    to { transform: scale(1.05); }
+                    to { transform: scale(1.1); }
                 }
             `}</style>
         </section>
