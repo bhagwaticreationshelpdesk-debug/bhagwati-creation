@@ -61,22 +61,20 @@ const Header = () => {
     };
 
     return (
-        <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'py-2 px-2 md:px-4' : 'py-6 px-4 md:px-6'}`}>
-            <header className={`w-full max-w-[1600px] mx-auto rounded-full transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-2xl shadow-black/5 border border-white/20' : 'bg-transparent'
-                }`}>
-                <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-6">
+        <div className="sticky top-0 left-0 w-full z-50 bg-[#050505] shadow-lg border-b border-white/5">
+            <header className="w-full max-w-[1700px] mx-auto">
+                <div className="flex items-center justify-between h-20 px-4 md:px-8">
 
                     {/* Brand Section */}
                     <ModernLogo />
 
                     {/* Navigation - Center */}
-                    <nav className="hidden xl:flex items-center gap-12">
+                    <nav className="hidden xl:flex items-center gap-10">
                         {navigation.map((item) => (
                             <div key={item.name} className="relative group flex items-center h-full">
                                 <Link
                                     to={item.path}
-                                    className={`text-xs uppercase tracking-[0.3em] font-medium transition-all relative py-2 nav-link-modern ${isScrolled ? 'text-[var(--text-secondary)]' : 'text-white'
-                                        }`}
+                                    className="text-[11px] uppercase tracking-[0.25em] font-medium text-white/90 hover:text-[var(--accent-gold)] transition-all relative py-2 nav-link-modern"
                                     onMouseEnter={() => prefetchPage(item.path)}
                                 >
                                     {item.name}
@@ -85,12 +83,12 @@ const Header = () => {
                                 {/* Dropdown Menu */}
                                 {item.subItems && (
                                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                        <div className="bg-black/95 backdrop-blur-xl shadow-2xl border border-white/10 p-4 rounded-2xl overflow-hidden min-w-[200px] flex flex-col gap-2">
+                                        <div className="bg-[#0a0a0a] shadow-2xl border border-white/10 p-4 rounded-xl overflow-hidden min-w-[220px] flex flex-col gap-1">
                                             {item.subItems.map((subItem) => (
                                                 <Link
                                                     key={subItem.name}
                                                     to={subItem.path}
-                                                    className="text-xs uppercase tracking-widest text-gray-300 hover:text-[var(--accent-gold)] hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-left"
+                                                    className="text-[11px] uppercase tracking-widest text-gray-400 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-left"
                                                     onMouseEnter={() => prefetchPage(subItem.path)}
                                                 >
                                                     {subItem.name}
@@ -104,25 +102,25 @@ const Header = () => {
                     </nav>
 
                     {/* Action Icons */}
-                    <div className="flex items-center gap-6 md:gap-8">
+                    <div className="flex items-center gap-6">
                         <button
                             onClick={() => setIsSearchOpen(true)}
-                            className={`transition-colors hover:text-[var(--accent-gold)] ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}
+                            className="text-white hover:text-[var(--accent-gold)] transition-colors"
                         >
-                            <Search size={20} strokeWidth={1.5} />
+                            <Search size={22} strokeWidth={1.5} />
                         </button>
 
                         <div className="relative group flex items-center cursor-pointer">
                             <button
                                 onClick={() => !isLoggedIn && setIsLoginOpen(true)}
-                                className={`transition-colors hover:text-[var(--accent-gold)] ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}
+                                className="text-white hover:text-[var(--accent-gold)] transition-colors"
                             >
-                                <User size={20} strokeWidth={1.5} />
+                                <User size={22} strokeWidth={1.5} />
                             </button>
                             {isLoggedIn && (
                                 <div className="absolute top-full right-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                                     <div className="bg-white shadow-2xl border border-gray-100 p-2 w-48 rounded-2xl overflow-hidden">
-                                        <button onClick={() => navigate('/orders')} className="w-full text-left px-4 py-3 text-xs uppercase tracking-widest hover:bg-gray-50 transition-colors">My Account</button>
+                                        <button onClick={() => navigate('/orders')} className="w-full text-left px-4 py-3 text-xs uppercase tracking-widest hover:bg-gray-50 transition-colors text-black">My Account</button>
                                         <button onClick={logout} className="w-full text-left px-4 py-3 text-xs uppercase tracking-widest text-red-500 hover:bg-red-50 transition-colors">Logout</button>
                                     </div>
                                 </div>
@@ -131,20 +129,20 @@ const Header = () => {
 
                         <Link
                             to="/cart"
-                            className={`relative transition-colors hover:text-[var(--accent-gold)] ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}
+                            className="relative text-white hover:text-[var(--accent-gold)] transition-colors"
                             onMouseEnter={() => prefetchPage('/cart')}
                         >
-                            <ShoppingBag size={20} strokeWidth={1.5} />
-                            <span className="absolute -top-2 -right-2 w-4 h-4 bg-[var(--accent-gold)] text-white text-[8px] flex items-center justify-center rounded-full font-bold">
+                            <ShoppingBag size={22} strokeWidth={1.5} />
+                            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[var(--accent-gold)] text-[var(--bg-primary)] text-[9px] flex items-center justify-center rounded-full font-bold">
                                 {cart.length}
                             </span>
                         </Link>
 
                         <button
                             onClick={() => setIsMobileMenuOpen(true)}
-                            className={`xl:hidden transition-colors ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}
+                            className="xl:hidden text-white transition-colors"
                         >
-                            <Menu size={20} strokeWidth={1.5} />
+                            <Menu size={24} strokeWidth={1.5} />
                         </button>
                     </div>
                 </div>
