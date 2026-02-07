@@ -28,11 +28,6 @@ const Header = () => {
         { name: 'All Collections', path: '/category/all-collections' }
     ];
 
-    const prefetchPage = (path) => {
-        if (path.includes('category')) import('../pages/CategoryPage');
-        if (path.includes('cart')) import('../pages/Cart');
-    };
-
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchQuery.trim()) {
@@ -56,7 +51,6 @@ const Header = () => {
                             <Link
                                 key={item.name}
                                 to={item.path}
-                                onMouseEnter={() => prefetchPage(item.path)}
                                 className={`text-xs uppercase tracking-[0.3em] font-medium transition-all relative py-2 nav-link-modern ${isScrolled ? 'text-[var(--text-secondary)]' : 'text-white'
                                     }`}
                             >

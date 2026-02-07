@@ -30,16 +30,11 @@ function App() {
     <div className="min-h-screen bg-white">
       <ScrollToTop />
       <Header />
-      <main className="animate-in fade-in slide-in-from-bottom-2 duration-700">
+      <main>
         <Suspense fallback={
-          <div className="flex flex-col justify-center items-center h-[80vh] bg-white gap-6">
-            <div className="relative">
-              <div className="w-16 h-16 rounded-full border-2 border-[var(--accent-gold)]/20 animate-ping"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <LogoIcon scale={0.8} />
-              </div>
-            </div>
-            <p className="text-[10px] uppercase tracking-[0.5em] text-[var(--accent-gold)] font-bold animate-pulse">Curating Excellence</p>
+          <div className="flex flex-col justify-center items-center h-[80vh] bg-white">
+            <div className="w-10 h-10 border-2 border-[var(--accent-gold)] border-t-transparent rounded-full animate-spin"></div>
+            <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-[var(--accent-gold)] font-bold">Bhagwati Creations</p>
           </div>
         }>
           <Routes>
