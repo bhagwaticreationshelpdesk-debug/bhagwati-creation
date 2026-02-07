@@ -53,14 +53,29 @@ const Header = () => {
             setIsSearchOpen(false);
         }
     };
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <div className="sticky top-0 left-0 w-full z-50 py-4 px-4 transition-all duration-500 pointer-events-none">
-            <header className="w-full max-w-[1600px] mx-auto rounded-full bg-black/95 backdrop-blur-xl shadow-2xl border border-white/10 pointer-events-auto">
-                <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+        <div className={`sticky top-0 left-0 w-full z-50 transition-all duration-500 pointer-events-none ${isScrolled ? 'py-2' : 'py-4'} px-4`}>
+            <header
+                className={`w-full mx-auto rounded-full shadow-2xl border border-white/10 pointer-events-auto transition-all duration-500 ease-in-out ${isScrolled
+                        ? 'max-w-5xl bg-black/80 backdrop-blur-md'
+                        : 'max-w-[1600px] bg-black/95 backdrop-blur-xl'
+                    }`}
+            >
+                <div className={`flex items-center justify-between px-4 md:px-8 transition-all duration-500 ${isScrolled ? 'h-14' : 'h-16 md:h-20'}`}>
 
                     {/* Brand Section */}
-                    <ModernLogo />
+                    <div className={`transition-transform duration-500 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
+                        <ModernLogo />
+                    </div>
 
                     {/* Navigation - Center */}
                     <nav className="hidden xl:flex items-center gap-10">
