@@ -7,10 +7,10 @@ import InstagramReels from '../components/InstagramReels';
 import VideoShopping from '../components/VideoShopping';
 import { products } from '../data/products';
 
-const ProductGridSection = ({ title, CarouselId, products: sectionProducts }) => (
+const ProductGridSection = ({ title, CarouselId, products: sectionProducts, viewAllLink }) => (
     <section className="py-12 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
-        <ProductGrid title={title} CarouselId={CarouselId} products={sectionProducts} />
+        <ProductGrid title={title} CarouselId={CarouselId} products={sectionProducts} viewAllLink={viewAllLink} />
     </section>
 );
 
@@ -28,7 +28,7 @@ const Home = () => {
             <div className="space-y-12 pb-24 mt-12">
                 <InstagramReels />
 
-                <ProductGridSection title="New Arrivals" CarouselId="new-arrivals" />
+                <ProductGridSection title="New Arrivals" CarouselId="new-arrivals" viewAllLink="/category/new-arrivals" />
 
                 <FeaturedCarousel />
 
@@ -36,11 +36,13 @@ const Home = () => {
                     title="Under 999 Bestsellers"
                     CarouselId="under-999"
                     products={under999Products}
+                    viewAllLink="/category/under-999"
                 />
 
                 <ProductGridSection
                     title="Co-ords Collection"
                     CarouselId="coords-collection"
+                    viewAllLink="/category/co-ords"
                     products={Array(8).fill({}).map((_, i) => ({
                         id: `coords-${i}`,
                         name: "Co-ord Set Placeholder",

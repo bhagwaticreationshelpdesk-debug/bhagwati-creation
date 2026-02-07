@@ -15,16 +15,27 @@ const CategoryPage = () => {
     // Simple filter logic:
     const filteredProducts = products.filter(product => {
         if (!categoryName) return true;
-        if (categoryName.toLowerCase() === 'new-arrivals') return true; // Show all for now or filter by 'New' tag
-        if (categoryName.toLowerCase() === 'all-collections') return true;
-        if (categoryName.toLowerCase() === 'deals') return product.tag === 'Sale';
+
+        const catLower = categoryName.toLowerCase();
+
+        if (catLower === 'new-arrivals') {
+            return product.tag && (product.tag.includes('New') || product.tag.includes('Arrival'));
+        }
+
+        if (catLower === 'all-collections') return true;
+
+        if (catLower === 'deals') return product.tag === 'Sale';
+
+        if (catLower === 'under-999') {
+            const price = parseInt(product.price.replace(/[^\d]/g, ''));
+            return price < 999;
+        }
 
         // Normalize for comparison
         const pCat = product.category.toLowerCase().replace(/\s+/g, '-');
         const pName = product.name.toLowerCase();
-        const searchCat = categoryName.toLowerCase();
 
-        return pCat.includes(searchCat) || searchCat.includes(pCat) || pName.includes(searchCat);
+        return pCat.includes(catLower) || catLower.includes(pCat) || pName.includes(catLower);
     });
 
     const title = categoryName ? categoryName.replace(/-/g, ' ') : 'All Products';

@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import QuickViewModal from './QuickViewModal';
 import { useShop } from '../context/ShopContext';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselId = "product-carousel" }) => {
+const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselId = "product-carousel", viewAllLink = "/category/all-collections" }) => {
     const { products: contextProducts } = useShop();
     const inputProducts = propProducts || contextProducts;
 
@@ -68,9 +69,12 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
                 </div>
 
                 <div className="flex justify-center mt-12">
-                    <button className="btn-gold uppercase tracking-widest text-sm font-bold">
+                    <Link
+                        to={viewAllLink}
+                        className="btn-gold uppercase tracking-widest text-sm font-bold inline-block text-center"
+                    >
                         View All Products
-                    </button>
+                    </Link>
                 </div>
             </div>
 
