@@ -1,56 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Brand Colors */
-  /* Brand Colors */
-  --color-primary: #E72480;
-  /* Updated Pink */
-  /* Hot Pink to match logo */
-  --color-primary-light: #f06292;
-  /* Lighter shade if needed */
-  /* Light Pink */
-  /* Light Pink */
-  --color-secondary: #fff0f5;
-  /* Lavender Blush */
-  /* Light background */
-  --color-accent: #d4af37;
-  /* Gold */
-  --color-text-main: #333333;
+  /* Ethnic Luxury Palette */
+  --bg-primary: #FCFAFA;    /* Soft Ivory */
+  --bg-dark: #121212;       /* Deep Charcoal */
+  --accent-gold: #C5A021;   /* Regal Gold */
+  --accent-wine: #630D16;   /* Deep Wine */
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --header-height: 100px;
 }
 
-body {
-  background-color: var(--color-secondary);
-  color: var(--color-text-main);
-  font-family: 'Inter', sans-serif;
+@layer base {
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bodoni Moda', serif;
+    letter-spacing: -0.02em;
+  }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Playfair Display', serif;
+@layer components {
+  .btn-gold {
+    @apply relative px-8 py-3 bg-transparent border border-[var(--accent-gold)] text-[var(--accent-gold)] 
+           uppercase tracking-[0.2em] font-semibold text-xs overflow-hidden transition-all duration-500
+           hover:text-white;
+  }
+  
+  .btn-gold::before {
+    content: '';
+    @apply absolute inset-0 bg-[var(--accent-gold)] translate-y-full transition-transform duration-500 -z-10;
+  }
+  
+  .btn-gold:hover::before {
+    @apply translate-y-0;
+  }
+
+  .nav-link-modern {
+    @apply text-xs uppercase tracking-[0.3em] font-medium text-[var(--text-secondary)] 
+           hover:text-[var(--text-primary)] transition-all relative py-2;
+  }
+
+  .nav-link-modern::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300;
+  }
+
+  .nav-link-modern:hover::after {
+    @apply w-full;
+  }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
+  background: var(--accent-gold);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+.glass-header {
+  @apply backdrop-blur-md bg-white/70 border-b border-gray-100;
+}
+
+@keyframes draw {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-draw {
+  stroke-dasharray: 1000;
+  animation: draw 3s ease forwards;
 }

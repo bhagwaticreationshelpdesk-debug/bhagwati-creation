@@ -2,23 +2,25 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import QuickViewModal from './QuickViewModal';
 import { useShop } from '../context/ShopContext';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselId = "product-carousel" }) => {
     const { products: contextProducts } = useShop();
     const inputProducts = propProducts || contextProducts;
 
-
     const [selectedProduct, setSelectedProduct] = React.useState(null);
 
     return (
-        <section className="py-8 bg-white">
+        <section className="py-16 transition-colors duration-500">
             <div className="container mx-auto px-4 md:px-8 relative group">
-                <div className="text-center mb-6">
-                    <h2 className="text-2xl md:text-3xl font-serif font-medium text-gray-900 mb-3 tracking-[0.2em] uppercase">{title}</h2>
-                    <div className="w-16 h-1 bg-[#ed2585] mx-auto rounded-full"></div>
-                    <p className="mt-3 text-gray-600 max-w-2xl mx-auto text-sm font-light leading-relaxed">
-                        Discover our latest collection of handpicked ethnic wear, designed to make you shine on every occasion.
-                    </p>
+                <div className="flex flex-col items-center mb-16">
+                    <span className="text-[var(--accent-gold)] text-[10px] tracking-[0.5em] uppercase font-bold mb-4">Discover Couture</span>
+                    <h2 className="text-4xl md:text-6xl font-serif text-[var(--text-primary)] text-center">{title}</h2>
+                    <div className="mt-6 flex items-center gap-4">
+                        <div className="w-12 h-px bg-gray-200"></div>
+                        <div className="w-2 h-2 rounded-full border border-[var(--accent-gold)]"></div>
+                        <div className="w-12 h-px bg-gray-200"></div>
+                    </div>
                 </div>
 
                 {/* Carousel Container */}
@@ -29,21 +31,21 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
                             const container = document.getElementById(CarouselId);
                             if (container) container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
                         }}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white p-3 md:p-4 rounded-full shadow-xl text-gray-800 hover:bg-[#ed2585] hover:text-white transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 hidden md:flex items-center justify-center border border-gray-100"
+                        className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 backdrop-blur-md p-4 rounded-full shadow-2xl text-[var(--text-primary)] hover:bg-[var(--accent-gold)] hover:text-white transition-all duration-500 opacity-0 group-hover/carousel:opacity-100 hidden md:flex items-center justify-center border border-white/20"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+                        <ChevronLeft size={24} strokeWidth={1.5} />
                     </button>
 
                     {/* Scrollable Area */}
                     <div
                         id={CarouselId}
-                        className="flex overflow-x-auto gap-2 md:gap-4 pb-8 snap-x snap-mandatory scrollbar-hide scroll-smooth w-full px-4 md:px-0"
+                        className="flex overflow-x-auto gap-6 md:gap-10 pb-12 snap-x snap-mandatory scrollbar-hide scroll-smooth w-full"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         {inputProducts.map(product => (
                             <div
                                 key={product.id}
-                                className="basis-1/2 md:basis-1/3 lg:basis-1/5 min-w-0 pl-2 md:pl-4 snap-start flex-shrink-0"
+                                className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 min-w-0 snap-start flex-shrink-0"
                             >
                                 <ProductCard
                                     product={product}
@@ -59,15 +61,15 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
                             const container = document.getElementById(CarouselId);
                             if (container) container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
                         }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white p-3 md:p-4 rounded-full shadow-xl text-gray-800 hover:bg-[#ed2585] hover:text-white transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 hidden md:flex items-center justify-center border border-gray-100"
+                        className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 backdrop-blur-md p-4 rounded-full shadow-2xl text-[var(--text-primary)] hover:bg-[var(--accent-gold)] hover:text-white transition-all duration-500 opacity-0 group-hover/carousel:opacity-100 hidden md:flex items-center justify-center border border-white/20"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                        <ChevronRight size={24} strokeWidth={1.5} />
                     </button>
                 </div>
 
-                <div className="text-center mt-8">
-                    <button className="border-2 border-[#ed2585] text-[#ed2585] px-10 py-3 text-sm font-semibold uppercase tracking-widest hover:bg-[#ed2585] hover:text-white transition-colors duration-300">
-                        View All Products
+                <div className="flex justify-center mt-12">
+                    <button className="btn-gold">
+                        View Entire Collection
                     </button>
                 </div>
             </div>

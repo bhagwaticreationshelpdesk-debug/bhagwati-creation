@@ -34,63 +34,69 @@ const ProductCard = ({ product, onQuickView }) => {
 
     return (
         <div
-            className="group cursor-pointer"
+            className="group cursor-pointer relative"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => navigate(`/product/${product.id}`)}
         >
-            <div className="relative aspect-[3/4] overflow-hidden bg-gray-200 mb-2">
+            <div className="relative aspect-[3/4.5] overflow-hidden bg-[var(--bg-primary)] mb-6 rounded-sm">
                 {product.image ? (
-                    <img src={product.image} alt={product.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img
+                        src={product.image}
+                        alt={product.name}
+                        loading="lazy"
+                        className={`w-full h-full object-cover transition-transform duration-[2000ms] ${isHovered ? 'scale-110' : 'scale-100'}`}
+                    />
                 ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 bg-gray-100 group-hover:bg-gray-200 transition-colors">
-                        <span className="text-4xl mb-2 font-thin">{product.id}</span>
-                        <span className="text-xs uppercase tracking-widest">Product Image</span>
+                    <div className="w-full h-full flex flex-col items-center justify-center text-gray-300 bg-gray-50 uppercase tracking-[0.2em] text-[10px]">
+                        Bhagwati Creation
                     </div>
                 )}
 
-                {/* Quick Action Overlay */}
-                <div className={`absolute bottom-0 left-0 w-full bg-white/90 p-4 transform transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-full'}`}>
+                {/* Glassmorphism Quick Action */}
+                <div className={`absolute bottom-4 left-4 right-4 transition-all duration-500 overflow-hidden rounded-full ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    }`}>
                     <button
                         onClick={handleAddToCart}
-                        className="w-full bg-primary text-white py-2 text-sm uppercase tracking-wide font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+                        className="w-full bg-white/90 backdrop-blur-md text-[var(--text-primary)] py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[var(--accent-gold)] hover:text-white transition-all flex items-center justify-center gap-2"
                     >
-                        <ShoppingBag size={16} /> Add to Cart
+                        <ShoppingBag size={14} /> Add to Cart
                     </button>
                 </div>
 
-                {/* Wishlist Icon */}
-                <button
-                    onClick={handleWishlist}
-                    className={`absolute top-3 right-3 p-2 rounded-full transition-colors opacity-0 group-hover:opacity-100 ${isWishlisted ? 'bg-white text-[#ed2585] opacity-100' : 'bg-white/80 text-gray-600 hover:text-[#ed2585] hover:bg-white'}`}
-                >
-                    <Heart size={18} fill={isWishlisted ? "#ed2585" : "none"} />
-                </button>
-
-                {/* Quick View Icon */}
-                <button
-                    onClick={handleQuickView}
-                    className="absolute top-12 right-3 p-2 rounded-full bg-white/80 text-gray-600 hover:text-[#ed2585] hover:bg-white transition-colors opacity-0 group-hover:opacity-100 mt-2"
-                    title="Quick View"
-                >
-                    <Eye size={18} />
-                </button>
+                {/* Floating Icons */}
+                <div className="absolute top-4 right-4 flex flex-col gap-2">
+                    <button
+                        onClick={handleWishlist}
+                        className={`p-3 rounded-full transition-all duration-500 ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
+                            } ${isWishlisted ? 'bg-[var(--accent-gold)] text-white' : 'bg-white/80 backdrop-blur-sm text-gray-400 hover:text-[var(--accent-gold)]'}`}
+                    >
+                        <Heart size={16} fill={isWishlisted ? "currentColor" : "none"} />
+                    </button>
+                    <button
+                        onClick={handleQuickView}
+                        className={`p-3 rounded-full bg-white/80 backdrop-blur-sm text-gray-400 hover:text-[var(--accent-gold)] transition-all duration-500 delay-75 ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
+                            }`}
+                    >
+                        <Eye size={16} />
+                    </button>
+                </div>
 
                 {/* Tag */}
                 {product.tag && (
-                    <span className="absolute top-3 left-3 bg-red-800 text-white text-[10px] uppercase font-bold px-2 py-1">
+                    <span className="absolute top-4 left-4 bg-[var(--accent-wine)] text-white text-[8px] uppercase font-bold tracking-[0.2em] px-3 py-1.5 rounded-sm">
                         {product.tag}
                     </span>
                 )}
             </div>
 
-            <div className="text-center">
-                <h3 className="text-sm text-gray-900 font-medium mb-1 group-hover:text-primary transition-colors">{product.name}</h3>
-                <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">{product.category}</div>
-                <div className="flex items-center justify-center gap-2">
-                    <span className="text-gray-900 font-semibold">{product.price}</span>
+            <div className="flex flex-col items-center">
+                <h3 className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-2">{product.category}</h3>
+                <h4 className="text-lg font-serif text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent-gold)] transition-colors">{product.name}</h4>
+                <div className="flex items-center gap-3">
+                    <span className="text-[var(--accent-gold)] font-bold">{product.price}</span>
                     {product.originalPrice && (
-                        <span className="text-gray-400 line-through text-sm">{product.originalPrice}</span>
+                        <span className="text-gray-300 line-through text-sm">{product.originalPrice}</span>
                     )}
                 </div>
             </div>

@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import Hero from '../components/Hero';
 import FeaturedCarousel from '../components/FeaturedCarousel';
@@ -7,7 +5,6 @@ import ProductGrid from '../components/ProductGrid';
 import ShopByCategories from '../components/ShopByCategories';
 import InstagramReels from '../components/InstagramReels';
 import VideoShopping from '../components/VideoShopping';
-
 import { products } from '../data/products';
 
 const Home = () => {
@@ -18,63 +15,46 @@ const Home = () => {
     });
 
     return (
-        <div className="bg-gradient-to-b from-white via-pink-50/30 to-white min-h-screen">
+        <div className="bg-[var(--bg-primary)] min-h-screen">
             <Hero />
 
-            <div className="space-y-12 pb-12">
+            <div className="space-y-24 pb-24 mt-12">
                 <InstagramReels />
 
-                <section className="bg-gradient-to-r from-pink-50 to-white py-4 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-pink-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <section className="py-20 bg-white relative">
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
                     <ProductGrid title="New Arrivals" CarouselId="new-arrivals" />
                 </section>
 
                 <FeaturedCarousel />
 
                 <ProductGrid
-                    title="Under 999 Bestsellers"
+                    title="Couture Bestsellers"
                     products={under999Products}
                     CarouselId="under-999"
                 />
 
-                <div className="grid gap-8">
-                    <ProductGrid
-                        title="Co-ords Collection"
-                        CarouselId="coords-collection"
-                        products={Array(10).fill({}).map((_, i) => ({
-                            id: `coords-${i}`,
-                            name: "Co-ord Set Placeholder",
-                            category: "Co-ords",
-                            price: "₹0",
-                            image: null
-                        }))}
-                    />
-                    <ProductGrid
-                        title="Cotton Suits"
-                        CarouselId="cotton-suits"
-                        products={Array(10).fill({}).map((_, i) => ({
-                            id: `cotton-${i}`,
-                            name: "Cotton Suit Placeholder",
-                            category: "Suits",
-                            price: "₹0",
-                            image: null
-                        }))}
-                    />
-                    <ProductGrid
-                        title="Mixed Collection"
-                        CarouselId="mixed-collection"
-                        products={Array(10).fill({}).map((_, i) => ({
-                            id: `mixed-${i}`,
-                            name: "Mixed Item Placeholder",
-                            category: "Mixed",
-                            price: "₹0",
-                            image: null
-                        }))}
-                    />
+                <div className="bg-[var(--bg-dark)] py-24 text-white">
+                    <div className="container mx-auto px-6">
+                        <ProductGrid
+                            title="The Co-ords Edit"
+                            CarouselId="coords-collection"
+                            products={Array(10).fill({}).map((_, i) => ({
+                                id: `coords-${i}`,
+                                name: "Luxe Co-ord Set",
+                                category: "Co-ords",
+                                price: "₹2,499",
+                                image: null
+                            }))}
+                        />
+                    </div>
                 </div>
 
                 <ShopByCategories />
-                <VideoShopping />
+
+                <section className="py-20 bg-[var(--bg-primary)]">
+                    <VideoShopping />
+                </section>
             </div>
         </div>
     );
