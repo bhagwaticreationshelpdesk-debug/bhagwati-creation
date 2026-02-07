@@ -9,7 +9,7 @@ const Wishlist = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="container mx-auto px-4 py-8 min-h-screen">
+        <div className="container mx-auto px-4 pt-32 pb-12 min-h-screen">
             <button onClick={() => navigate(-1)} className="flex items-center text-gray-600 mb-6 hover:text-[var(--accent-gold)] transition-colors uppercase tracking-widest text-xs font-bold">
                 <ArrowLeft size={16} className="mr-2" /> Back
             </button>

@@ -65,7 +65,7 @@ const Checkout = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-8 min-h-screen bg-gray-50">
+        <div className="container mx-auto px-4 pt-32 pb-12 min-h-screen bg-gray-50">
             <button onClick={() => navigate('/cart')} className="flex items-center text-gray-600 mb-6 hover:text-[var(--accent-gold)] transition-colors">
                 <ArrowLeft size={20} className="mr-2" /> Back to Cart
             </button>

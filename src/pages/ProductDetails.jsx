@@ -39,7 +39,7 @@ const ProductDetails = () => {
     };
 
     return (
-        <section className="py-12 bg-gray-50 min-h-screen">
+        <section className="pt-36 pb-12 bg-gray-50 min-h-screen">
             <div className="container mx-auto px-4 md:px-8">
                 {/* Breadcrumb / Back */}
                 <button

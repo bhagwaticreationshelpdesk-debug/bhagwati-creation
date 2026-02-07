@@ -30,7 +30,7 @@ const CategoryPage = () => {
     const title = categoryName ? categoryName.replace(/-/g, ' ') : 'All Products';
 
     return (
-        <section className="py-16 bg-white min-h-screen">
+        <section className="pt-36 pb-16 bg-white min-h-screen">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="flex flex-col items-center mb-20 pt-10">
                     <span className="text-[var(--accent-gold)] text-[10px] tracking-[0.5em] uppercase font-bold mb-4">Discover Couture</span>

@@ -46,7 +46,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 pt-32 pb-12">
             {/* Header */}
             <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700 flex flex-col items-center">
                 <LogoIcon scale={1.2} className="mb-6" />
