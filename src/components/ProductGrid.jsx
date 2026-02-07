@@ -32,9 +32,9 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
                             const container = document.getElementById(CarouselId);
                             if (container) container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
                         }}
-                        className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 backdrop-blur-md p-4 rounded-full shadow-2xl text-[var(--text-primary)] hover:bg-[var(--accent-gold)] hover:text-white transition-all duration-500 opacity-0 group-hover/carousel:opacity-100 hidden md:flex items-center justify-center border border-white/20"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg text-[var(--text-primary)] hover:bg-[var(--accent-gold)] hover:text-white transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 hidden md:flex items-center justify-center border border-white/20"
                     >
-                        <ChevronLeft size={24} strokeWidth={1.5} />
+                        <ChevronLeft size={20} strokeWidth={1.5} />
                     </button>
 
                     {/* Scrollable Area */}
@@ -62,9 +62,9 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
                             const container = document.getElementById(CarouselId);
                             if (container) container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
                         }}
-                        className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 backdrop-blur-md p-4 rounded-full shadow-2xl text-[var(--text-primary)] hover:bg-[var(--accent-gold)] hover:text-white transition-all duration-500 opacity-0 group-hover/carousel:opacity-100 hidden md:flex items-center justify-center border border-white/20"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg text-[var(--text-primary)] hover:bg-[var(--accent-gold)] hover:text-white transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 hidden md:flex items-center justify-center border border-white/20"
                     >
-                        <ChevronRight size={24} strokeWidth={1.5} />
+                        <ChevronRight size={20} strokeWidth={1.5} />
                     </button>
                 </div>
 
