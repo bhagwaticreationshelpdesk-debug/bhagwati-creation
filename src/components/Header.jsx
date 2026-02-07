@@ -4,22 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useShop } from '../context/ShopContext';
 import LoginModal from './LoginModal';
 
-const ModernLogo = () => (
-    <Link to="/" className="flex items-center gap-3 group">
-        <div className="relative w-12 h-12 flex items-center justify-center">
-            <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-[var(--accent-gold)] stroke-1 overflow-visible">
-                <circle cx="50" cy="50" r="45" className="animate-draw opacity-20" />
-                <path d="M35 25 L65 25 Q75 25 75 35 Q75 45 65 45 L35 45 L35 75 L65 75" className="animate-draw" strokeWidth="2" />
-                <path d="M35 45 L55 45 Q65 45 65 55 Q65 65 55 65 L35 65" className="animate-draw opacity-50" strokeWidth="1.5" />
-            </svg>
-            <div className="absolute inset-0 bg-[var(--accent-gold)] blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-        </div>
-        <div className="flex flex-col">
-            <span className="text-xl font-serif font-bold tracking-[0.2em] text-[var(--text-primary)]">BHAGWATI</span>
-            <span className="text-[10px] tracking-[0.6em] text-[var(--accent-gold)] font-medium -mt-1 uppercase">Creations</span>
-        </div>
-    </Link>
-);
+import { ModernLogo } from './Branding';
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
