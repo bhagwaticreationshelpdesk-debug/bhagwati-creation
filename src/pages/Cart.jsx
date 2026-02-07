@@ -1,6 +1,6 @@
 import React from 'react';
 import { useShop } from '../context/ShopContext';
-import { Trash2, ArrowLeft } from 'lucide-react';
+import { Trash2, ArrowLeft, ShoppingBag } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
