@@ -61,9 +61,9 @@ const Header = () => {
     };
 
     return (
-        <div className="sticky top-0 left-0 w-full z-50 bg-[#050505] shadow-lg border-b border-white/5">
-            <header className="w-full max-w-[1700px] mx-auto">
-                <div className="flex items-center justify-between h-20 px-4 md:px-8">
+        <div className="sticky top-0 left-0 w-full z-50 py-4 px-4 transition-all duration-500 pointer-events-none">
+            <header className="w-full max-w-[1600px] mx-auto rounded-full bg-black/95 backdrop-blur-xl shadow-2xl border border-white/10 pointer-events-auto">
+                <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
 
                     {/* Brand Section */}
                     <ModernLogo />
