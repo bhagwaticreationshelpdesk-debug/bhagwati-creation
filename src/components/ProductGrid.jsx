@@ -68,8 +68,8 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
                 </div>
 
                 <div className="flex justify-center mt-12">
-                    <button className="btn-gold">
-                        View Entire Collection
+                    <button className="btn-gold uppercase tracking-widest text-sm font-bold">
+                        View All Products
                     </button>
                 </div>
             </div>

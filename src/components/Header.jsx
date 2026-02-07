@@ -37,11 +37,10 @@ const Header = () => {
     }, []);
 
     const navigation = [
-        { name: 'Couture', path: '/category/all-collections' },
-        { name: 'Bridal', path: '/category/bridal' },
-        { name: 'The Edit', path: '/category/new-arrivals' },
-        { name: 'Heritage', path: '/category/unstitched' },
-        { name: 'Signature', path: '/category/stitched-catalog' }
+        { name: 'Unstitched', path: '/category/unstitched' },
+        { name: 'Stitched Catalog', path: '/category/stitched-catalog' },
+        { name: 'New Arrivals', path: '/category/new-arrivals' },
+        { name: 'All Collections', path: '/category/all-collections' }
     ];
 
     const handleSearch = (e) => {

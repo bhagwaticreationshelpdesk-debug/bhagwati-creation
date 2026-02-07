@@ -29,7 +29,7 @@ const Home = () => {
                 <FeaturedCarousel />
 
                 <ProductGrid
-                    title="Couture Bestsellers"
+                    title="Under 999 Bestsellers"
                     products={under999Products}
                     CarouselId="under-999"
                 />
@@ -37,13 +37,13 @@ const Home = () => {
                 <div className="bg-[var(--bg-dark)] py-24 text-white">
                     <div className="container mx-auto px-6">
                         <ProductGrid
-                            title="The Co-ords Edit"
+                            title="Co-ords Collection"
                             CarouselId="coords-collection"
                             products={Array(10).fill({}).map((_, i) => ({
                                 id: `coords-${i}`,
-                                name: "Luxe Co-ord Set",
+                                name: "Co-ord Set Placeholder",
                                 category: "Co-ords",
-                                price: "₹2,499",
+                                price: "₹0",
                                 image: null
                             }))}
                         />
