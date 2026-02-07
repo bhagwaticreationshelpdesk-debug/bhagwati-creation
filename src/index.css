@@ -100,7 +100,7 @@
 }
 
 .glass-header {
-  @apply backdrop-blur-md bg-white/70 border-b border-gray-10;
+  @apply backdrop-blur-md bg-white/70 border-b border-gray-100;
 }
 
 .animate-draw {
