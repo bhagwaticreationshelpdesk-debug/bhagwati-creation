@@ -8,40 +8,36 @@ const Hero = () => {
 
     const slides = [
         {
-            image: "https://images.unsplash.com/photo-1610030469668-935142764ee6?q=80&w=2070&auto=format&fit=crop", // Vibrant Red/Gold Look
+            image: "https://images.unsplash.com/photo-1512101131154-1296ac97fe41?q=80&w=2070&auto=format&fit=crop",
             brandTag: "BHAGWATI CREATIONS",
             title: "Royal Silk Heritage",
-            subtitle: "Drape yourself in the finest hand-woven threads of tradition.",
-            cta: "Shop Silk",
-            link: "/category/sarees",
-            align: "left"
+            subtitle: "Exquisite hand-woven sarees that define timeless elegance.",
+            cta: "Shop Collection",
+            link: "/category/sarees"
         },
         {
-            image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=2070&auto=format&fit=crop", // Vibrant Yellow/Red Patterns
+            image: "https://images.unsplash.com/photo-1610030469617-3f3bb6ce7bc6?q=80&w=2070&auto=format&fit=crop",
             brandTag: "BRIDAL EXCLUSIVE",
-            title: "Regal Bridal Edits",
-            subtitle: "Exquisite lehengas designed for your most unforgettable moments.",
-            cta: "View Collection",
-            link: "/category/bridal",
-            align: "right"
+            title: "Regal Heritage",
+            subtitle: "Discover our handcrafted bridal lehengas of unmatched grace.",
+            cta: "View Bridal",
+            link: "/category/bridal"
         },
         {
-            image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=2070&auto=format&fit=crop", // Striking Blue/Silver
-            brandTag: "LUXURY FESTIVE",
-            title: "The Modern Muse",
-            subtitle: "Contemporary silhouettes blended with timeless artisanal grace.",
+            image: "https://images.unsplash.com/photo-1622324976451-872f2d9c394c?q=80&w=2070&auto=format&fit=crop",
+            brandTag: "NEW ARRIVALS",
+            title: "The Saree Edit",
+            subtitle: "Contemporary drapes in silk, georgette, and organza.",
             cta: "Explore Now",
-            link: "/category/new-arrivals",
-            align: "left"
+            link: "/category/sarees"
         },
         {
-            image: "https://images.unsplash.com/photo-1621285853634-713b8dd6b590?q=80&w=2071&auto=format&fit=crop", // Close-up detail / Rich color
-            brandTag: "BHAGWATI SIGNATURE",
-            title: "Artisanal Grace",
-            subtitle: "Every masterpiece is a testament to our legacy of craftsmanship.",
-            cta: "Discover More",
-            link: "/category/sale",
-            align: "center"
+            image: "https://images.unsplash.com/photo-1596483548232-9c3f8dfa00de?q=80&w=2070&auto=format&fit=crop",
+            brandTag: "FESTIVE 2026",
+            title: "Modern Muse",
+            subtitle: "Striking silhouettes for the confident modern woman.",
+            cta: "Shop Festive",
+            link: "/category/new-arrivals"
         }
     ];
 
@@ -61,110 +57,89 @@ const Hero = () => {
     };
 
     return (
-        <section className="relative w-full h-[600px] md:h-[750px] lg:h-[90vh] overflow-hidden bg-black group">
+        <section className="relative w-full h-[100vh] overflow-hidden bg-black group">
 
-            {/* Background Image Container */}
-            <div className="absolute inset-0">
+            {/* Image Slider - Full Screen Wide Rectangular */}
+            <div className="absolute inset-0 z-0">
                 {slides.map((slide, index) => (
                     <div
                         key={index}
-                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
                             }`}
                     >
                         <img
                             src={slide.image}
                             alt={slide.title}
-                            className={`w-full h-full object-cover transition-transform duration-[10000ms] ease-linear ${index === currentSlide ? 'scale-110' : 'scale-100'
-                                }`}
+                            className="w-full h-full object-cover"
                         />
-                        {/* High Contrast Overlay Logic */}
-                        <div className={`absolute inset-0 bg-black/30 bg-gradient-to-r ${slide.align === 'left' ? 'from-black/80 via-black/40 to-transparent' :
-                                slide.align === 'right' ? 'from-transparent via-black/40 to-black/80' :
-                                    'from-black/60 via-transparent to-black/60'
-                            }`}></div>
+                        {/* Soft Gradient Overlay for Readability - Not too dark */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
                     </div>
                 ))}
             </div>
 
             {/* Content Container */}
-            <div className="relative z-20 h-full container mx-auto px-6 md:px-12 flex items-center">
-                {slides.map((slide, index) => (
-                    <div
-                        key={index}
-                        className={`absolute inset-0 flex items-center px-6 md:px-12 transition-all duration-700 delay-300 ${index === currentSlide ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-10 invisible'
-                            } ${slide.align === 'left' ? 'justify-start text-left' :
-                                slide.align === 'right' ? 'justify-end text-right' : 'justify-center text-center'
-                            }`}
-                    >
-                        <div className="max-w-3xl">
-                            {/* Brand Tag - Mixture of Brand Name and Theme */}
-                            <div className={`flex items-center gap-3 mb-6 ${slide.align === 'left' ? 'justify-start' :
-                                    slide.align === 'right' ? 'justify-end' : 'justify-center'
-                                }`}>
-                                <span className="text-[#ed2585] font-bold tracking-[0.3em] uppercase text-xs md:text-sm flex items-center gap-2">
-                                    <Sparkles size={16} /> {slide.brandTag}
+            <div className="relative z-10 h-full container mx-auto px-6 md:px-12 flex items-center">
+                <div className="max-w-3xl">
+                    {slides.map((slide, index) => (
+                        <div
+                            key={index}
+                            className={`transition-all duration-700 ${index === currentSlide ? 'opacity-100 translate-y-0 block' : 'opacity-0 translate-y-10 hidden'
+                                }`}
+                        >
+                            <div className="flex items-center gap-3 mb-4">
+                                <Sparkles size={20} className="text-[#ed2585]" />
+                                <span className="text-[#ed2585] font-bold tracking-[0.3em] uppercase text-sm">
+                                    {slide.brandTag}
                                 </span>
                             </div>
 
-                            {/* Title - High Contrast Bold Serif */}
-                            <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-none mb-8 drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+                            <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-none mb-6">
                                 {slide.title}
                             </h1>
 
-                            {/* Subtitle - Contrasting Modern Text */}
-                            <p className="text-gray-200 text-lg md:text-xl font-light mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed tracking-wide">
+                            <p className="text-white/90 text-lg md:text-xl font-light mb-10 max-w-xl leading-relaxed">
                                 {slide.subtitle}
                             </p>
 
-                            {/* CTA Link - Premium Style */}
-                            <div className={`flex ${slide.align === 'left' ? 'justify-start' :
-                                    slide.align === 'right' ? 'justify-end' : 'justify-center'
-                                }`}>
-                                <button
-                                    onClick={() => navigate(slide.link)}
-                                    className="group relative px-10 py-4 bg-white text-black text-sm font-bold uppercase tracking-widest transition-all hover:bg-[#ed2585] hover:text-white"
-                                >
-                                    <span className="flex items-center gap-3">
-                                        {slide.cta} <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-                                    </span>
-                                </button>
-                            </div>
+                            <button
+                                onClick={() => navigate(slide.link)}
+                                className="group relative inline-flex items-center gap-4 bg-[#ed2585] text-white px-8 py-4 font-bold uppercase tracking-widest text-sm transition-all hover:bg-white hover:text-[#ed2585]"
+                            >
+                                {slide.cta}
+                                <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                            </button>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
 
             {/* Navigation Dots */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-4">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-4">
                 {slides.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`h-1 transition-all duration-500 rounded-full ${index === currentSlide ? 'w-12 bg-[#ed2585]' : 'w-6 bg-white/30 hover:bg-white/60'
+                        className={`h-1.5 transition-all duration-300 rounded-full ${index === currentSlide ? 'w-12 bg-[#ed2585]' : 'w-4 bg-white/40 hover:bg-white'
                             }`}
                     />
                 ))}
             </div>
 
-            {/* Left/Right Controls */}
-            <button
-                onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-                className="absolute left-6 top-1/2 -translate-y-1/2 z-30 p-2 text-white/50 hover:text-white transition-colors hidden md:block"
-            >
-                <ChevronLeft size={48} strokeWidth={1} />
-            </button>
-            <button
-                onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-                className="absolute right-6 top-1/2 -translate-y-1/2 z-30 p-2 text-white/50 hover:text-white transition-colors hidden md:block"
-            >
-                <ChevronRight size={48} strokeWidth={1} />
-            </button>
-
-            {/* Vertical Branding Detail */}
-            <div className="absolute right-10 top-1/2 -translate-y-1/2 hidden xl:block z-30">
-                <span className="text-white/20 text-[10px] uppercase tracking-[1em] [writing-mode:vertical-lr] rotate-180">
-                    Luxury Ethnic Wear • Established 2024
-                </span>
+            {/* Left/Right Arrows */}
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-6 z-20 pointer-events-none">
+                <button
+                    onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+                    className="pointer-events-auto p-3 rounded-full bg-black/30 text-white border border-white/20 hover:bg-[#ed2585] transition-all opacity-0 group-hover:opacity-100"
+                >
+                    <ChevronLeft size={24} />
+                </button>
+                <button
+                    onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+                    className="pointer-events-auto p-3 rounded-full bg-black/30 text-white border border-white/20 hover:bg-[#ed2585] transition-all opacity-0 group-hover:opacity-100"
+                >
+                    <ChevronRight size={24} />
+                </button>
             </div>
 
         </section>
