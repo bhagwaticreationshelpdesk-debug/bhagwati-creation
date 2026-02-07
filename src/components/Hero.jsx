@@ -1,4 +1,3 @@
-```
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
@@ -55,7 +54,7 @@ const Hero = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, 5000); 
+        }, 5000);
         return () => clearInterval(timer);
     }, [slides.length]);
 
@@ -69,14 +68,13 @@ const Hero = () => {
 
     return (
         <section className="relative w-full h-[600px] md:h-[700px] lg:h-[85vh] overflow-hidden bg-gray-50 group">
-            
+
             {/* Main Slider */}
             {slides.map((slide, index) => (
                 <div
                     key={index}
-                    className={`absolute inset - 0 transition - opacity duration - 1000 ease -in -out ${
-    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-} `}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                        }`}
                 >
                     {/* Background Image with Overlay */}
                     <div className="relative w-full h-full">
@@ -87,27 +85,25 @@ const Hero = () => {
                             style={{ animation: index === currentSlide ? 'subtleZoom 20s infinite alternate' : 'none' }}
                         />
                         {/* Gradient Overlay for Text Readability */}
-                        <div className={`absolute inset - 0 bg - gradient - to - t ${ slide.align === 'center' ? 'from-black/60 via-transparent to-black/30' : 'from-black/40 via-transparent to-transparent' } `}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-t ${slide.align === 'center' ? 'from-black/60 via-transparent to-black/30' : 'from-black/40 via-transparent to-transparent'}`}></div>
                     </div>
 
                     {/* Content Layer */}
-                    <div className={`absolute inset - 0 flex items - center p - 8 md: p - 16 ${
-    slide.align === 'left' ? 'justify-start' :
-        slide.align === 'right' ? 'justify-end' :
-            'justify-center text-center'
-} `}>
-                        <div className={`max - w - xl space - y - 6 transform transition - all duration - 700 delay - 300 ${
-    index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-} `}>
-                            <h2 className={`text - 4xl md: text - 6xl font - serif font - bold leading - tight drop - shadow - lg ${ slide.textColor === 'text-white' ? 'text-white' : slide.textColor } `}>
+                    <div className={`absolute inset-0 flex items-center p-8 md:p-16 ${slide.align === 'left' ? 'justify-start' :
+                            slide.align === 'right' ? 'justify-end' :
+                                'justify-center text-center'
+                        }`}>
+                        <div className={`max-w-xl space-y-6 transform transition-all duration-700 delay-300 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                            }`}>
+                            <h2 className={`text-4xl md:text-6xl font-serif font-bold leading-tight drop-shadow-lg ${slide.textColor === 'text-white' ? 'text-white' : slide.textColor}`}>
                                 {slide.title}
                             </h2>
-                            <p className={`text - lg md: text - xl font - light tracking - wide drop - shadow - md ${ slide.textColor === 'text-white' ? 'text-gray-100' : 'text-gray-800' } `}>
+                            <p className={`text-lg md:text-xl font-light tracking-wide drop-shadow-md ${slide.textColor === 'text-white' ? 'text-gray-100' : 'text-gray-800'}`}>
                                 {slide.subtitle}
                             </p>
                             <button
                                 onClick={() => navigate(slide.link)}
-                                className={`group / btn relative inline - flex items - center gap - 3 px - 8 py - 4 bg - white text - gray - 900 rounded - full font - medium tracking - wider uppercase transition - all hover: bg - [#ed2585] hover: text - white hover: scale - 105 shadow - xl`}
+                                className={`group/btn relative inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-full font-medium tracking-wider uppercase transition-all hover:bg-[#ed2585] hover:text-white hover:scale-105 shadow-xl`}
                             >
                                 {slide.cta}
                                 <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
@@ -139,22 +135,20 @@ const Hero = () => {
                     <button
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`h - 1 rounded - full transition - all duration - 500 ease - out ${
-    index === currentSlide ? 'w-12 bg-[#ed2585]' : 'w-4 bg-white/50 hover:bg-white'
-} `}
+                        className={`h-1 rounded-full transition-all duration-500 ease-out ${index === currentSlide ? 'w-12 bg-[#ed2585]' : 'w-4 bg-white/50 hover:bg-white'
+                            }`}
                     />
                 ))}
             </div>
 
             <style>{`
-@keyframes subtleZoom {
+                @keyframes subtleZoom {
                     from { transform: scale(1); }
                     to { transform: scale(1.05); }
-}
-`}</style>
+                }
+            `}</style>
         </section>
     );
 };
 
 export default Hero;
-```
