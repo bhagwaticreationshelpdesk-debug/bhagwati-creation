@@ -7,6 +7,13 @@ import InstagramReels from '../components/InstagramReels';
 import VideoShopping from '../components/VideoShopping';
 import { products } from '../data/products';
 
+const ProductGridSection = ({ title, CarouselId, products: sectionProducts }) => (
+    <section className="py-24 bg-white relative">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
+        <ProductGrid title={title} CarouselId={CarouselId} products={sectionProducts} />
+    </section>
+);
+
 const Home = () => {
     // Filter products under ₹999
     const under999Products = products.filter(product => {
@@ -21,34 +28,27 @@ const Home = () => {
             <div className="space-y-24 pb-24 mt-12">
                 <InstagramReels />
 
-                <section className="py-20 bg-white relative">
-                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
-                    <ProductGrid title="New Arrivals" CarouselId="new-arrivals" />
-                </section>
+                <ProductGridSection title="New Arrivals" CarouselId="new-arrivals" />
 
                 <FeaturedCarousel />
 
-                <ProductGrid
+                <ProductGridSection
                     title="Under 999 Bestsellers"
-                    products={under999Products}
                     CarouselId="under-999"
+                    products={under999Products}
                 />
 
-                <div className="bg-[var(--bg-dark)] py-24 text-white">
-                    <div className="container mx-auto px-6">
-                        <ProductGrid
-                            title="Co-ords Collection"
-                            CarouselId="coords-collection"
-                            products={Array(10).fill({}).map((_, i) => ({
-                                id: `coords-${i}`,
-                                name: "Co-ord Set Placeholder",
-                                category: "Co-ords",
-                                price: "₹0",
-                                image: null
-                            }))}
-                        />
-                    </div>
-                </div>
+                <ProductGridSection
+                    title="Co-ords Collection"
+                    CarouselId="coords-collection"
+                    products={Array(8).fill({}).map((_, i) => ({
+                        id: `coords-${i}`,
+                        name: "Co-ord Set Placeholder",
+                        category: "Co-ords",
+                        price: "₹0",
+                        image: null
+                    }))}
+                />
 
                 <ShopByCategories />
 
