@@ -1,125 +1,123 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import ownerImage from '../assets/hero_owner.png'; // Make sure the user saves their image here!
+import heroBgPattern from '../assets/hero1.png'; // Using an existing pattern for texture if available, or fallback
 
 const Hero = () => {
-    const navigate = useNavigate();
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const slides = [
-        {
-            image: "https://images.unsplash.com/photo-1512101131154-1296ac97fe41?q=80&w=2070&auto=format&fit=crop",
-            tag: "BHAGWATI CREATIONS",
-            title: "Royal Silk Heritage",
-            subtitle: "Exquisite hand-woven sarees that define timeless elegance.",
-            cta: "Shop Collection",
-            link: "/category/sarees"
-        },
-        {
-            image: "https://images.unsplash.com/photo-1610030469617-3f3bb6ce7bc6?q=80&w=2070&auto=format&fit=crop",
-            tag: "BRIDAL EXCLUSIVE",
-            title: "Regal Heritage",
-            subtitle: "Discover our handcrafted bridal lehengas of unmatched grace.",
-            cta: "View Bridal",
-            link: "/category/bridal"
-        },
-        {
-            image: "https://images.unsplash.com/photo-1622324976451-872f2d9c394c?q=80&w=2070&auto=format&fit=crop",
-            tag: "NEW ARRIVALS",
-            title: "The Saree Edit",
-            subtitle: "Contemporary drapes in silk, georgette, and organza.",
-            cta: "Explore Now",
-            link: "/category/sarees"
-        },
-        {
-            image: "https://images.unsplash.com/photo-1596483548232-9c3f8dfa00de?q=80&w=2070&auto=format&fit=crop",
-            tag: "FESTIVE 2026",
-            title: "Modern Muse",
-            subtitle: "Striking silhouettes for the confident modern woman.",
-            cta: "Shop Festive",
-            link: "/category/new-arrivals"
-        }
-    ];
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, 4000);
-        return () => clearInterval(timer);
-    }, [slides.length]);
-
     return (
-        <section className="relative w-full h-[calc(100vh-100px)] md:h-[calc(100vh-120px)] overflow-hidden bg-black">
+        <section className="relative bg-[#FDFBF7] min-h-[85vh] flex items-center overflow-hidden">
 
-            {/* Background Image Slider */}
+            {/* Background Texture & Gradient */}
             <div className="absolute inset-0 z-0">
-                {slides.map((slide, index) => (
-                    <div
-                        key={index}
-                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-                            }`}
-                    >
-                        <img
-                            src={slide.image}
-                            alt={slide.title}
-                            className="w-full h-full object-cover brightness-75"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
-                    </div>
-                ))}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#FFF8E1] via-[#FFF5D1] to-[#FDFBF7] opacity-80"></div>
+                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }}></div>
+
+                {/* Gold Accent Circles */}
+                <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full border border-[var(--accent-gold)]/10 animate-spin-slow"></div>
+                <div className="absolute top-[-5%] right-[-2%] w-[400px] h-[400px] rounded-full border border-[var(--accent-gold)]/20 animate-spin-reverse-slow"></div>
             </div>
 
-            {/* Content Container */}
-            <div className="relative z-10 h-full container mx-auto px-6 flex items-center justify-center text-center">
-                {slides.map((slide, index) => (
-                    <div
-                        key={index}
-                        className={`absolute inset-0 flex flex-col items-center justify-center px-6 transition-all duration-700 ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
-                            }`}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <Sparkles size={20} className="text-[var(--accent-gold)]" />
-                            <span className="text-[var(--accent-gold)] font-bold tracking-[0.4em] uppercase text-xs md:text-sm">
-                                {slide.tag}
-                            </span>
-                        </div>
+            <div className="container mx-auto px-4 md:px-8 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
-                        <h1 className="text-white text-5xl md:text-7xl lg:text-9xl font-serif font-bold leading-tight mb-8 drop-shadow-2xl">
-                            {slide.title}
-                        </h1>
-
-                        <p className="text-white/90 text-lg md:text-xl font-light mb-12 max-w-2xl leading-relaxed tracking-wide">
-                            {slide.subtitle}
-                        </p>
-
-                        <button
-                            onClick={() => navigate(slide.link)}
-                            onMouseEnter={() => {
-                                // Prefetch the category page component
-                                import('../pages/CategoryPage');
-                            }}
-                            className="btn-gold px-12 py-5"
+                    {/* Left Content - Typography */}
+                    <div className="text-center lg:text-left space-y-8 order-2 lg:order-1 pt-10 lg:pt-0">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
                         >
-                            <span className="flex items-center gap-4">
-                                {slide.cta} <ArrowRight size={20} />
-                            </span>
-                        </button>
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/20 text-[var(--accent-gold)] text-xs font-bold tracking-[0.2em] uppercase mb-6">
+                                <Sparkles size={14} />
+                                <span>The Face of Elegance</span>
+                            </div>
+
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-[var(--text-primary)] leading-[1.1]">
+                                <span className="block" style={{ fontFamily: 'Playfair Display' }}>Bhagwati</span>
+                                <span className="block text-4xl md:text-6xl text-[var(--accent-gold)] italic mt-2" style={{ fontFamily: 'Cinzel Decorative' }}>Creation</span>
+                            </h1>
+
+                            <p className="text-gray-600 text-lg md:text-xl font-light max-w-xl mx-auto lg:mx-0 mt-6 leading-relaxed">
+                                Curating the finest ethnic wear with a personal touch. Experience the tradition of luxury and the warmth of genuine craftsmanship.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-10">
+                                <Link to="/category/new-arrivals" className="btn-gold px-10 py-4 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl hover:shadow-[var(--accent-gold)]/20 transition-all group">
+                                    <span>Refine Your Style</span>
+                                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                                <Link to="/about" className="px-10 py-4 border border-gray-300 rounded-full font-medium text-gray-600 hover:bg-white hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all bg-white/50 backdrop-blur-sm">
+                                    Meet the Creator
+                                </Link>
+                            </div>
+                        </motion.div>
                     </div>
-                ))}
+
+                    {/* Right Content - The "Face Value" Image */}
+                    <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, delay: 0.2 }}
+                            className="relative w-[300px] h-[400px] md:w-[400px] md:h-[500px] lg:w-[450px] lg:h-[600px]"
+                        >
+                            {/* Decorative Frame Behind */}
+                            <div className="absolute inset-0 border-2 border-[var(--accent-gold)]/30 rounded-t-[10rem] transform translate-x-4 translate-y-4"></div>
+
+                            {/* Main Image Container */}
+                            <div className="absolute inset-0 bg-[var(--accent-gold)]/5 rounded-t-[10rem] overflow-hidden shadow-2xl">
+                                {/* This is where the user's photo goes. 
+                                    Using a placeholder/fallback logic if the file isn't there yet would be standard, 
+                                    but for now we assume they will put the file there. */}
+                                <img
+                                    src={ownerImage}
+                                    alt="Bhagwati Creation Owner"
+                                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-1000"
+                                    onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop";
+                                        e.target.parentElement.classList.add('grayscale'); // visual indicator it's a fallback
+                                    }}
+                                />
+
+                                {/* Gradient Overlay for text readability at bottom if needed */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+                            </div>
+
+                            {/* Floating Badge */}
+                            <motion.div
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.8 }}
+                                className="absolute -bottom-6 -left-6 bg-white p-6 shadow-xl rounded-2xl max-w-[200px] border border-gray-100 hidden md:block"
+                            >
+                                <p className="font-serif text-2xl text-[var(--accent-gold)] font-bold">100%</p>
+                                <p className="text-gray-500 text-sm uppercase tracking-wider font-medium">Authentic & Original</p>
+                            </motion.div>
+                        </motion.div>
+                    </div>
+
+                </div>
             </div>
 
-            {/* Progress Bar (Bottom) */}
-            <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center gap-4">
-                {slides.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`h-1 transition-all duration-300 ${index === currentSlide ? 'w-16 bg-[var(--accent-gold)]' : 'w-6 bg-white/30'
-                            }`}
-                    />
-                ))}
+            {/* Bottom Scroller Text */}
+            <div className="absolute bottom-0 w-full overflow-hidden py-4 bg-[var(--accent-gold)]/5 border-t border-[var(--accent-gold)]/10">
+                <div className="whitespace-nowrap animate-marquee flex gap-12 text-[var(--accent-gold)]/40 font-serif text-4xl italic">
+                    <span>Bhagwati Expression</span>
+                    <span>•</span>
+                    <span>Timeless Elegance</span>
+                    <span>•</span>
+                    <span>Royal Couture</span>
+                    <span>•</span>
+                    <span>Bhagwati Expression</span>
+                    <span>•</span>
+                    <span>Timeless Elegance</span>
+                    <span>•</span>
+                    <span>Royal Couture</span>
+                </div>
             </div>
-
         </section>
     );
 };
