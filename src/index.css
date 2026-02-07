@@ -69,7 +69,12 @@
   }
 
   .nav-link-modern {
-    @apply text-xs uppercase tracking-[0.3em] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all relative py-2 transform-gpu;
+    @apply text-xs uppercase tracking-[0.3em] font-medium transition-all relative py-2 transform-gpu;
+    color: inherit;
+  }
+
+  .nav-link-modern:hover {
+    color: var(--accent-gold);
   }
 
   .nav-link-modern::after {
