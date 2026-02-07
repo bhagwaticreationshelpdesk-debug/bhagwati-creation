@@ -2,8 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ownerImage from '../assets/hero_face_final.png'; // Make sure the user saves their image here!
-import heroBgPattern from '../assets/hero1.png'; // Using an existing pattern for texture if available, or fallback
+import ownerImage from '../assets/hero_face_final.png'; // Updated to correct file name
 
 const Hero = () => {
     return (
