@@ -6,40 +6,40 @@ const Hero = () => {
     const navigate = useNavigate();
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    // Using high-quality curated images from Unsplash for a fresh, premium look
+    // Brand New "Wide & Attractive" curated images
     const slides = [
         {
-            image: "https://images.unsplash.com/photo-1596483548232-9c3f8dfa00de?q=80&w=2070&auto=format&fit=crop", // Elegant Red/Bridal
-            title: "The Royal Wedding Edit",
-            subtitle: "Handcrafted lehengas for your fairytale moment.",
-            cta: "View Bridal Collection",
+            image: "https://images.unsplash.com/photo-1512101131154-1296ac97fe41?q=80&w=2070&auto=format&fit=crop", // Wide Bridal/Cinematic
+            title: "Regal Bridal Couture",
+            subtitle: "Timeless lehengas crafted for your perfect day.",
+            cta: "Shop Bridal",
             link: "/category/bridal",
-            align: "left",
-            textColor: "text-white"
-        },
-        {
-            image: "https://images.unsplash.com/photo-1610123598195-26b2b64d0d3d?q=80&w=2072&auto=format&fit=crop", // Gold Silk Texture
-            title: "Silk & Zari Heritage",
-            subtitle: "Authentic Banarasi and Kanjivaram masterpieces.",
-            cta: "Explore Silk Sarees",
-            link: "/category/sarees",
             align: "center",
             textColor: "text-white"
         },
         {
-            image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=2070&auto=format&fit=crop", // Festive Yellow/Gold
-            title: "Festive Radiance",
-            subtitle: "Shine bright with our exclusive Haldi & Mehendi range.",
-            cta: "Shop Festive Wear",
-            link: "/category/festive",
-            align: "right",
-            textColor: "text-yellow-50"
+            image: "https://images.unsplash.com/photo-1550614000-4b9519e09477?q=80&w=2070&auto=format&fit=crop", // Vibrant Pink/Orange Texture
+            title: "Vibrant Festive hues",
+            subtitle: "Celebrate in style with our colorful festive collection.",
+            cta: "View Collection",
+            link: "/category/haldi-special",
+            align: "left",
+            textColor: "text-white"
         },
         {
-            image: "https://images.unsplash.com/photo-1583391733958-d02442d77157?q=80&w=2070&auto=format&fit=crop", // Elegant Saree/Modern
-            title: "Modern Ethnic Chic",
-            subtitle: "Contemporary silhouettes for the new-age woman.",
-            cta: "See New Arrivals",
+            image: "https://images.unsplash.com/photo-1622324976451-872f2d9c394c?q=80&w=2070&auto=format&fit=crop", // Elegant Model/Saree
+            title: "The Saree Edit",
+            subtitle: "Graceful drapes in silk, georgette, and organza.",
+            cta: "Explore Sarees",
+            link: "/category/sarees",
+            align: "right",
+            textColor: "text-white"
+        },
+        {
+            image: "https://images.unsplash.com/photo-1596483548232-9c3f8dfa00de?q=80&w=2070&auto=format&fit=crop", // Modern/Chic Red
+            title: "Modern Ethnic",
+            subtitle: "Contemporary styles for the new generation.",
+            cta: "New Arrivals",
             link: "/category/new-arrivals",
             align: "left",
             textColor: "text-white"
@@ -81,15 +81,15 @@ const Hero = () => {
                         />
                         {/* Gradient Overlay for Text Readability - carefully tuned */}
                         <div className={`absolute inset-0 bg-gradient-to-t ${slide.align === 'center'
-                                ? 'from-black/70 via-black/20 to-black/40'
-                                : 'from-black/60 via-transparent to-black/30'
+                            ? 'from-black/70 via-black/20 to-black/40'
+                            : 'from-black/60 via-transparent to-black/30'
                             }`}></div>
                     </div>
 
                     {/* Content Layer */}
                     <div className={`absolute inset-0 flex items-center p-8 md:p-16 ${slide.align === 'left' ? 'justify-start' :
-                            slide.align === 'right' ? 'justify-end' :
-                                'justify-center text-center'
+                        slide.align === 'right' ? 'justify-end' :
+                            'justify-center text-center'
                         }`}>
                         <div className={`max-w-xl space-y-6 transform transition-all duration-700 delay-300 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                             }`}>
