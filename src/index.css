@@ -42,9 +42,17 @@
   }
 }
 
+/* Hardware Acceleration & Optimization */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
 @layer components {
   .btn-gold {
-    @apply relative px-8 py-3 bg-transparent border border-[var(--accent-gold)] text-[var(--accent-gold)] uppercase tracking-[0.2em] font-semibold text-xs overflow-hidden transition-all duration-500 hover:text-white;
+    @apply relative px-8 py-3 bg-transparent border border-[var(--accent-gold)] text-[var(--accent-gold)] uppercase tracking-[0.2em] font-semibold text-xs overflow-hidden transition-all duration-500 hover:text-white transform-gpu;
   }
 
   .btn-gold::before {
@@ -56,17 +64,25 @@
     @apply translate-y-0;
   }
 
+  .btn-gold:active {
+    @apply scale-95 transition-transform duration-75;
+  }
+
   .nav-link-modern {
-    @apply text-xs uppercase tracking-[0.3em] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all relative py-2;
+    @apply text-xs uppercase tracking-[0.3em] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all relative py-2 transform-gpu;
   }
 
   .nav-link-modern::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300;
+    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-500;
   }
 
   .nav-link-modern:hover::after {
     @apply w-full;
+  }
+
+  .product-card-zoom {
+    @apply transition-transform duration-[2000ms] ease-out transform-gpu will-change-transform;
   }
 }
 
@@ -84,7 +100,7 @@
 }
 
 .glass-header {
-  @apply backdrop-blur-md bg-white/70 border-b border-gray-100;
+  @apply backdrop-blur-md bg-white/70 border-b border-gray-10;
 }
 
 .animate-draw {

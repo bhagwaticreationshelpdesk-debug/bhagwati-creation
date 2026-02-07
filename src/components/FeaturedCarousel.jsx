@@ -11,6 +11,8 @@ import video6 from '../assets/carousel-video-6.mp4';
 
 const FeaturedCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const containerRef = useRef(null);
 
     const slides = [
         { id: 1, video: video1, title: 'Ethnic Elegance', subtitle: 'Shop Collection' },
@@ -22,11 +24,21 @@ const FeaturedCarousel = () => {
     ];
 
     useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => setIsVisible(entry.isIntersecting),
+            { threshold: 0.1 }
+        );
+        if (containerRef.current) observer.observe(containerRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!isVisible) return;
         const timer = setInterval(() => {
             handleNext();
         }, 5000);
         return () => clearInterval(timer);
-    }, [currentIndex]);
+    }, [currentIndex, isVisible]);
 
     const handleNext = () => {
         setCurrentIndex((prev) => (prev + 1) % slides.length);
@@ -41,7 +53,7 @@ const FeaturedCarousel = () => {
     };
 
     return (
-        <section className="py-12 bg-white overflow-hidden w-full relative">
+        <section ref={containerRef} className="py-12 bg-white overflow-hidden w-full relative">
             <div className="container mx-auto px-4 relative h-[300px] md:h-[400px] flex items-center justify-center">
 
                 {/* Navigation Buttons (Small & Minimal) */}
@@ -67,11 +79,10 @@ const FeaturedCarousel = () => {
                     <div className="absolute left-[-10%] md:left-0 w-[60%] md:w-[45%] h-[60%] md:h-[70%] opacity-40 transform scale-90 transition-all duration-500 ease-in-out z-0 blur-[2px] rounded-xl overflow-hidden saturate-0">
                         <video
                             src={slides[getVisibleSlideIndex(-1)].video}
-                            autoPlay
                             loop
                             muted
                             playsInline
-                            preload="none"
+                            preload="metadata"
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-black/10"></div>
@@ -85,7 +96,7 @@ const FeaturedCarousel = () => {
                             loop
                             muted
                             playsInline
-                            preload="none"
+                            preload="auto"
                             className="w-full h-full object-cover"
                         />
                         {/* High Contrast Overlay - Refined Gradient */}
@@ -109,11 +120,10 @@ const FeaturedCarousel = () => {
                     <div className="absolute right-[-10%] md:right-0 w-[60%] md:w-[45%] h-[60%] md:h-[70%] opacity-40 transform scale-90 transition-all duration-500 ease-in-out z-0 blur-[2px] rounded-xl overflow-hidden saturate-0">
                         <video
                             src={slides[getVisibleSlideIndex(1)].video}
-                            autoPlay
                             loop
                             muted
                             playsInline
-                            preload="none"
+                            preload="metadata"
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-black/10"></div>

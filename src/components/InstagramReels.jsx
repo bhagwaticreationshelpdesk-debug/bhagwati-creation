@@ -19,11 +19,23 @@ const reviewsData = [
 const ReviewCard = ({ data }) => {
     const videoRef = useRef(null);
     const [isMuted, setIsMuted] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.play().catch(e => console.log("Autoplay blocked/failed", e));
-        }
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    videoRef.current?.play().catch(() => { });
+                } else {
+                    videoRef.current?.pause();
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (videoRef.current) observer.observe(videoRef.current);
+        return () => observer.disconnect();
     }, []);
 
     const toggleMute = (e) => {

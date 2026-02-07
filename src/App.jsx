@@ -29,10 +29,16 @@ function App() {
     <div className="min-h-screen bg-white">
       <ScrollToTop />
       <Header />
-      <main>
+      <main className="animate-in fade-in slide-in-from-bottom-2 duration-700">
         <Suspense fallback={
-          <div className="flex justify-center items-center h-[60vh]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          <div className="flex flex-col justify-center items-center h-[80vh] bg-white gap-6">
+            <div className="relative">
+              <div className="w-16 h-16 rounded-full border-2 border-[var(--accent-gold)]/20 animate-ping"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <LogoIcon scale={0.8} />
+              </div>
+            </div>
+            <p className="text-[10px] uppercase tracking-[0.5em] text-[var(--accent-gold)] font-bold animate-pulse">Curating Excellence</p>
           </div>
         }>
           <Routes>

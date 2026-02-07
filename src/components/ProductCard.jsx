@@ -3,7 +3,7 @@ import { Heart, ShoppingBag, Eye } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ product, onQuickView }) => {
+const ProductCard = React.memo(({ product, onQuickView }) => {
     const [isHovered, setIsHovered] = useState(false);
     const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useShop();
     const navigate = useNavigate();
@@ -34,7 +34,7 @@ const ProductCard = ({ product, onQuickView }) => {
 
     return (
         <div
-            className="group cursor-pointer relative"
+            className="group cursor-pointer relative gpu-accelerated"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => navigate(`/product/${product.id}`)}
@@ -45,7 +45,7 @@ const ProductCard = ({ product, onQuickView }) => {
                         src={product.image}
                         alt={product.name}
                         loading="lazy"
-                        className={`w-full h-full object-cover transition-transform duration-[2000ms] ${isHovered ? 'scale-110' : 'scale-100'}`}
+                        className={`w-full h-full object-cover product-card-zoom ${isHovered ? 'scale-110' : 'scale-100'}`}
                     />
                 ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center text-gray-300 bg-gray-50 uppercase tracking-[0.2em] text-[10px]">
@@ -54,7 +54,7 @@ const ProductCard = ({ product, onQuickView }) => {
                 )}
 
                 {/* Glassmorphism Quick Action */}
-                <div className={`absolute bottom-4 left-4 right-4 transition-all duration-500 overflow-hidden rounded-full ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                <div className={`absolute bottom-4 left-4 right-4 transition-all duration-500 overflow-hidden rounded-full transform-gpu ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                     }`}>
                     <button
                         onClick={handleAddToCart}
@@ -68,14 +68,14 @@ const ProductCard = ({ product, onQuickView }) => {
                 <div className="absolute top-4 right-4 flex flex-col gap-2">
                     <button
                         onClick={handleWishlist}
-                        className={`p-3 rounded-full transition-all duration-500 ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
+                        className={`p-3 rounded-full transition-all duration-500 transform-gpu ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
                             } ${isWishlisted ? 'bg-[var(--accent-gold)] text-white' : 'bg-white/80 backdrop-blur-sm text-gray-400 hover:text-[var(--accent-gold)]'}`}
                     >
                         <Heart size={16} fill={isWishlisted ? "currentColor" : "none"} />
                     </button>
                     <button
                         onClick={handleQuickView}
-                        className={`p-3 rounded-full bg-white/80 backdrop-blur-sm text-gray-400 hover:text-[var(--accent-gold)] transition-all duration-500 delay-75 ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
+                        className={`p-3 rounded-full bg-white/80 backdrop-blur-sm text-gray-400 hover:text-[var(--accent-gold)] transition-all duration-500 delay-75 transform-gpu ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
                             }`}
                     >
                         <Eye size={16} />
@@ -102,6 +102,6 @@ const ProductCard = ({ product, onQuickView }) => {
             </div>
         </div>
     );
-};
+});
 
 export default ProductCard;
