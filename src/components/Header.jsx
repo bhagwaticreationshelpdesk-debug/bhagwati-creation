@@ -48,7 +48,12 @@ const Header = () => {
                     {/* Navigation - Center */}
                     <nav className="hidden xl:flex items-center gap-12">
                         {navigation.map((item) => (
-                            <Link key={item.name} to={item.path} className="nav-link-modern">
+                            <Link
+                                key={item.name}
+                                to={item.path}
+                                className={`text-xs uppercase tracking-[0.3em] font-medium transition-all relative py-2 nav-link-modern ${isScrolled ? 'text-[var(--text-secondary)]' : 'text-white'
+                                    }`}
+                            >
                                 {item.name}
                             </Link>
                         ))}
@@ -56,12 +61,18 @@ const Header = () => {
 
                     {/* Action Icons */}
                     <div className="flex items-center gap-6 md:gap-8">
-                        <button onClick={() => setIsSearchOpen(true)} className="text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors">
+                        <button
+                            onClick={() => setIsSearchOpen(true)}
+                            className={`transition-colors hover:text-[var(--accent-gold)] ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}
+                        >
                             <Search size={20} strokeWidth={1.5} />
                         </button>
 
                         <div className="relative group flex items-center cursor-pointer">
-                            <button onClick={() => !isLoggedIn && setIsLoginOpen(true)} className="text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors">
+                            <button
+                                onClick={() => !isLoggedIn && setIsLoginOpen(true)}
+                                className={`transition-colors hover:text-[var(--accent-gold)] ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}
+                            >
                                 <User size={20} strokeWidth={1.5} />
                             </button>
                             {isLoggedIn && (
@@ -74,14 +85,17 @@ const Header = () => {
                             )}
                         </div>
 
-                        <Link to="/cart" className="relative text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors">
+                        <Link to="/cart" className={`relative transition-colors hover:text-[var(--accent-gold)] ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}>
                             <ShoppingBag size={20} strokeWidth={1.5} />
                             <span className="absolute -top-2 -right-2 w-4 h-4 bg-[var(--accent-gold)] text-white text-[8px] flex items-center justify-center rounded-full font-bold">
                                 {cart.length}
                             </span>
                         </Link>
 
-                        <button onClick={() => setIsMobileMenuOpen(true)} className="xl:hidden text-[var(--text-primary)]">
+                        <button
+                            onClick={() => setIsMobileMenuOpen(true)}
+                            className={`xl:hidden transition-colors ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}
+                        >
                             <Menu size={20} strokeWidth={1.5} />
                         </button>
                     </div>

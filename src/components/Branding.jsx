@@ -34,7 +34,7 @@ export const ModernLogo = ({ light = false }) => (
             </svg>
         </div>
         <div className="flex flex-col">
-            <h1 className={`text-2xl font-serif font-bold tracking-[0.25em] leading-tight ${light ? 'text-white' : 'text-[var(--text-primary)]'}`}>
+            <h1 className="text-2xl font-serif font-bold tracking-[0.25em] leading-tight text-[var(--accent-gold)]">
                 BHAGWATI
             </h1>
             <div className="flex items-center gap-2">
