@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const LogoIcon = ({ scale = 1, className = "" }) => (
+export const LogoIcon = ({ scale = 1, className = "", color = "var(--accent-gold)" }) => (
     <div className={`relative flex items-center justify-center ${className}`} style={{ width: `${scale * 56}px`, height: `${scale * 56}px` }}>
         <svg viewBox="0 0 100 100" className="w-full h-full fill-none overflow-visible">
-            <circle cx="50" cy="50" r="48" className="stroke-[var(--accent-gold)] stroke-[0.5] opacity-20" />
-            <circle cx="50" cy="50" r="42" className="stroke-[var(--accent-gold)] stroke-[0.2] opacity-10" />
-            <g className="stroke-[var(--accent-gold)] stroke-[1.5]">
+            <circle cx="50" cy="50" r="48" className="stroke-[0.5] opacity-20" style={{ stroke: color }} />
+            <circle cx="50" cy="50" r="42" className="stroke-[0.2] opacity-10" style={{ stroke: color }} />
+            <g className="stroke-[1.5]" style={{ stroke: color }}>
                 {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
                     <path
                         key={angle}
@@ -19,8 +19,8 @@ export const LogoIcon = ({ scale = 1, className = "" }) => (
             </g>
             <path
                 d="M45 45 L55 45 L55 55 L45 55 Z"
-                className="fill-[var(--accent-gold)] animate-pulse"
-                style={{ animationDuration: '3s' }}
+                className="animate-pulse"
+                style={{ animationDuration: '3s', fill: color }}
             />
         </svg>
     </div>
