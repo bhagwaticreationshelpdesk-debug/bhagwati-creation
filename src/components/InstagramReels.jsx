@@ -63,7 +63,7 @@ const ReviewCard = ({ data }) => {
             onClick={handleCardClick}
         >
             {/* Card Container - Fixed Aspect Ratio */}
-            <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border-2 border-transparent group-hover:border-pink-500 transition-all duration-300 bg-gray-900">
+            <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border-2 border-transparent group-hover:border-[var(--accent-gold)] transition-all duration-300 bg-gray-900">
                 <video
                     ref={videoRef}
                     src={data.video}
@@ -115,13 +115,14 @@ const InstagramReels = () => {
             <div className="container mx-auto px-4">
 
                 {/* Header Section */}
-                <div className="text-center mb-12 space-y-3">
-                    <span className="text-pink-600 font-semibold tracking-wider text-sm uppercase">Real Stories, Real Style</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                        Customer <span className="text-pink-600">Love</span>
+                <div className="text-center mb-16 space-y-4">
+                    <span className="text-[var(--accent-gold)] font-bold tracking-[0.4em] text-[10px] uppercase">Real Grace, Real Style</span>
+                    <h2 className="text-4xl md:text-5xl font-serif text-[var(--text-primary)]">
+                        Royal <span className="text-[var(--accent-gold)] italic">Stories</span>
                     </h2>
-                    <p className="text-gray-500 max-w-2xl mx-auto">
-                        See how our customers are styling their favorite Bhagwati Creations outfits. Join our community on Instagram!
+                    <div className="w-24 h-px bg-gray-200 mx-auto mt-6"></div>
+                    <p className="text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+                        See how our patrons are styling their favorite Bhagwati Creations couture. Join our royal community on Instagram!
                     </p>
                 </div>
 
@@ -134,15 +135,15 @@ const InstagramReels = () => {
                     ))}
                 </div>
 
-                <div className="mt-8 text-center">
+                <div className="mt-16 text-center">
                     <a
                         href="https://www.instagram.com/bhagwati_creations01/"
                         target="_blank"
                         rel="noreferrer"
-                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] rounded-full text-white font-bold tracking-wide shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-pink-500/50"
+                        className="inline-flex items-center gap-4 px-12 py-5 bg-[var(--accent-gold)] rounded-full text-white font-bold tracking-[0.2em] uppercase text-xs shadow-2xl shadow-[var(--accent-gold)]/20 hover:scale-105 transition-all duration-500 hover:bg-black group"
                     >
-                        <Instagram size={24} className="group-hover:rotate-12 transition-transform" />
-                        <span className="text-base">Follow for Exclusive Giveaways & Crazy Steals! ✨</span>
+                        <Instagram size={20} className="group-hover:rotate-12 transition-transform" />
+                        <span>Join Our Royal Circle</span>
                     </a>
                 </div>
 

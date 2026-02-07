@@ -37,10 +37,10 @@ const Header = () => {
     };
 
     return (
-        <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'py-2' : 'py-6 px-4 md:px-8'}`}>
-            <header className={`container mx-auto rounded-full transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-2xl shadow-black/5 border border-white/20' : 'bg-transparent'
+        <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'py-2 px-2 md:px-4' : 'py-6 px-4 md:px-6'}`}>
+            <header className={`w-full max-w-[1600px] mx-auto rounded-full transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-2xl shadow-black/5 border border-white/20' : 'bg-transparent'
                 }`}>
-                <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-12">
+                <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-6">
 
                     {/* Brand Section */}
                     <ModernLogo />

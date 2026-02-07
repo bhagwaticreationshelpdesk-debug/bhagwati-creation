@@ -1,5 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
+import { LogoIcon } from './Branding';
 
 const AboutModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
@@ -18,7 +19,10 @@ const AboutModal = ({ isOpen, onClose }) => {
                 </button>
 
                 <div className="text-center">
-                    <h2 className="text-4xl font-serif font-bold text-primary mb-8">About Us</h2>
+                    <div className="flex justify-center mb-6">
+                        <LogoIcon scale={1.2} />
+                    </div>
+                    <h2 className="text-4xl font-serif font-bold text-primary mb-8 tracking-widest uppercase">About Us</h2>
 
                     <div className="space-y-6 text-gray-700 font-serif leading-relaxed text-lg">
                         <p>

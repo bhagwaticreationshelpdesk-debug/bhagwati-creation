@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Minus } from 'lucide-react';
-import logo from '../assets/logo_v6.png';
+import { LogoIcon } from './Branding';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -159,7 +159,7 @@ const Chatbot = () => {
                     <div className="bg-primary p-4 flex justify-between items-center text-white">
                         <div className="flex items-center gap-2">
                             <div className="bg-white/20 p-1 rounded-full w-8 h-8 flex items-center justify-center overflow-hidden">
-                                <img src={logo} alt="Bot" className="w-full h-full object-cover" />
+                                <LogoIcon scale={0.5} />
                             </div>
                             <div>
                                 <h3 className="font-semibold text-sm">Bhagwati Assistant</h3>
@@ -222,7 +222,7 @@ const Chatbot = () => {
             {isMinimized && isOpen && (
                 <div className="pointer-events-auto bg-white p-3 rounded-full shadow-xl border border-gray-100 mb-4 flex items-center gap-3 animate-in slide-in-from-bottom-2 cursor-pointer hover:shadow-2xl transition-all" onClick={() => setIsMinimized(false)}>
                     <div className="bg-primary/10 p-1 rounded-full w-8 h-8 flex items-center justify-center overflow-hidden">
-                        <img src={logo} alt="Bot" className="w-full h-full object-cover" />
+                        <LogoIcon scale={0.5} />
                     </div>
                     <div className="pr-2">
                         <p className="text-xs font-semibold text-gray-800">Chat with us</p>
@@ -241,7 +241,7 @@ const Chatbot = () => {
                     onClick={() => { setIsOpen(true); setIsMinimized(false); }}
                     className="pointer-events-auto bg-primary text-white p-0 rounded-full shadow-2xl hover:bg-primary-dark transition-all duration-300 hover:scale-110 group relative w-16 h-16 flex items-center justify-center overflow-hidden border-2 border-white"
                 >
-                    <img src={logo} alt="Chat" className="w-full h-full object-cover" />
+                    <LogoIcon scale={1.1} />
                     <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full z-10"></span>
                 </button>
             )}
