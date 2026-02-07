@@ -22,8 +22,25 @@ const Header = () => {
     }, []);
 
     const navigation = [
-        { name: 'Unstitched', path: '/category/unstitched' },
-        { name: 'Stitched Catalog', path: '/category/stitched-catalog' },
+        {
+            name: 'Unstitched',
+            path: '/category/unstitched',
+            subItems: [
+                { name: 'Sarees', path: '/category/sarees' },
+                { name: 'Fabrics', path: '/category/fabrics' },
+                { name: 'Lehengas', path: '/category/lehengas' }
+            ]
+        },
+        {
+            name: 'Stitched Catalog',
+            path: '/category/stitched-catalog',
+            subItems: [
+                { name: 'Suit Sets', path: '/category/suit-sets' },
+                { name: 'Kurtas', path: '/category/kurtas' },
+                { name: 'Dresses', path: '/category/dresses' },
+                { name: 'Co-ords', path: '/category/co-ords' }
+            ]
+        },
         { name: 'New Arrivals', path: '/category/new-arrivals' },
         { name: 'All Collections', path: '/category/all-collections' }
     ];
@@ -55,15 +72,34 @@ const Header = () => {
                     {/* Navigation - Center */}
                     <nav className="hidden xl:flex items-center gap-12">
                         {navigation.map((item) => (
-                            <Link
-                                key={item.name}
-                                to={item.path}
-                                className={`text-xs uppercase tracking-[0.3em] font-medium transition-all relative py-2 nav-link-modern ${isScrolled ? 'text-[var(--text-secondary)]' : 'text-white'
-                                    }`}
-                                onMouseEnter={() => prefetchPage(item.path)}
-                            >
-                                {item.name}
-                            </Link>
+                            <div key={item.name} className="relative group flex items-center h-full">
+                                <Link
+                                    to={item.path}
+                                    className={`text-xs uppercase tracking-[0.3em] font-medium transition-all relative py-2 nav-link-modern ${isScrolled ? 'text-[var(--text-secondary)]' : 'text-white'
+                                        }`}
+                                    onMouseEnter={() => prefetchPage(item.path)}
+                                >
+                                    {item.name}
+                                </Link>
+
+                                {/* Dropdown Menu */}
+                                {item.subItems && (
+                                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                        <div className="bg-white shadow-2xl border border-gray-100 p-4 rounded-2xl overflow-hidden min-w-[200px] flex flex-col gap-2">
+                                            {item.subItems.map((subItem) => (
+                                                <Link
+                                                    key={subItem.name}
+                                                    to={subItem.path}
+                                                    className="text-xs uppercase tracking-widest text-gray-500 hover:text-[var(--accent-gold)] hover:bg-gray-50 px-4 py-3 rounded-lg transition-colors text-left"
+                                                    onMouseEnter={() => prefetchPage(subItem.path)}
+                                                >
+                                                    {subItem.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         ))}
                     </nav>
 
