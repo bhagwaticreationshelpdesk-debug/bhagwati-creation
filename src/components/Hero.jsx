@@ -1,10 +1,54 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ownerImage from '../assets/hero_face_final.png';
-import { ArrowUpRight, Star } from 'lucide-react';
+import { ArrowUpRight, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Import carousel images
+import hero1 from '../assets/hero1.png';
+import hero2 from '../assets/hero2.png';
+import hero3 from '../assets/hero3.png';
+import hero4 from '../assets/product5.png';
 
 const Hero = () => {
     const navigate = useNavigate();
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const slides = [
+        {
+            image: hero1,
+            title: "Traditional Grace",
+            tag: "Festive Collection"
+        },
+        {
+            image: hero2,
+            title: "Royal Elegance",
+            tag: "Luxury Suits"
+        },
+        {
+            image: hero3,
+            title: "Floral Charm",
+            tag: "Summer Collection"
+        },
+        {
+            image: hero4,
+            title: "Designer Pride",
+            tag: "New Arrivals"
+        }
+    ];
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
+        }, 4000);
+        return () => clearInterval(timer);
+    }, [slides.length]);
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    };
 
     return (
         <section className="relative w-full min-h-[85vh] bg-[#FFF8F0] overflow-hidden flex flex-col justify-center">
@@ -77,7 +121,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* Right Image Section */}
+                {/* Right Image Section (Carousel) */}
                 <div className="w-full lg:w-1/2 relative mt-16 lg:mt-0 flex justify-center lg:justify-end">
 
                     {/* Background blob */}
@@ -86,23 +130,56 @@ const Hero = () => {
                     <div className="relative z-10 w-full max-w-sm md:max-w-md">
                         {/* Main Image Frame - Arch Shape */}
                         <div className="relative rounded-t-full rounded-b-[200px] border-[8px] border-white shadow-2xl overflow-hidden bg-white aspect-[3/4]">
-                            <img
-                                src={ownerImage}
-                                alt="Anmol Gupta - Founder"
-                                className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-                            />
+                            {slides.map((slide, index) => (
+                                <div
+                                    key={index}
+                                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                                        }`}
+                                >
+                                    <img
+                                        src={slide.image}
+                                        alt={slide.title}
+                                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                                    />
 
-                            {/* Founder Tag */}
-                            <div className="absolute bottom-8 left-0 right-0 text-center">
-                                <div className="inline-block bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-white">
-                                    <p className="text-xs font-bold text-[#ed2585] uppercase tracking-widest mb-1">Founder</p>
-                                    <p className="text-gray-900 font-serif font-bold text-lg">Anmol Gupta</p>
+                                    {/* Collection Tag */}
+                                    <div className="absolute bottom-8 left-0 right-0 text-center">
+                                        <div className="inline-block bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-white">
+                                            <p className="text-xs font-bold text-[#ed2585] uppercase tracking-widest mb-1">{slide.tag}</p>
+                                            <p className="text-gray-900 font-serif font-bold text-lg">{slide.title}</p>
+                                        </div>
+                                    </div>
                                 </div>
+                            ))}
+
+                            {/* Slider Navigation Dots */}
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                                {slides.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentSlide(index)}
+                                        className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-[#ed2585] w-6' : 'bg-gray-300'}`}
+                                    />
+                                ))}
                             </div>
                         </div>
 
+                        {/* Slider Icons */}
+                        <button
+                            onClick={prevSlide}
+                            className="absolute -left-6 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-colors z-20 hidden md:block"
+                        >
+                            <ChevronLeft size={20} className="text-gray-900" />
+                        </button>
+                        <button
+                            onClick={nextSlide}
+                            className="absolute -right-6 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-colors z-20 hidden md:block"
+                        >
+                            <ChevronRight size={20} className="text-gray-900" />
+                        </button>
+
                         {/* Decorative Stamp */}
-                        <div className="absolute -top-6 -right-6 animate-spin-slow">
+                        <div className="absolute -top-6 -right-6 animate-spin-slow z-20">
                             <div className="relative w-28 h-28 bg-[#ed2585] rounded-full flex items-center justify-center shadow-xl border-4 border-white text-white">
                                 <svg className="w-full h-full absolute p-2" viewBox="0 0 100 100">
                                     <defs>
