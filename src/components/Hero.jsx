@@ -94,6 +94,10 @@ const Hero = () => {
 
                         <button
                             onClick={() => navigate(slide.link)}
+                            onMouseEnter={() => {
+                                // Prefetch the category page component
+                                import('../pages/CategoryPage');
+                            }}
                             className="btn-gold px-12 py-5"
                         >
                             <span className="flex items-center gap-4">

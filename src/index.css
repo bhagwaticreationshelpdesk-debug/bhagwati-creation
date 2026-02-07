@@ -52,12 +52,12 @@
 
 @layer components {
   .btn-gold {
-    @apply relative px-8 py-3 bg-transparent border border-[var(--accent-gold)] text-[var(--accent-gold)] uppercase tracking-[0.2em] font-semibold text-xs overflow-hidden transition-all duration-500 hover:text-white transform-gpu;
+    @apply relative px-8 py-3 bg-transparent border border-[var(--accent-gold)] text-[var(--accent-gold)] uppercase tracking-[0.2em] font-semibold text-xs overflow-hidden transition-all duration-300 hover:text-white transform-gpu;
   }
 
   .btn-gold::before {
     content: '';
-    @apply absolute inset-0 bg-[var(--accent-gold)] translate-y-full transition-transform duration-500 -z-10;
+    @apply absolute inset-0 bg-[var(--accent-gold)] translate-y-full transition-transform duration-300 -z-10;
   }
 
   .btn-gold:hover::before {
@@ -79,7 +79,7 @@
 
   .nav-link-modern::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-500;
+    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300;
   }
 
   .nav-link-modern:hover::after {
