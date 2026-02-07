@@ -46,7 +46,7 @@ const ProductGrid = ({ title = "New Arrivals", products: propProducts, CarouselI
                         {inputProducts.map(product => (
                             <div
                                 key={product.id}
-                                className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 min-w-0 snap-start flex-shrink-0"
+                                className="basis-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.33%-1.67rem)] lg:basis-[calc(25%-1.875rem)] xl:basis-[calc(20%-2rem)] min-w-0 snap-start flex-shrink-0"
                             >
                                 <ProductCard
                                     product={product}
