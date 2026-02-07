@@ -99,9 +99,9 @@ const ReviewCard = ({ data }) => {
 
 const InstagramReels = () => {
     return (
-        <section className="py-20 bg-slate-50">
+        <section className="py-12 bg-slate-50">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16 space-y-4">
+                <div className="text-center mb-10 space-y-4">
                     <span className="text-[var(--accent-gold)] font-bold tracking-[0.4em] text-[10px] uppercase">Real Grace, Real Style</span>
                     <h2 className="text-4xl md:text-5xl font-serif text-[var(--text-primary)]">
                         Royal <span className="text-[var(--accent-gold)] italic">Stories</span>
@@ -120,7 +120,7 @@ const InstagramReels = () => {
                     ))}
                 </div>
 
-                <div className="mt-16 text-center">
+                <div className="mt-10 text-center">
                     <a
                         href="https://www.instagram.com/bhagwati_creations01/"
                         target="_blank"

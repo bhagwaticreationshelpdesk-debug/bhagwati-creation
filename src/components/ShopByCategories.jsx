@@ -18,7 +18,7 @@ const categories = [
 
 const ShopByCategories = () => {
     return (
-        <section className="py-16 md:py-24 bg-white relative">
+        <section className="py-12 md:py-16 bg-white relative">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col items-center mb-16">
                     <span className="text-[var(--accent-gold)] text-[10px] tracking-[0.5em] uppercase font-bold mb-4">Discover Couture</span>

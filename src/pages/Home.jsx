@@ -8,7 +8,7 @@ import VideoShopping from '../components/VideoShopping';
 import { products } from '../data/products';
 
 const ProductGridSection = ({ title, CarouselId, products: sectionProducts }) => (
-    <section className="py-24 bg-white relative">
+    <section className="py-12 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
         <ProductGrid title={title} CarouselId={CarouselId} products={sectionProducts} />
     </section>
@@ -25,7 +25,7 @@ const Home = () => {
         <div className="bg-[var(--bg-primary)] min-h-screen">
             <Hero />
 
-            <div className="space-y-24 pb-24 mt-12">
+            <div className="space-y-12 pb-24 mt-12">
                 <InstagramReels />
 
                 <ProductGridSection title="New Arrivals" CarouselId="new-arrivals" />
@@ -52,7 +52,7 @@ const Home = () => {
 
                 <ShopByCategories />
 
-                <section className="py-20 bg-[var(--bg-primary)]">
+                <section className="py-12 bg-[var(--bg-primary)]">
                     <VideoShopping />
                 </section>
             </div>
