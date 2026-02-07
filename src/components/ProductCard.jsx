@@ -35,7 +35,11 @@ const ProductCard = React.memo(({ product, onQuickView }) => {
     return (
         <div
             className="group cursor-pointer relative gpu-accelerated"
-            onMouseEnter={() => setIsHovered(true)}
+            onMouseEnter={() => {
+                setIsHovered(true);
+                // Prefetch product details page for instant navigation
+                import('../pages/ProductDetails');
+            }}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => navigate(`/product/${product.id}`)}
         >

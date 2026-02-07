@@ -21,12 +21,8 @@ const InventoryService = {
             }
         }
 
-        // Simulate API delay for mock data
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(mockProducts);
-            }, 500); // 500ms delay to simulate network
-        });
+        // Return mock data immediately for better performance
+        return mockProducts;
     },
 
     /**

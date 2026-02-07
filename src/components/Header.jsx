@@ -28,6 +28,13 @@ const Header = () => {
         { name: 'All Collections', path: '/category/all-collections' }
     ];
 
+    const prefetchPage = (path) => {
+        if (path === '/cart') import('../pages/Cart');
+        if (path === '/wishlist') import('../pages/Wishlist');
+        if (path.startsWith('/category/')) import('../pages/CategoryPage');
+        if (path === '/contact') import('../pages/Contact');
+    };
+
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchQuery.trim()) {
@@ -53,6 +60,7 @@ const Header = () => {
                                 to={item.path}
                                 className={`text-xs uppercase tracking-[0.3em] font-medium transition-all relative py-2 nav-link-modern ${isScrolled ? 'text-[var(--text-secondary)]' : 'text-white'
                                     }`}
+                                onMouseEnter={() => prefetchPage(item.path)}
                             >
                                 {item.name}
                             </Link>
@@ -85,7 +93,11 @@ const Header = () => {
                             )}
                         </div>
 
-                        <Link to="/cart" className={`relative transition-colors hover:text-[var(--accent-gold)] ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}>
+                        <Link
+                            to="/cart"
+                            className={`relative transition-colors hover:text-[var(--accent-gold)] ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}
+                            onMouseEnter={() => prefetchPage('/cart')}
+                        >
                             <ShoppingBag size={20} strokeWidth={1.5} />
                             <span className="absolute -top-2 -right-2 w-4 h-4 bg-[var(--accent-gold)] text-white text-[8px] flex items-center justify-center rounded-full font-bold">
                                 {cart.length}
