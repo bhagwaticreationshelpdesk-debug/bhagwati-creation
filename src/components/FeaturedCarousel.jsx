@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import video1 from '../assets/carousel-video-1.mp4';
 import video2 from '../assets/carousel-video-2.mp4';
