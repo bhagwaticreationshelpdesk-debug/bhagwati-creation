@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import heroImage1 from '../assets/hero_festive.png';
-import heroImage2 from '../assets/hero_image.png';
+import heroImage1 from '../assets/hero_slide_1.png';
+import heroImage2 from '../assets/hero_slide_2.png';
 
 const heroSlides = [
     {
