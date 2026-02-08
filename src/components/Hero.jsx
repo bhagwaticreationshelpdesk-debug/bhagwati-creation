@@ -1,120 +1,171 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Star, ChevronRight, ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ownerImage from '../assets/hero_face_final.png'; // Updated to correct file name
+
+const heroSlides = [
+    {
+        id: 1,
+        // Using a reliable luxury fabric/fashion image
+        image: "https://images.unsplash.com/photo-1583391726247-bd742751a7fb?q=80&w=1920&auto=format&fit=crop",
+        subtitle: "Royal Couture",
+        title: "Timeless Elegance",
+        description: "Discover the finest collection of authentic ethnic wear, crafted for those who embrace tradition with style.",
+        position: "center",
+    },
+    {
+        id: 2,
+        // Using a vibrant wedding/celebration image
+        image: "https://images.unsplash.com/photo-1549488497-6060824b232d?q=80&w=1920&auto=format&fit=crop",
+        subtitle: "Handpicked Luxury",
+        title: "The Art of Weaving",
+        description: "Every thread tells a story. Explore our exclusive range of handpicked fabrics and designer ensembles.",
+        position: "top",
+    },
+    {
+        id: 3,
+        // Using a rich detailed texture image
+        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1920&auto=format&fit=crop",
+        subtitle: "Modern Tradition",
+        title: "Celebrate Grace",
+        description: "From classic sarees to contemporary lehengas, find the perfect outfit for your special moments.",
+        position: "center",
+    }
+];
 
 const Hero = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+    };
+
     return (
-        <section className="relative bg-[#FDFBF7] min-h-[85vh] flex items-center overflow-hidden">
+        <section className="relative w-full h-[85vh] bg-[#FDFBF7] overflow-hidden flex flex-col lg:flex-row">
 
-            {/* Background Texture & Gradient */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#FFF8E1] via-[#FFF5D1] to-[#FDFBF7] opacity-80"></div>
-                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }}></div>
+            {/* Left Side: Content - High Contrast Dark Mode for Text */}
+            <div className="w-full lg:w-1/2 h-full lg:h-auto relative z-20 flex flex-col justify-center px-6 md:px-12 lg:px-20 bg-[#2A0A18] text-[#FDFBF7]">
 
-                {/* Gold Accent Circles */}
-                <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full border border-[var(--accent-gold)]/10 animate-spin-slow"></div>
-                <div className="absolute top-[-5%] right-[-2%] w-[400px] h-[400px] rounded-full border border-[var(--accent-gold)]/20 animate-spin-reverse-slow"></div>
-            </div>
+                {/* Decorative Pattern Background for Left Side */}
+                <div className="absolute inset-0 opacity-10 pointer-events-none"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                    }}>
+                </div>
 
-            <div className="container mx-auto px-4 md:px-8 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-
-                    {/* Left Content - Typography */}
-                    <div className="text-center lg:text-left space-y-8 order-2 lg:order-1 pt-10 lg:pt-0">
+                <div className="relative z-10 space-y-6 lg:space-y-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-left pt-12 lg:pt-0">
+                    <AnimatePresence mode="wait">
                         <motion.div
+                            key={currentSlide}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
                         >
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/20 text-[var(--accent-gold)] text-xs font-bold tracking-[0.2em] uppercase mb-6">
-                                <Sparkles size={14} />
-                                <span>The Face of Elegance</span>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-[#D4AF37]/30 rounded-full bg-[#D4AF37]/10 w-fit mx-auto lg:mx-0">
+                                <Star size={12} className="text-[#D4AF37] fill-[#D4AF37]" />
+                                <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase">
+                                    {heroSlides[currentSlide].subtitle}
+                                </span>
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-[var(--text-primary)] leading-[1.1]">
-                                <span className="block" style={{ fontFamily: 'Playfair Display' }}>Bhagwati</span>
-                                <span className="block text-4xl md:text-6xl text-[var(--accent-gold)] italic mt-2" style={{ fontFamily: 'Cinzel Decorative' }}>Creation</span>
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] mb-4">
+                                <span className="block text-[#FDFBF7]">{heroSlides[currentSlide].title.split(' ')[0]}</span>
+                                <span className="block text-[#D4AF37] italic font-light ml-8 lg:ml-16" style={{ fontFamily: 'Cinzel Decorative' }}>
+                                    {heroSlides[currentSlide].title.split(' ').slice(1).join(' ')}
+                                </span>
                             </h1>
 
-                            <p className="text-gray-600 text-lg md:text-xl font-light max-w-xl mx-auto lg:mx-0 mt-6 leading-relaxed">
-                                Curating the finest ethnic wear with a personal touch. Experience the tradition of luxury and the warmth of genuine craftsmanship.
+                            <p className="text-gray-300 text-lg font-light leading-relaxed max-w-md mx-auto lg:mx-0">
+                                {heroSlides[currentSlide].description}
                             </p>
-
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-10">
-                                <Link to="/category/new-arrivals" className="btn-gold px-10 py-4 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl hover:shadow-[var(--accent-gold)]/20 transition-all group">
-                                    <span>Refine Your Style</span>
-                                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                                </Link>
-                                <Link to="/about" className="px-10 py-4 border border-gray-300 rounded-full font-medium text-gray-600 hover:bg-white hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all bg-white/50 backdrop-blur-sm">
-                                    Meet the Creator
-                                </Link>
-                            </div>
                         </motion.div>
-                    </div>
+                    </AnimatePresence>
 
-                    {/* Right Content - The "Face Value" Image */}
-                    <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1, delay: 0.2 }}
-                            className="relative w-[300px] h-[400px] md:w-[400px] md:h-[500px] lg:w-[450px] lg:h-[600px]"
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <Link
+                            to="/category/new-arrivals"
+                            className="group relative px-8 py-4 bg-[#D4AF37] text-[#2A0A18] font-bold tracking-widest uppercase text-xs overflow-hidden transition-all hover:bg-white hover:text-[#2A0A18]"
                         >
-                            {/* Decorative Frame Behind */}
-                            <div className="absolute inset-0 border-2 border-[var(--accent-gold)]/30 rounded-t-[10rem] transform translate-x-4 translate-y-4"></div>
-
-                            {/* Main Image Container */}
-                            <div className="absolute inset-0 bg-[var(--accent-gold)]/5 rounded-t-[10rem] overflow-hidden shadow-2xl">
-                                {/* This is where the user's photo goes. 
-                                    Using a placeholder/fallback logic if the file isn't there yet would be standard, 
-                                    but for now we assume they will put the file there. */}
-                                <img
-                                    src={ownerImage}
-                                    alt="Bhagwati Creation Owner"
-                                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-1000"
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop";
-                                        e.target.parentElement.classList.add('grayscale'); // visual indicator it's a fallback
-                                    }}
-                                />
-
-                                {/* Gradient Overlay for text readability at bottom if needed */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
-                            </div>
-
-                            {/* Floating Badge */}
-                            <motion.div
-                                initial={{ y: 20, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.8 }}
-                                className="absolute -bottom-6 -left-6 bg-white p-6 shadow-xl rounded-2xl max-w-[200px] border border-gray-100 hidden md:block"
-                            >
-                                <p className="font-serif text-2xl text-[var(--accent-gold)] font-bold">100%</p>
-                                <p className="text-gray-500 text-sm uppercase tracking-wider font-medium">Authentic & Original</p>
-                            </motion.div>
-                        </motion.div>
+                            <span className="relative z-10 flex items-center gap-2">
+                                Shop Collection <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                            </span>
+                        </Link>
+                        <Link
+                            to="/about"
+                            className="group px-8 py-4 border border-[#D4AF37]/30 text-[#D4AF37] font-bold tracking-widest uppercase text-xs hover:bg-[#D4AF37]/10 transition-colors"
+                        >
+                            View Our Story
+                        </Link>
                     </div>
+                </div>
 
+                {/* Custom Navigation Dots for Mobile/Tablet */}
+                <div className="flex justify-center lg:justify-start gap-3 mt-12 lg:absolute lg:bottom-12 lg:left-20">
+                    {heroSlides.map((slide, index) => (
+                        <button
+                            key={slide.id}
+                            onClick={() => setCurrentSlide(index)}
+                            className={`h-1 rounded-full transition-all duration-300 ${currentSlide === index ? 'w-8 bg-[#D4AF37]' : 'w-2 bg-[#D4AF37]/30 hover:bg-[#D4AF37]/60'
+                                }`}
+                            aria-label={`Go to slide ${index + 1}`}
+                        />
+                    ))}
                 </div>
             </div>
 
-            {/* Bottom Scroller Text */}
-            <div className="absolute bottom-0 w-full overflow-hidden py-4 bg-[var(--accent-gold)]/5 border-t border-[var(--accent-gold)]/10">
-                <div className="whitespace-nowrap animate-marquee flex gap-12 text-[var(--accent-gold)]/40 font-serif text-4xl italic">
-                    <span>Bhagwati Expression</span>
-                    <span>•</span>
-                    <span>Timeless Elegance</span>
-                    <span>•</span>
-                    <span>Royal Couture</span>
-                    <span>•</span>
-                    <span>Bhagwati Expression</span>
-                    <span>•</span>
-                    <span>Timeless Elegance</span>
-                    <span>•</span>
-                    <span>Royal Couture</span>
+            {/* Right Side: Image Slider */}
+            <div className="w-full lg:w-1/2 h-[50vh] lg:h-full relative overflow-hidden bg-gray-900">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentSlide}
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }} // Smooth slow zoom effect
+                        className="absolute inset-0 w-full h-full"
+                    >
+                        {/* Image with overlay for better contrast integration at the edge */}
+                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#2A0A18]/50 lg:to-[#2A0A18] z-10 opacity-70 lg:opacity-100 lg:w-[10%]"></div>
+                        <img
+                            src={heroSlides[currentSlide].image}
+                            alt={heroSlides[currentSlide].title}
+                            className="w-full h-full object-cover object-center"
+                            style={{ objectPosition: heroSlides[currentSlide].position }}
+                        />
+                    </motion.div>
+                </AnimatePresence>
+
+                {/* Navigation Arrows */}
+                <div className="absolute bottom-8 right-8 z-20 flex gap-2">
+                    <button
+                        onClick={prevSlide}
+                        className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#2A0A18] transition-all"
+                    >
+                        <ChevronLeft size={20} />
+                    </button>
+                    <button
+                        onClick={nextSlide}
+                        className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#2A0A18] transition-all"
+                    >
+                        <ChevronRight size={20} />
+                    </button>
+                </div>
+
+                {/* Badge */}
+                <div className="absolute top-8 right-8 z-20 bg-white/90 backdrop-blur text-[#2A0A18] px-4 py-2 rounded-sm text-xs font-bold tracking-wider shadow-lg">
+                    EST. 2024
                 </div>
             </div>
         </section>
