@@ -165,20 +165,18 @@ const LoginModal = ({ isOpen, onClose }) => {
 
                                 <button
                                     onClick={() => {
-                                        // In a real implementation:
-                                        // 1. Redirect to your OTPless/WhatsApp Auth URL
-                                        // window.location.href = 'https://bhagwati.authlink.me'
+                                        // 1. Open WhatsApp (Demo) to show functionality
+                                        window.open('https://wa.me/', '_blank');
 
-                                        // For now, simulate the experience
+                                        // 2. Simulate Login Success
                                         setIsLoading(true);
                                         setTimeout(() => {
                                             setIsLoading(false);
                                             login();
                                             onClose();
-                                            alert("Verified via WhatsApp successfully!");
-                                        }, 1000);
+                                        }, 2000);
                                     }}
-                                    className="w-full py-4 border border-[#25D366] bg-[#25D366]/10 hover:bg-[#25D366] text-[#075E54] hover:text-white text-sm font-bold flex items-center justify-center gap-3 transition-all duration-300 group shadow-lg hover:shadow-[#25D366]/40 rounded-sm"
+                                    className="relative z-20 cursor-pointer w-full py-4 border border-[#25D366] bg-[#25D366]/10 hover:bg-[#25D366] text-[#075E54] hover:text-white text-sm font-bold flex items-center justify-center gap-3 transition-all duration-300 group shadow-lg hover:shadow-[#25D366]/40 rounded-sm active:scale-95"
                                 >
                                     {/* WhatsApp Icon */}
                                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
