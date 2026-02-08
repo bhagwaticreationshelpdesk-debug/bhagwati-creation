@@ -55,7 +55,7 @@ const Hero = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                    className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
+                    className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing touch-pan-y"
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     onDragEnd={handleDragEnd}

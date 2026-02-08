@@ -66,8 +66,8 @@ const Header = () => {
         <div className={`sticky top-0 left-0 w-full z-50 transition-all duration-500 pointer-events-none ${isScrolled ? 'py-2' : 'py-4'} px-4`}>
             <header
                 className={`w-full mx-auto rounded-full shadow-2xl border border-white/10 pointer-events-auto transition-all duration-500 ease-in-out ${isScrolled
-                        ? 'max-w-5xl bg-black/80 backdrop-blur-md'
-                        : 'max-w-[1600px] bg-black/95 backdrop-blur-xl'
+                    ? 'max-w-5xl bg-black/80 backdrop-blur-md'
+                    : 'max-w-[1600px] bg-black/95 backdrop-blur-xl'
                     }`}
             >
                 <div className={`flex items-center justify-between px-4 md:px-8 transition-all duration-500 ${isScrolled ? 'h-14' : 'h-16 md:h-20'}`}>
@@ -179,8 +179,8 @@ const Header = () => {
             )}
 
             {/* Mobile Menu Drawer */}
-            <div className={`fixed inset-0 z-[100] bg-black/60 transition-opacity duration-500 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setIsMobileMenuOpen(false)}>
-                <div className={`absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl transition-transform duration-700 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`} onClick={e => e.stopPropagation()}>
+            <div className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setIsMobileMenuOpen(false)}>
+                <div className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl transition-transform duration-500 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`} onClick={e => e.stopPropagation()}>
                     <div className="p-10 flex flex-col h-full">
                         <button onClick={() => setIsMobileMenuOpen(false)} className="self-end mb-20 p-2 hover:bg-gray-100 rounded-full transition-colors">
                             <X size={24} />

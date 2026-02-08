@@ -12,7 +12,7 @@ const Footer = ({ onAboutClick }) => {
     return (
         <footer className="bg-[var(--bg-dark)] py-20 text-white border-t border-white/5">
             <div className="container mx-auto px-4 md:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-16 mb-16">
                     {/* Brand Column */}
                     <div className="flex flex-col gap-8">
                         <ModernLogo light={true} />

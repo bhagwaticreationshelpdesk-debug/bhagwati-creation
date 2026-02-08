@@ -52,8 +52,39 @@ const FeaturedCarousel = () => {
         return (currentIndex + offset + slides.length) % slides.length;
     };
 
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
+
+    // Minimum swipe distance
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+        if (isLeftSwipe) {
+            handleNext();
+        } else if (isRightSwipe) {
+            handlePrev();
+        }
+    };
+
     return (
-        <section ref={containerRef} className="py-6 bg-white overflow-hidden w-full relative">
+        <section
+            ref={containerRef}
+            className="py-6 bg-white overflow-hidden w-full relative touch-pan-y"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+        >
             <div className="container mx-auto px-4 relative h-[300px] md:h-[400px] flex items-center justify-center">
 
                 {/* Navigation Buttons (Small & Minimal) */}
