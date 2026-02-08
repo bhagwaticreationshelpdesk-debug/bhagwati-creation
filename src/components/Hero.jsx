@@ -39,7 +39,13 @@ const Hero = () => {
     };
 
     return (
-        <section className="relative w-full h-screen overflow-hidden bg-gray-900 font-sans group">
+        <section className="relative w-full overflow-hidden bg-gray-900 font-sans group">
+            {/* Invisible Sizer Image to set container aspect ratio */}
+            <img
+                src={heroSlides[0].image}
+                alt="Sizer"
+                className="w-full h-auto opacity-0 invisible relative z-0 pointer-events-none"
+            />
 
             {/* Slideshow Container */}
             <AnimatePresence>
