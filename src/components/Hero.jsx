@@ -95,58 +95,69 @@ const Hero = () => {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Content Text Overlay */}
-            <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-12">
+            {/* Content Text Overlay - Magazine/Poster Style */}
+            <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-12 pointer-events-none">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentSlide}
-                        initial={{ y: 30, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -30, opacity: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="max-w-6xl mx-auto space-y-6 md:space-y-8"
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 1.1, opacity: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="max-w-7xl mx-auto flex flex-col items-center justify-center h-full relative"
                     >
-                        {/* Highlight Pill */}
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/30 backdrop-blur-md border border-white/30 mx-auto shadow-lg">
-                            <Heart size={14} className="text-[#E63946] fill-[#E63946]" />
-                            <span className="text-white text-xs font-bold tracking-[0.2em] uppercase shadow-black drop-shadow-md">
-                                {heroSlides[currentSlide].highlight}
+                        {/* 1. Top Left Tag (Like 'New Edition' in example) */}
+                        <motion.div
+                            initial={{ x: -50, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="absolute top-12 left-4 md:left-0 md:top-20 border border-white/40 bg-black/20 backdrop-blur-md px-4 py-1.5"
+                        >
+                            <span className="text-white text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
+                                New Edition 2024
                             </span>
-                        </div>
+                        </motion.div>
 
-                        {/* Brand Name / Main Title */}
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-wide drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
-                            <span className="block font-medium" style={{ fontFamily: 'Playfair Display' }}>
-                                {heroSlides[currentSlide].title}
+                        {/* 2. Main Brand Name (Huge & Elegant) */}
+                        <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif text-white tracking-tighter drop-shadow-2xl mb-2 relative z-10">
+                            <span className="block font-medium italic" style={{ fontFamily: 'Playfair Display' }}>
+                                Bhagwati
+                            </span>
+                            <span className="block text-2xl md:text-4xl lg:text-5xl font-light tracking-[0.4em] uppercase mt-2 md:mt-4 text-[var(--accent-gold)]">
+                                Creations
                             </span>
                         </h1>
 
-                        {/* Decoration Line */}
-                        <div className="flex items-center justify-center gap-4 opacity-90">
-                            <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#D4AF37]"></div>
-                            <div className="h-2 w-2 rounded-full bg-[#D4AF37] shadow-[0_0_15px_#D4AF37]"></div>
-                            <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#D4AF37]"></div>
-                        </div>
+                        {/* 3. Contrasting 'Sticker' Message (Like 'Shuddh Desi Bridesmaids') */}
+                        <motion.div
+                            initial={{ rotate: -5, scale: 0 }}
+                            animate={{ rotate: -2, scale: 1 }}
+                            transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
+                            className="relative mt-8 mb-10"
+                        >
+                            <div className="absolute inset-0 bg-[#E63946] transform skew-x-12 rounded-sm shadow-xl"></div>
+                            <div className="relative px-8 py-2 md:px-12 md:py-4 bg-white transform -skew-x-12 border-2 border-black shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                                <span className="text-black text-xl md:text-3xl font-black uppercase tracking-tighter italic" style={{ fontFamily: 'Inter' }}>
+                                    {heroSlides[currentSlide].highlight}
+                                </span>
+                            </div>
+                            {/* Decorative Elements around sticker */}
+                            <Heart className="absolute -top-4 -right-4 text-[#E63946] fill-[#E63946] w-8 h-8 md:w-12 md:h-12 drop-shadow-lg animate-bounce" />
+                            <Heart className="absolute -bottom-4 -left-4 text-[#E63946] fill-[#E63946] w-6 h-6 md:w-8 md:h-8 drop-shadow-lg animate-pulse" />
+                        </motion.div>
 
-                        {/* Subtitle & Description */}
-                        <div className="space-y-4">
-                            <p className="text-2xl md:text-4xl text-[#F9F7F2] font-light italic tracking-wider drop-shadow-md" style={{ fontFamily: 'Cinzel Decorative' }}>
-                                {heroSlides[currentSlide].subtitle}
-                            </p>
-
-                            <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light drop-shadow-lg">
+                        {/* 4. Description & CTA */}
+                        <div className="space-y-8 max-w-2xl mx-auto pointer-events-auto">
+                            <p className="text-white/90 text-lg md:text-xl font-light drop-shadow-lg leading-relaxed hidden md:block">
                                 {heroSlides[currentSlide].description}
                             </p>
-                        </div>
 
-                        {/* CTA Button */}
-                        <div className="pt-8">
                             <Link
                                 to="/category/new-arrivals"
-                                className="inline-flex items-center gap-3 px-10 py-4 bg-white/90 text-black text-sm font-bold tracking-[0.2em] uppercase hover:bg-[#D4AF37] hover:text-white transition-all duration-300 group shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] rounded-sm backdrop-blur-sm"
+                                className="inline-flex items-center gap-3 px-10 py-4 bg-white text-black text-sm font-bold tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]"
                             >
                                 {heroSlides[currentSlide].btnText}
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight size={18} />
                             </Link>
                         </div>
                     </motion.div>
