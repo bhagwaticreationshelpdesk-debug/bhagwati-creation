@@ -54,18 +54,34 @@ const Hero = () => {
                     dragConstraints={{ left: 0, right: 0 }}
                     onDragEnd={handleDragEnd}
                 >
-                    {/* Background Image */}
-                    <div className="relative w-full h-full overflow-hidden">
+                    {/* Background Image Container */}
+                    <div className="relative w-full h-full overflow-hidden bg-black">
+                        {/* 1. Blurred Background Layer (Fills Screen) */}
+                        <div className="absolute inset-0">
+                            <motion.img
+                                src={heroSlides[currentSlide].image}
+                                alt="Background Blur"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0.6 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 1 }}
+                                className="w-full h-full object-cover blur-2xl scale-110 opacity-50"
+                            />
+                        </div>
+
+                        {/* 2. Main Image Layer (Fits Screen) */}
                         <motion.img
                             src={heroSlides[currentSlide].image}
                             alt="Hero Slide"
-                            initial={{ scale: 1.1 }}
-                            animate={{ scale: 1 }}
-                            transition={{ duration: 6, ease: "linear" }}
-                            className="w-full h-full object-cover object-top select-none pointer-events-none"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="relative z-10 w-full h-full object-contain pointer-events-none drop-shadow-2xl"
                         />
+
                         {/* Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none z-20"></div>
                     </div>
                 </motion.div>
             </AnimatePresence>
