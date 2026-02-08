@@ -118,9 +118,14 @@ const LoginModal = ({ isOpen, onClose }) => {
                                 </div>
 
                                 <button
-                                    onClick={handleSendWhatsappOTP}
+                                    type="button"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        handleSendWhatsappOTP();
+                                    }}
                                     disabled={phoneNumber.length < 10 || isLoading}
-                                    className={`w-full py-4 text-xs font-bold uppercase tracking-widest rounded transition-all duration-300 flex items-center justify-center gap-2 shadow-lg ${phoneNumber.length === 10 && !isLoading
+                                    className={`relative z-50 pointer-events-auto w-full py-4 text-xs font-bold uppercase tracking-widest rounded transition-all duration-300 flex items-center justify-center gap-2 shadow-lg ${phoneNumber.length === 10 && !isLoading
                                             ? 'bg-[#25D366] text-white hover:bg-[#20bd5a] hover:shadow-[#25D366]/30 cursor-pointer active:scale-95'
                                             : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                                         }`}
@@ -175,8 +180,8 @@ const LoginModal = ({ isOpen, onClose }) => {
                                     onClick={handleVerifyOTP}
                                     disabled={otp.length < 6 || isLoading}
                                     className={`w-full py-4 text-xs font-bold uppercase tracking-widest rounded transition-all duration-300 shadow-lg ${otp.length === 6 && !isLoading
-                                            ? 'bg-black text-white hover:bg-gray-800 hover:shadow-black/20 cursor-pointer active:scale-95'
-                                            : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                                        ? 'bg-black text-white hover:bg-gray-800 hover:shadow-black/20 cursor-pointer active:scale-95'
+                                        : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                                         }`}
                                 >
                                     {isLoading ? 'Verifying...' : 'Verify & Login'}
