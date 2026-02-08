@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import heroImage1 from '../assets/hero_slide_1.png';
 import heroImage2 from '../assets/hero_slide_2.png';
 
@@ -7,12 +8,24 @@ const heroSlides = [
     {
         id: 1,
         image: heroImage1,
-        subtitle: "New Collection"
+        subtitle: "New Collection",
+        button: {
+            text: "Explore New Arrivals",
+            link: "/category/new-arrivals",
+            style: "border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black",
+            position: "bottom-[20%] left-1/2 -translate-x-1/2"
+        }
     },
     {
         id: 2,
         image: heroImage2,
-        subtitle: "Royal Edition"
+        subtitle: "Royal Edition",
+        button: {
+            text: "Shop Now",
+            link: "/category/all-collections",
+            style: "bg-white/90 text-gray-900 hover:bg-white",
+            position: "bottom-[20%] left-1/2 -translate-x-1/2"
+        }
     }
 ];
 
@@ -86,13 +99,23 @@ const Hero = () => {
                             className="relative z-10 w-full h-full object-contain pointer-events-none drop-shadow-2xl block scale-105"
                         />
 
+                        {/* Button Overlay */}
+                        {heroSlides[currentSlide].button && (
+                            <div className={`absolute ${heroSlides[currentSlide].button.position} z-30`}>
+                                <Link
+                                    to={heroSlides[currentSlide].button.link}
+                                    className={`inline-block px-10 py-4 text-sm font-bold tracking-[0.2em] uppercase transition-all duration-300 shadow-xl ${heroSlides[currentSlide].button.style}`}
+                                >
+                                    {heroSlides[currentSlide].button.text}
+                                </Link>
+                            </div>
+                        )}
+
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none z-20"></div>
                     </div>
                 </motion.div>
             </AnimatePresence>
-
-
 
             {/* Bottom Indicators */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-30">
