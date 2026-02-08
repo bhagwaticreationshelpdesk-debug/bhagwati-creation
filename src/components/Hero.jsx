@@ -6,39 +6,36 @@ import { Link } from 'react-router-dom';
 const heroSlides = [
     {
         id: 1,
-        // Slide 1: Suits & Dresses - High Fashion Vibe
-        // Using a reliable Fashion/Model image
-        image: "https://images.unsplash.com/photo-1549488497-6060824b232d?q=80&w=2070&auto=format&fit=crop",
-        fallback: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=2073",
-        title: "Bhagwati Creation",
+        // Slide 1: Royal/Bridal - Wide, Cinematic
+        image: "https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?q=80&w=2070&auto=format&fit=crop",
+        fallback: "https://images.unsplash.com/photo-1583391726247-bd742751a7fb?q=80&w=2070",
+        title: "Bhagwati Creations",
         subtitle: "Elegance in Every Stitch",
         description: "From power suits to graceful flowing dresses, discover the new era of ethnic chic.",
         btnText: "Explore Collection",
-        highlight: "suits & dresses"
+        highlight: "Heritage Collection"
     },
     {
         id: 2,
-        // Slide 2: Co-ords - Modern/Trendy
-        // Using a vibrant fashion image
-        image: "https://images.unsplash.com/photo-1616892550186-b484558eec13?q=80&w=2070&auto=format&fit=crop",
-        fallback: "https://images.unsplash.com/photo-1629814406233-3168d601d36d?q=80&w=2070",
+        // Slide 2: Contemporary/Chic - Bright, Fashion
+        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=2070&auto=format&fit=crop",
+        fallback: "https://images.unsplash.com/photo-1616892550186-b484558eec13?q=80&w=2070",
         title: "The Co-ord Edit",
         subtitle: "Effortlessly You",
         description: "Perfectly matched sets designed for the modern woman who loves comfort and style.",
         btnText: "Shop Co-ords",
-        highlight: "trending now"
+        highlight: "Modern Chic"
     },
     {
         id: 3,
-        // Slide 3: Wedding/Festive
-        // Using a distinct festive/textured image
-        image: "https://images.unsplash.com/photo-1583391726247-bd742751a7fb?q=80&w=2070&auto=format&fit=crop",
+        // Slide 3: Wedding/Festive - Grand, Gold
+        image: "https://images.unsplash.com/photo-1601614742512-87db98f80459?q=80&w=2070&auto=format&fit=crop",
         fallback: "https://images.unsplash.com/photo-1512413914633-b51febc744aa?q=80&w=2070",
         title: "Royal Festivities",
         subtitle: "Timeless Traditions",
         description: "Celebrate love with our exquisite range of handcrafted wedding ensembles.",
         btnText: "View Wedding Edit",
-        highlight: "festive ready"
+        highlight: "Festive Ready"
     }
 ];
 
@@ -61,7 +58,7 @@ const Hero = () => {
     };
 
     return (
-        <section className="relative w-full h-screen max-h-[90vh] overflow-hidden bg-gray-900 font-sans group">
+        <section className="relative w-full h-screen overflow-hidden bg-gray-900 font-sans group">
 
             {/* Main Full-Width Slider */}
             <AnimatePresence mode="wait">
