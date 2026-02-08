@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 const heroSlides = [
     {
         id: 1,
-        // Wide shot of a woman in a suit/blazer - Modern Chic
-        image: "https://images.unsplash.com/photo-1541533260371-b8fc9b008653?q=80&w=2070&auto=format&fit=crop",
+        // Slide 1: Suits & Dresses - High Fashion Vibe
+        // Using a reliable Fashion/Model image
+        image: "https://images.unsplash.com/photo-1549488497-6060824b232d?q=80&w=2070&auto=format&fit=crop",
+        fallback: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=2073",
         title: "Bhagwati Creation",
         subtitle: "Elegance in Every Stitch",
         description: "From power suits to graceful flowing dresses, discover the new era of ethnic chic.",
@@ -16,8 +18,10 @@ const heroSlides = [
     },
     {
         id: 2,
-        // Specific Co-ord set vibe (Fashion forward)
-        image: "https://images.unsplash.com/photo-1629814406233-3168d601d36d?q=80&w=2070&auto=format&fit=crop",
+        // Slide 2: Co-ords - Modern/Trendy
+        // Using a vibrant fashion image
+        image: "https://images.unsplash.com/photo-1616892550186-b484558eec13?q=80&w=2070&auto=format&fit=crop",
+        fallback: "https://images.unsplash.com/photo-1629814406233-3168d601d36d?q=80&w=2070",
         title: "The Co-ord Edit",
         subtitle: "Effortlessly You",
         description: "Perfectly matched sets designed for the modern woman who loves comfort and style.",
@@ -26,8 +30,10 @@ const heroSlides = [
     },
     {
         id: 3,
-        // Wedding/Celebration wide shot
-        image: "https://images.unsplash.com/photo-1588673756858-a8323674d8a1?q=80&w=2070&auto=format&fit=crop",
+        // Slide 3: Wedding/Festive
+        // Using a distinct festive/textured image
+        image: "https://images.unsplash.com/photo-1583391726247-bd742751a7fb?q=80&w=2070&auto=format&fit=crop",
+        fallback: "https://images.unsplash.com/photo-1512413914633-b51febc744aa?q=80&w=2070",
         title: "Royal Festivities",
         subtitle: "Timeless Traditions",
         description: "Celebrate love with our exquisite range of handcrafted wedding ensembles.",
@@ -77,13 +83,15 @@ const Hero = () => {
                             transition={{ duration: 8, ease: "linear" }}
                             className="w-full h-full object-cover object-top"
                             onError={(e) => {
-                                // Fallback if image fails to load
-                                e.target.onerror = null;
-                                e.target.src = "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=2073&auto=format&fit=crop";
+                                // Smart fallback: If main image fails, use the specific fallback for this slide
+                                // This prevents all slides from showing the same image
+                                if (e.target.src !== heroSlides[currentSlide].fallback) {
+                                    e.target.src = heroSlides[currentSlide].fallback;
+                                }
                             }}
                         />
 
-                        {/* Reduced Opacity Overlays so image is more visible */}
+                        {/* Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60"></div>
                         <div className="absolute inset-0 bg-black/10"></div>
                     </div>
@@ -123,7 +131,7 @@ const Hero = () => {
                             <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#D4AF37]"></div>
                         </div>
 
-                        {/* Subtitle & Description - High Contrast */}
+                        {/* Subtitle & Description */}
                         <div className="space-y-4">
                             <p className="text-2xl md:text-4xl text-[#F9F7F2] font-light italic tracking-wider drop-shadow-md" style={{ fontFamily: 'Cinzel Decorative' }}>
                                 {heroSlides[currentSlide].subtitle}
