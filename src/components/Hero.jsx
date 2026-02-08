@@ -56,36 +56,12 @@ const Hero = () => {
                         </span>
                     </h1>
 
-                    {/* 3. Sticker Message */}
-                    <motion.div
-                        initial={{ rotate: -5, scale: 0 }}
-                        animate={{ rotate: -2, scale: 1 }}
-                        transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
-                        className="relative mt-8 mb-10"
-                    >
-                        <div className="absolute inset-0 bg-[#E63946] transform skew-x-12 rounded-sm shadow-xl"></div>
-                        <div className="relative px-8 py-2 md:px-12 md:py-4 bg-white transform -skew-x-12 border-2 border-black shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-                            <span className="text-black text-xl md:text-3xl font-black uppercase tracking-tighter italic" style={{ fontFamily: 'Inter' }}>
-                                Royal Edition
-                            </span>
-                        </div>
-                        <Heart className="absolute -top-4 -right-4 text-[#E63946] fill-[#E63946] w-8 h-8 md:w-12 md:h-12 drop-shadow-lg animate-bounce" />
-                        <Heart className="absolute -bottom-4 -left-4 text-[#E63946] fill-[#E63946] w-6 h-6 md:w-8 md:h-8 drop-shadow-lg animate-pulse" />
-                    </motion.div>
 
-                    {/* 4. Description & CTA */}
-                    <div className="space-y-8 max-w-2xl mx-auto pointer-events-auto">
-                        <p className="text-white/90 text-lg md:text-xl font-light drop-shadow-lg leading-relaxed hidden md:block">
+                    {/* 4. Description */}
+                    <div className="space-y-8 max-w-2xl mx-auto pointer-events-auto mt-12">
+                        <p className="text-white/90 text-lg md:text-xl font-light drop-shadow-lg leading-relaxed hidden md:block tracking-wide">
                             Discover the new era of ethnic chic with our exclusive collection.
                         </p>
-
-                        <Link
-                            to="/category/new-arrivals"
-                            className="inline-flex items-center gap-3 px-10 py-4 bg-white text-black text-sm font-bold tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]"
-                        >
-                            Explore Collection
-                            <ArrowRight size={18} />
-                        </Link>
                     </div>
                 </motion.div>
             </div>
