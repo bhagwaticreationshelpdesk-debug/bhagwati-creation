@@ -86,34 +86,7 @@ const Hero = () => {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Static Text Overlay (Consistent Across Slides) */}
-            <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-12 pointer-events-none">
-                <div className="max-w-7xl mx-auto flex flex-col items-center justify-center h-full relative">
-                    {/* Top Left Tag */}
-                    <div className="absolute top-12 left-4 md:left-0 md:top-20 border border-white/40 bg-black/20 backdrop-blur-md px-4 py-1.5">
-                        <span className="text-white text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
-                            New Edition 2024
-                        </span>
-                    </div>
 
-                    {/* Main Brand Name */}
-                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif text-white tracking-tighter drop-shadow-2xl mb-2 relative z-10">
-                        <span className="block font-medium italic" style={{ fontFamily: 'Playfair Display' }}>
-                            Bhagwati
-                        </span>
-                        <span className="block text-2xl md:text-4xl lg:text-5xl font-light tracking-[0.4em] uppercase mt-2 md:mt-4 text-[var(--accent-gold)]">
-                            Creations
-                        </span>
-                    </h1>
-
-                    {/* Description */}
-                    <div className="space-y-8 max-w-2xl mx-auto mt-12">
-                        <p className="text-white/90 text-lg md:text-xl font-light drop-shadow-lg leading-relaxed hidden md:block tracking-wide">
-                            Discover the new era of ethnic chic with our exclusive collection.
-                        </p>
-                    </div>
-                </div>
-            </div>
 
             {/* Bottom Indicators */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-30">
