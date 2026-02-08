@@ -75,7 +75,7 @@ const Hero = () => {
                         <img
                             src={heroSlides[currentSlide].image}
                             alt="Hero Slide"
-                            className="relative z-10 w-full h-full object-contain pointer-events-none drop-shadow-2xl block"
+                            className="relative z-10 w-full h-full object-contain pointer-events-none drop-shadow-2xl block scale-105"
                         />
 
                         {/* Overlay */}
