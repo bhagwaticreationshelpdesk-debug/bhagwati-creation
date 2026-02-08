@@ -42,13 +42,13 @@ const Hero = () => {
         <section className="relative w-full h-screen overflow-hidden bg-gray-900 font-sans group">
 
             {/* Slideshow Container */}
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
                 <motion.div
                     key={currentSlide}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
                     className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
@@ -58,26 +58,18 @@ const Hero = () => {
                     <div className="relative w-full h-full overflow-hidden bg-black">
                         {/* 1. Blurred Background Layer (Fills Screen) */}
                         <div className="absolute inset-0">
-                            <motion.img
+                            <img
                                 src={heroSlides[currentSlide].image}
                                 alt="Background Blur"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 0.6 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 1 }}
-                                className="w-full h-full object-cover blur-2xl scale-110 opacity-50"
+                                className="w-full h-full object-cover blur-2xl scale-110 opacity-50 block"
                             />
                         </div>
 
                         {/* 2. Main Image Layer (Fits Screen) */}
-                        <motion.img
+                        <img
                             src={heroSlides[currentSlide].image}
                             alt="Hero Slide"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="relative z-10 w-full h-full object-contain pointer-events-none drop-shadow-2xl"
+                            className="relative z-10 w-full h-full object-contain pointer-events-none drop-shadow-2xl block"
                         />
 
                         {/* Overlay */}
