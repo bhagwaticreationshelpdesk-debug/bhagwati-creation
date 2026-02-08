@@ -5,6 +5,7 @@ import ProductGrid from '../components/ProductGrid';
 import ShopByCategories from '../components/ShopByCategories';
 import InstagramReels from '../components/InstagramReels';
 import VideoShopping from '../components/VideoShopping';
+import FounderSection from '../components/FounderSection';
 import { products } from '../data/products';
 
 const ProductGridSection = ({ title, CarouselId, products: sectionProducts, viewAllLink }) => (
@@ -38,6 +39,8 @@ const Home = () => {
                     products={under999Products}
                     viewAllLink="/category/under-999"
                 />
+
+                <FounderSection />
 
                 <ProductGridSection
                     title="Co-ords Collection"
