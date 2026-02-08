@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 const heroSlides = [
     {
         id: 1,
-        // Using a modern Indian fashion image (close to suits/dresses vibe)
-        image: "https://images.unsplash.com/photo-1616892550186-b484558eec13?q=80&w=2070&auto=format&fit=crop",
+        // Wide shot of a woman in a suit/blazer - Modern Chic
+        image: "https://images.unsplash.com/photo-1541533260371-b8fc9b008653?q=80&w=2070&auto=format&fit=crop",
         title: "Bhagwati Creation",
         subtitle: "Elegance in Every Stitch",
         description: "From power suits to graceful flowing dresses, discover the new era of ethnic chic.",
@@ -16,8 +16,8 @@ const heroSlides = [
     },
     {
         id: 2,
-        // Co-ords / Modern Fusion Vibe
-        image: "https://images.unsplash.com/photo-1631215570081-34440263309a?q=80&w=2062&auto=format&fit=crop",
+        // Specific Co-ord set vibe (Fashion forward)
+        image: "https://images.unsplash.com/photo-1629814406233-3168d601d36d?q=80&w=2070&auto=format&fit=crop",
         title: "The Co-ord Edit",
         subtitle: "Effortlessly You",
         description: "Perfectly matched sets designed for the modern woman who loves comfort and style.",
@@ -26,8 +26,8 @@ const heroSlides = [
     },
     {
         id: 3,
-        // Celebration / Wedding Vibe (Lehenga/Saree)
-        image: "https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?q=80&w=2017&auto=format&fit=crop",
+        // Wedding/Celebration wide shot
+        image: "https://images.unsplash.com/photo-1588673756858-a8323674d8a1?q=80&w=2070&auto=format&fit=crop",
         title: "Royal Festivities",
         subtitle: "Timeless Traditions",
         description: "Celebrate love with our exquisite range of handcrafted wedding ensembles.",
@@ -55,7 +55,7 @@ const Hero = () => {
     };
 
     return (
-        <section className="relative w-full h-screen max-h-[90vh] overflow-hidden bg-black font-sans">
+        <section className="relative w-full h-screen max-h-[90vh] overflow-hidden bg-gray-900 font-sans group">
 
             {/* Main Full-Width Slider */}
             <AnimatePresence mode="wait">
@@ -76,11 +76,16 @@ const Hero = () => {
                             animate={{ scale: 1 }}
                             transition={{ duration: 8, ease: "linear" }}
                             className="w-full h-full object-cover object-top"
+                            onError={(e) => {
+                                // Fallback if image fails to load
+                                e.target.onerror = null;
+                                e.target.src = "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=2073&auto=format&fit=crop";
+                            }}
                         />
 
-                        {/* High Contrast Overlay for Text Readability */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 opacity-80"></div>
-                        <div className="absolute inset-0 bg-black/20"></div>
+                        {/* Reduced Opacity Overlays so image is more visible */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60"></div>
+                        <div className="absolute inset-0 bg-black/10"></div>
                     </div>
                 </motion.div>
             </AnimatePresence>
@@ -90,41 +95,41 @@ const Hero = () => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentSlide}
-                        initial={{ y: 40, opacity: 0 }}
+                        initial={{ y: 30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -40, opacity: 0 }}
+                        exit={{ y: -30, opacity: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="max-w-5xl mx-auto space-y-6 md:space-y-8"
+                        className="max-w-6xl mx-auto space-y-6 md:space-y-8"
                     >
                         {/* Highlight Pill */}
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mx-auto">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/30 backdrop-blur-md border border-white/30 mx-auto shadow-lg">
                             <Heart size={14} className="text-[#E63946] fill-[#E63946]" />
-                            <span className="text-white text-xs font-bold tracking-[0.2em] uppercase">
+                            <span className="text-white text-xs font-bold tracking-[0.2em] uppercase shadow-black drop-shadow-md">
                                 {heroSlides[currentSlide].highlight}
                             </span>
                         </div>
 
                         {/* Brand Name / Main Title */}
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-wide drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-wide drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
                             <span className="block font-medium" style={{ fontFamily: 'Playfair Display' }}>
                                 {heroSlides[currentSlide].title}
                             </span>
                         </h1>
 
                         {/* Decoration Line */}
-                        <div className="flex items-center justify-center gap-4 opacity-80">
-                            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]"></div>
-                            <div className="h-2 w-2 rounded-full bg-[#D4AF37] shadow-[0_0_10px_#D4AF37]"></div>
-                            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]"></div>
+                        <div className="flex items-center justify-center gap-4 opacity-90">
+                            <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#D4AF37]"></div>
+                            <div className="h-2 w-2 rounded-full bg-[#D4AF37] shadow-[0_0_15px_#D4AF37]"></div>
+                            <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#D4AF37]"></div>
                         </div>
 
                         {/* Subtitle & Description - High Contrast */}
                         <div className="space-y-4">
-                            <p className="text-2xl md:text-3xl text-[#F9F7F2] font-light italic tracking-wider" style={{ fontFamily: 'Cinzel Decorative' }}>
+                            <p className="text-2xl md:text-4xl text-[#F9F7F2] font-light italic tracking-wider drop-shadow-md" style={{ fontFamily: 'Cinzel Decorative' }}>
                                 {heroSlides[currentSlide].subtitle}
                             </p>
 
-                            <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light drop-shadow-md">
+                            <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light drop-shadow-lg">
                                 {heroSlides[currentSlide].description}
                             </p>
                         </div>
@@ -133,7 +138,7 @@ const Hero = () => {
                         <div className="pt-8">
                             <Link
                                 to="/category/new-arrivals"
-                                className="inline-flex items-center gap-3 px-10 py-4 bg-white text-black text-sm font-bold tracking-[0.2em] uppercase hover:bg-[#D4AF37] hover:text-white transition-all duration-300 group shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] rounded-sm"
+                                className="inline-flex items-center gap-3 px-10 py-4 bg-white/90 text-black text-sm font-bold tracking-[0.2em] uppercase hover:bg-[#D4AF37] hover:text-white transition-all duration-300 group shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] rounded-sm backdrop-blur-sm"
                             >
                                 {heroSlides[currentSlide].btnText}
                                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -147,13 +152,13 @@ const Hero = () => {
             <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-12 z-30 pointer-events-none">
                 <button
                     onClick={prevSlide}
-                    className="pointer-events-auto p-4 rounded-full border border-white/20 text-white/70 hover:bg-white hover:text-black hover:border-white transition-all backdrop-blur-sm group"
+                    className="pointer-events-auto p-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-black hover:border-white transition-all backdrop-blur-sm group shadow-lg"
                 >
                     <ChevronLeft size={28} className="group-hover:-translate-x-1 transition-transform" />
                 </button>
                 <button
                     onClick={nextSlide}
-                    className="pointer-events-auto p-4 rounded-full border border-white/20 text-white/70 hover:bg-white hover:text-black hover:border-white transition-all backdrop-blur-sm group"
+                    className="pointer-events-auto p-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-black hover:border-white transition-all backdrop-blur-sm group shadow-lg"
                 >
                     <ChevronRight size={28} className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -165,7 +170,7 @@ const Hero = () => {
                     <button
                         key={slide.id}
                         onClick={() => setCurrentSlide(index)}
-                        className={`transition-all duration-500 rounded-full h-1.5 ${currentSlide === index ? 'w-12 bg-[#D4AF37]' : 'w-2 bg-white/40 hover:bg-white/80'
+                        className={`transition-all duration-500 rounded-full h-1.5 shadow-sm ${currentSlide === index ? 'w-12 bg-[#D4AF37]' : 'w-2 bg-white/60 hover:bg-white'
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
