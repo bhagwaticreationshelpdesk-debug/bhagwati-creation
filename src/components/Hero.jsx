@@ -19,6 +19,14 @@ const heroSlides = [
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
+    // Preload images
+    useEffect(() => {
+        heroSlides.forEach((slide) => {
+            const img = new Image();
+            img.src = slide.image;
+        });
+    }, []);
+
     // Auto-play
     useEffect(() => {
         const timer = setInterval(() => {
@@ -39,10 +47,10 @@ const Hero = () => {
     };
 
     return (
-        <section className="relative w-full overflow-hidden bg-gray-900 font-sans group">
+        <section className="relative w-full overflow-hidden bg-gray-900 font-sans group transition-[height] duration-500 ease-in-out">
             {/* Invisible Sizer Image to set container aspect ratio */}
             <img
-                src={heroSlides[0].image}
+                src={heroSlides[currentSlide].image}
                 alt="Sizer"
                 className="w-full h-auto opacity-0 invisible relative z-0 pointer-events-none"
             />
